@@ -14,7 +14,8 @@
 {
     self = [super init];
     if (self) {
-        
+        _startDate = [NSDate date];
+//        _endDate = [_startDate dateByAddingYears:1];
     }
     return self;
 }
@@ -23,7 +24,7 @@
 {
     NSMutableArray* array = [NSMutableArray new];
     for (int i = 0; i<24; i++) {
-        [array addObject:FormatStr(@"%2d",i)];
+        [array addObject:FormatStr(@"%02d",i)];
     }
     return [NSArray arrayWithArray:array];
 }

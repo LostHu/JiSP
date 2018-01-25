@@ -42,23 +42,24 @@
     }];
     
     UILabel* nameLabel = [UILabel new];
-    nameLabel.textColor = hexColor(a1a1a1);
+    nameLabel.textColor = hexColor(111111);
     nameLabel.text = @"日期:";
-    nameLabel.font = Font_System(12);
+    nameLabel.font = Font_System(14);
     [bgView addSubview:nameLabel];
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(18);
         make.top.offset(18);
+        make.width.mas_equalTo(@(40));
     }];
     
     UILabel* nameLabel2 = [UILabel new];
-    nameLabel2.textColor = hexColor(a1a1a1);
+    nameLabel2.textColor = hexColor(111111);
     nameLabel2.text = @"时段:";
-    nameLabel2.font = Font_System(12);
+    nameLabel2.font = Font_System(14);
     [bgView addSubview:nameLabel2];
     [nameLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(nameLabel).offset(0);
-        make.top.equalTo(nameLabel.mas_bottom).offset(24);
+        make.top.equalTo(nameLabel.mas_bottom).offset(28);
     }];
     
     [bgView addSubview: self.startDateField];
@@ -68,9 +69,9 @@
     
     
     [self.startDateField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(nameLabel.mas_right).offset(10);
+        make.left.equalTo(nameLabel.mas_right).offset(5);
         make.centerY.equalTo(nameLabel);
-        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH/3, 24));
+        make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH/3, 28));
     }];
     
     [self.endDateField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -91,6 +92,40 @@
         make.centerY.equalTo(nameLabel2);
         make.size.equalTo(self.startDateField);
     }];
+    
+    UIView* line1 = [UILabel new];
+    line1.backgroundColor = hexColor(a1a1a1);
+    [bgView addSubview:line1];
+    [line1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.startDateField);
+        make.height.mas_equalTo(@(0.5));
+        make.left.equalTo(self.startDateField.mas_right).offset(5);
+        make.right.equalTo(self.endDateField.mas_left).offset(-5);
+    }];
+
+    UIView* line2 = [UILabel new];
+    line2.backgroundColor = hexColor(a1a1a1);
+    [bgView addSubview:line2];
+    [line2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.startTimeField);
+        make.height.mas_equalTo(@(0.5));
+        make.left.right.equalTo(line1);
+    }];
+    
+    [self.startDateField setContentCompressionResistancePriority:UILayoutPriorityRequired
+                             forAxis:UILayoutConstraintAxisHorizontal];
+    [self.endDateField setContentCompressionResistancePriority:UILayoutPriorityRequired
+                                           forAxis:UILayoutConstraintAxisHorizontal];
+    [line1 setContentCompressionResistancePriority:UILayoutPriorityRequired
+                                           forAxis:UILayoutConstraintAxisHorizontal];
+    [nameLabel setContentHuggingPriority:UILayoutPriorityDefaultLow
+                             forAxis:UILayoutConstraintAxisHorizontal];
+//    [self.startDateField setContentCompressionResistancePriority:UILayoutPriorityRequired
+//                                             forAxis:UILayoutConstraintAxisHorizontal];
+//    nameLabel.backgroundColor = RandomColor;
+//    line1.backgroundColor = RandomColor;
+//    self.startDateField.backgroundColor = RandomColor;
+//    self.endDateField.backgroundColor = RandomColor;
     
     UIButton* addBtn = [UIButton new];
     [addBtn blueSolidStyle];
@@ -113,23 +148,33 @@
     self.endDateField.delegate = self;
     self.startTimeField.delegate = self;
     self.endTimeField.delegate = self;
+    
+    self.startDateField.tag = 1001;
+    self.endDateField.tag = 1002;
+    self.startTimeField.tag = 2001;
+    self.endTimeField.tag = 2002;
 
-//    _startDateField.borderStyle = UITextBorderStyleRoundedRect;
-    _startDateField.layer.borderWidth = 1;
-    _startDateField.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    _startDateField.layer.cornerRadius = 5;
+//    _startDateField.layer.borderWidth = 1;
+//    _startDateField.layer.borderColor = [UIColor lightGrayColor].CGColor;
+//    _startDateField.layer.cornerRadius = 5;
     
-    _endDateField.layer.borderWidth = _startDateField.layer.borderWidth;
-    _endDateField.layer.borderColor = _startDateField.layer.borderColor;
-    _endDateField.layer.cornerRadius = _startDateField.layer.cornerRadius;
+    _startDateField.borderStyle = UITextBorderStyleRoundedRect;
+    _endDateField.borderStyle = UITextBorderStyleRoundedRect;
+    _startTimeField.borderStyle = UITextBorderStyleRoundedRect;
+    _endTimeField.borderStyle = UITextBorderStyleRoundedRect;
+//    _endDateField.layer.borderWidth = _startDateField.layer.borderWidth;
+//    _endDateField.layer.borderColor = _startDateField.layer.borderColor;
+//    _endDateField.layer.cornerRadius = _startDateField.layer.cornerRadius;
     
-    _startTimeField.layer.borderWidth = _startDateField.layer.borderWidth;
-    _startTimeField.layer.borderColor = _startDateField.layer.borderColor;
-    _startTimeField.layer.cornerRadius = _startDateField.layer.cornerRadius;
+//    _startTimeField.layer.borderWidth = _startDateField.layer.borderWidth;
+//    _startTimeField.layer.borderColor = _startDateField.layer.borderColor;
+//    _startTimeField.layer.cornerRadius = _startDateField.layer.cornerRadius;
+//
+//    _endTimeField.layer.borderWidth = _startDateField.layer.borderWidth;
+//    _endTimeField.layer.borderColor = _startDateField.layer.borderColor;
+//    _endTimeField.layer.cornerRadius = _startDateField.layer.cornerRadius;
     
-    _endTimeField.layer.borderWidth = _startDateField.layer.borderWidth;
-    _endTimeField.layer.borderColor = _startDateField.layer.borderColor;
-    _endTimeField.layer.cornerRadius = _startDateField.layer.cornerRadius;
+    
 }
 
 - (void)viewDidLoad {
@@ -142,6 +187,7 @@
     UIBarButtonItem *spaceBt = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *doneBt = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dodo)];
     toolBar.items = @[spaceBt,spaceBt,doneBt];
+    toolBar.backgroundColor = [UIColor whiteColor];
 
     _startDateField.inputAccessoryView = toolBar;
     _endDateField.inputAccessoryView = toolBar;
@@ -196,6 +242,16 @@
     
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (textField.tag == 1001 && self.viewModel.endDate) {
+        self.datePicker.maximumDate = self.viewModel.endDate;
+    }
+    if (textField.tag == 1002 && self.viewModel.startDate) {
+        self.datePicker.minimumDate = self.viewModel.startDate;
+    }
+}
+
 - (void)dodo
 {
     UITextField* sender = [self firstTextField];
@@ -203,13 +259,28 @@
         NSString* value = nil;
         if ([sender.inputView isKindOfClass:[UIDatePicker class]]) {
             value = [self.datePicker.date format:@"yyyy-MM-dd"];
+            
+            if (sender.tag == 1001) {
+                self.viewModel.startDate = self.datePicker.date;
+            }
+            if (sender.tag == 1002) {
+                self.viewModel.endDate = self.datePicker.date;
+            }
         }
         else
         {
             value = FormatStr(@"%@:%@",[self.viewModel.arrayHour objectAtIndex:[self.timePicker selectedRowInComponent:0]],[self.viewModel.arrayMin objectAtIndex:[self.timePicker selectedRowInComponent:1]]);
             
+            if (sender.tag == 2001) {
+                self.viewModel.startTime = value;
+            }
+            if (sender.tag == 2002) {
+                self.viewModel.endTime = value;
+            }
         }
         NSLog(@"value:%@",value);
+        sender.text  = value;
+        [self touchSpace];
     }
 }
 
@@ -262,9 +333,9 @@
 {
     if (!_startDateField) {
         _startDateField = [UITextField new];
-        _startDateField.layer.borderWidth = 1;
-        _startDateField.layer.borderColor = [UIColor lightGrayColor].CGColor;
-        _startDateField.layer.cornerRadius = 5;
+        _startDateField.textAlignment = NSTextAlignmentCenter;
+        _startDateField.font = Font_System(12);
+        _startDateField.textColor = hexColor(a1a1a1);
     }
     return _startDateField;
 }
@@ -273,6 +344,9 @@
 {
     if (!_endDateField) {
         _endDateField = [UITextField new];
+        _endDateField.textAlignment = NSTextAlignmentCenter;
+        _endDateField.font = Font_System(12);
+        _endDateField.textColor = hexColor(a1a1a1);
     }
     return _endDateField;
 }
@@ -281,6 +355,9 @@
 {
     if (!_startTimeField) {
         _startTimeField = [UITextField new];
+        _startTimeField.textAlignment = NSTextAlignmentCenter;
+        _startTimeField.font = Font_System(12);
+        _startTimeField.textColor = hexColor(a1a1a1);
     }
     return _startTimeField;
 }
@@ -289,6 +366,9 @@
 {
     if (!_endTimeField) {
         _endTimeField = [UITextField new];
+        _endTimeField.textAlignment = NSTextAlignmentCenter;
+        _endTimeField.font = Font_System(12);
+        _endTimeField.textColor = hexColor(a1a1a1);
     }
     return _endTimeField;
 }
@@ -306,6 +386,7 @@
 //        [LostTimer par]
         NSDate *date = [NSDate date];
         _datePicker.date = date;
+        _datePicker.minimumDate = [NSDate date];
         
         double birthDate = [date timeIntervalSince1970];
         NSLog(@"%.2f",birthDate);
@@ -322,7 +403,7 @@
     if (!_timePicker) {
         _timePicker = [UIPickerView new];
         _timePicker.tag = 1008;
-        
+        _timePicker.backgroundColor = [UIColor whiteColor];
         _timePicker.delegate = self;
         _timePicker.dataSource = self;
     }

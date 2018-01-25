@@ -12,4 +12,9 @@
 @interface FreeTimeViewModel : BaseTableViewModel
 @property (nonatomic, strong) NSArray* arrayHour;
 @property (nonatomic, strong) NSArray* arrayMin;
+
+@property (nonatomic, strong) NSDate* startDate;
+@property (nonatomic, strong) NSDate* endDate;
+@property (nonatomic, strong) NSString* startTime;
+@property (nonatomic, strong) NSString* endTime;
 @end

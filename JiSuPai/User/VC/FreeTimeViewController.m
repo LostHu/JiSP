@@ -32,6 +32,7 @@
     
     UIButton* addBtn = [UIButton new];
     [addBtn blueSolidStyle];
+    addBtn.layer.cornerRadius = 0;
     [addBtn setTitle:@"上报空闲时间" forState:UIControlStateNormal];
     [self.view addSubview:addBtn];
     
