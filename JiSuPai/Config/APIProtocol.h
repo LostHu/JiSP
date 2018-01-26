@@ -50,6 +50,10 @@
 #define API_AddFreeTime                 DriverPrefix(@"createFreeTime.do")
 #define API_DeleteFreeTime              DriverPrefix(@"deleteFreeTime.do")
 
+// 请假
+#define API_LeaveList                    DriverPrefix(@"getLeave.do")
+#define API_AddLeaveTime                 DriverPrefix(@"createLeave.do")
+#define API_DeleteLeaveTime              DriverPrefix(@"deleteLeave.do")
 
 //用户
 #define API_login           DriverPrefix(@"login.do")       //登陆

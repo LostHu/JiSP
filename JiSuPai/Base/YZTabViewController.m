@@ -22,7 +22,7 @@
     self = [super init];
     if (self)
     {
-        NSArray* arrayTitle = @[@"任务大厅",@"抢单列表",@"历史订单",@"个人中心"];
+        NSArray* arrayTitle = @[@"任务大厅",@"抢单列表",@"正在配送",@"个人中心"];
         NSArray *iocnNormalArray = @[@"tab_icon_dongtai",@"tab_icon_faxian",@"tab_icon_faxian",@"tab_icon_wo"];
         NSArray *iconSeclectArray = @[@"tab_icon_dongtai_pre",@"tab_icon_faxian_pre",@"tab_icon_faxian_pre",@"tab_icon_wo_pre"];
         

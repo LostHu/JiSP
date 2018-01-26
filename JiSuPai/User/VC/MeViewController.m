@@ -18,7 +18,7 @@
 #import "MyCarViewController.h"
 #import "EditPasswordViewController.h"
 #import "FreeTimeViewController.h"
-
+#import "LeaveViewController.h"
 
 @interface MeViewController ()
 @property (nonatomic,strong) MeViewModel* viewModel;
@@ -134,7 +134,7 @@
         return 40;
     }
     if (indexPath.section == 3) {
-        return 140;
+        return 186;
     }
     return 40;
 }
@@ -222,6 +222,12 @@
                     [self navToFreeTime];
                     break;
                 case 5:
+                    
+                    break;
+                case 6:
+                    [self navToLeave];
+                    break;
+                case 7:
                     [self navToEditPwd];
                     break;
                 default:
@@ -232,6 +238,14 @@
         return cell;
     }
     return nil;
+}
+
+- (void)navToLeave
+{
+    LeaveViewController* vc = [LeaveViewController new];
+    vc.cusnavigationBar.titleLabel.text = @"我的请假";
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)navToEditPwd

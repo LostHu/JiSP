@@ -35,6 +35,7 @@
         UILabel* nameLabel2 = [UILabel new];
         nameLabel2.textColor = hexColor(a1a1a1);
         nameLabel2.text = @"时段:";
+        nameLabel2.tag = 1980;
         nameLabel2.font = Font_System(12);
         [self.bgView addSubview:nameLabel2];
         [nameLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {

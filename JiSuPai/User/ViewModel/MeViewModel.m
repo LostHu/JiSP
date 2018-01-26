@@ -14,10 +14,10 @@
     self = [super init];
     if (self)
     {
-        NSArray* arrayTitle = @[@"车辆信息",@"客户评价",@"司机学院",@"联系我们",@"空闲时间",@"修改密码"];
-        NSArray* arrayInfo = @[@"完善车辆信息",@"查看客户评价",@"查看司机学院",@"4008556505",@"查看空闲时间",@"点击修改密码"];
-        NSArray *iocnNormalArray = @[@"tab_icon_dongtai",@"tab_icon_faxian",@"tab_icon_faxian",@"tab_icon_wo",@"tab_icon_faxian",@"tab_icon_wo"];
-        NSArray *iconSeclectArray = @[@"tab_icon_dongtai_pre",@"tab_icon_faxian_pre",@"tab_icon_faxian_pre",@"tab_icon_wo_pre",@"tab_icon_faxian_pre",@"tab_icon_wo_pre"];
+        NSArray* arrayTitle = @[@"车辆信息",@"客户评价",@"司机学院",@"联系我们",@"空闲时间",@"运力经理 管理员",@"请假申请",@"修改密码"];
+        NSArray* arrayInfo = @[@"完善车辆信息",@"查看客户评价",@"查看司机学院",@"4008556505",@"查看空闲时间",@"15800549193",@"点击申请请假",@"点击修改密码"];
+        NSArray *iocnNormalArray = @[@"tab_icon_dongtai",@"tab_icon_faxian",@"tab_icon_faxian",@"tab_icon_wo",@"tab_icon_faxian",@"tab_icon_wo",@"tab_icon_faxian",@"tab_icon_wo"];
+        NSArray *iconSeclectArray = @[@"tab_icon_dongtai_pre",@"tab_icon_faxian_pre",@"tab_icon_faxian_pre",@"tab_icon_wo_pre",@"tab_icon_faxian_pre",@"tab_icon_wo_pre",@"tab_icon_faxian_pre",@"tab_icon_wo_pre"];
         
         _arrayTabData = [NSMutableArray new];
         for (int i = 0; i < arrayTitle.count; i++) {

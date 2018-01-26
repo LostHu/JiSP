@@ -1,27 +1,27 @@
 //
-//  FreeTimeViewController.m
+//  LeaveViewController.m
 //  JiSuPai
 //
-//  Created by Lost on 2018/1/21.
+//  Created by Lost on 2018/1/26.
 //  Copyright © 2018年 Lost. All rights reserved.
 //
 
-#import "FreeTimeViewController.h"
-#import "FreeTimeViewModel.h"
-#import "FreeTimeTableViewCell.h"
-#import "AddFreeTimeViewController.h"
+#import "LeaveViewController.h"
+#import "LeaveTableViewCell.h"
+#import "LeaveViewModel.h"
+#import "AddLeaveViewController.h"
 
-@interface FreeTimeViewController ()
+@interface LeaveViewController ()
 @property (nonatomic, strong) UIButton* addBtn;
-@property (nonatomic, strong) FreeTimeViewModel* viewModel;
+@property (nonatomic, strong) LeaveViewModel* viewModel;
 @end
 
-@implementation FreeTimeViewController
+@implementation LeaveViewController
 
-- (FreeTimeViewModel *)viewModel
+- (LeaveViewModel *)viewModel
 {
     if (!_viewModel) {
-        _viewModel = [[FreeTimeViewModel alloc] init];
+        _viewModel = [[LeaveViewModel alloc] init];
     }
     return _viewModel;
 }
@@ -33,7 +33,7 @@
     UIButton* addBtn = [UIButton new];
     [addBtn blueSolidStyle];
     addBtn.layer.cornerRadius = 0;
-    [addBtn setTitle:@"上报空闲时间" forState:UIControlStateNormal];
+    [addBtn setTitle:@"申请请假" forState:UIControlStateNormal];
     [self.view addSubview:addBtn];
     
     [addBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -50,7 +50,7 @@
     }];
     self.view.backgroundColor = hexColor(f5f8fa);
     self.tableView.backgroundColor = self.view.backgroundColor;
-    self.cusnavigationBar.titleLabel.text = @"空闲时间";
+    self.cusnavigationBar.titleLabel.text = @"我的请假";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 }
@@ -58,7 +58,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.tableView registerClass:[FreeTimeTableViewCell class] forCellReuseIdentifier:[FreeTimeTableViewCell identify]];
+    [self.tableView registerClass:[LeaveTableViewCell class] forCellReuseIdentifier:[LeaveTableViewCell identify]];
     
     
     [self.addBtn addTarget:self action:@selector(addFreeTime) forControlEvents:UIControlEventTouchUpInside];
@@ -94,7 +94,7 @@
 
 - (void)addFreeTime
 {
-    AddFreeTimeViewController* vc = [AddFreeTimeViewController new];
+    AddLeaveViewController* vc = [AddLeaveViewController new];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -140,16 +140,14 @@
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FreeTimeTableViewCell *cell = (FreeTimeTableViewCell*)[tableView dequeueReusableCellWithIdentifier:[FreeTimeTableViewCell identify] forIndexPath:indexPath];
+    LeaveTableViewCell *cell = (LeaveTableViewCell*)[tableView dequeueReusableCellWithIdentifier:[LeaveTableViewCell identify] forIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryNone;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     cell.backgroundColor = tableView.backgroundColor;
-    FreeTimeData* data = [self.viewModel.array objectAtIndex:indexPath.section];
+    LeaveData* data = [self.viewModel.array objectAtIndex:indexPath.section];
     cell.dateLabel.text = FormatStr(@"%@-%@",data.startdate,data.enddate);
-    cell.timeLabel.text = FormatStr(@"%@-%@",data.starttime,data.endtime);
-//    cell.data = task;
-    //    cell.arrayVoteData = self.viewModel.array;
+    cell.timeLabel.text = FormatStr(@"%@",data.descrip);
     
     return cell;
 }
@@ -157,7 +155,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
 }
 
 - (UIButton*)addBtn

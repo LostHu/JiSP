@@ -20,6 +20,23 @@
     return self;
 }
 
+- (void)addFreeTime:(ModelCompleteBlock)block
+{
+    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:[self.startDate format:@"yyyy-MM-dd"] forKey:@"startdate"];
+    [parameters setObject:[self.endDate format:@"yyyy-MM-dd"] forKey:@"enddate"];
+    [parameters setObject:self.startTime forKey:@"starttime"];
+    [parameters setObject:self.endTime forKey:@"endtime"];
+    
+    [LostHttpClient GETRequestURL:API_AddFreeTime WithParameter:parameters
+             WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
+                 
+             }
+                 WithFailureBlock:^{
+                     
+                 }];
+}
+
 - (NSArray*)arrayHour
 {
     NSMutableArray* array = [NSMutableArray new];

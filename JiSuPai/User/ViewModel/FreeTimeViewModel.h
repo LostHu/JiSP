@@ -17,4 +17,6 @@
 @property (nonatomic, strong) NSDate* endDate;
 @property (nonatomic, strong) NSString* startTime;
 @property (nonatomic, strong) NSString* endTime;
+
+- (void)addFreeTime:(ModelCompleteBlock)block;
 @end

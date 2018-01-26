@@ -24,6 +24,8 @@
 @property (nonatomic, strong) MeInfoBtn* driverBtn;
 @property (nonatomic, strong) MeInfoBtn* callBtn;
 @property (nonatomic, strong) MeInfoBtn* freeBtn;
+@property (nonatomic, strong) MeInfoBtn* callManagerBtn;
+@property (nonatomic, strong) MeInfoBtn* leaveBtn;
 @property (nonatomic, strong) MeInfoBtn* editPwdBtn;
 @property (nonatomic, strong) NSArray* arrayTitle;
 

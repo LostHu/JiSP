@@ -141,13 +141,17 @@
         self.driverBtn.tag = MeColourTag+2;
         self.callBtn.tag = MeColourTag+3;
         self.freeBtn.tag = MeColourTag+4;
-        self.editPwdBtn.tag = MeColourTag+5;
+        self.callManagerBtn.tag = MeColourTag+5;
+        self.leaveBtn.tag = MeColourTag+6;
+        self.editPwdBtn.tag = MeColourTag+7;
         
         [self.carBtn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
         [self.userBtn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
         [self.driverBtn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
         [self.callBtn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
         [self.freeBtn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+        [self.callManagerBtn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+        [self.leaveBtn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
         [self.editPwdBtn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
         
         [self.contentView addSubview:self.carBtn];
@@ -169,6 +173,12 @@
             make.size.left.equalTo(self.carBtn);
         }];
         
+        [self.contentView addSubview:self.leaveBtn];
+        [self.leaveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.freeBtn.mas_bottom).offset(0);
+            make.size.left.equalTo(self.carBtn);
+        }];
+        
         [self.contentView addSubview:self.userBtn];
         [self.userBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.top.equalTo(self.carBtn);
@@ -180,10 +190,16 @@
             make.top.equalTo(self.userBtn.mas_bottom).offset(0);
             make.size.left.equalTo(self.userBtn);
         }];
+        
+        [self.contentView addSubview:self.callManagerBtn];
+        [self.callManagerBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.callBtn.mas_bottom).offset(0);
+            make.size.left.equalTo(self.userBtn);
+        }];
                 
         [self.contentView addSubview:self.editPwdBtn];
         [self.editPwdBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.callBtn.mas_bottom).offset(0);
+            make.top.equalTo(self.callManagerBtn.mas_bottom).offset(0);
             make.size.left.equalTo(self.userBtn);
         }];
     }
@@ -232,6 +248,22 @@
         _editPwdBtn = [[MeInfoBtn alloc] init];
     }
     return _editPwdBtn;
+}
+
+- (MeInfoBtn *)leaveBtn
+{
+    if (!_leaveBtn) {
+        _leaveBtn = [[MeInfoBtn alloc] init];
+    }
+    return _leaveBtn;
+}
+
+- (MeInfoBtn *)callManagerBtn
+{
+    if (!_callManagerBtn) {
+        _callManagerBtn = [[MeInfoBtn alloc] init];
+    }
+    return _callManagerBtn;
 }
 
 - (MeInfoBtn *)driverBtn

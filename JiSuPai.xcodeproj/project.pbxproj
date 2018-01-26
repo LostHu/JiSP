@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B0FEC63201ADA7B00BE1A07 /* LeaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FEC62201ADA7B00BE1A07 /* LeaveViewController.m */; };
+		0B0FEC66201ADADC00BE1A07 /* AddLeaveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FEC65201ADADC00BE1A07 /* AddLeaveViewController.m */; };
+		0B0FEC69201ADB1900BE1A07 /* LeaveViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FEC68201ADB1900BE1A07 /* LeaveViewModel.m */; };
+		0B0FEC6C201ADB8000BE1A07 /* LeaveData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FEC6B201ADB8000BE1A07 /* LeaveData.m */; };
+		0B0FEC6F201ADC0F00BE1A07 /* LeaveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FEC6E201ADC0F00BE1A07 /* LeaveTableViewCell.m */; };
 		0B43A8C4200997590079E952 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B43A8C3200997590079E952 /* AppDelegate.m */; };
 		0B43A8C7200997590079E952 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B43A8C6200997590079E952 /* ViewController.m */; };
 		0B43A8CC200997590079E952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B43A8CB200997590079E952 /* Assets.xcassets */; };
@@ -161,6 +166,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B0FEC61201ADA7B00BE1A07 /* LeaveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeaveViewController.h; sourceTree = "<group>"; };
+		0B0FEC62201ADA7B00BE1A07 /* LeaveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeaveViewController.m; sourceTree = "<group>"; };
+		0B0FEC64201ADADC00BE1A07 /* AddLeaveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddLeaveViewController.h; sourceTree = "<group>"; };
+		0B0FEC65201ADADC00BE1A07 /* AddLeaveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddLeaveViewController.m; sourceTree = "<group>"; };
+		0B0FEC67201ADB1900BE1A07 /* LeaveViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeaveViewModel.h; sourceTree = "<group>"; };
+		0B0FEC68201ADB1900BE1A07 /* LeaveViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeaveViewModel.m; sourceTree = "<group>"; };
+		0B0FEC6A201ADB8000BE1A07 /* LeaveData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeaveData.h; sourceTree = "<group>"; };
+		0B0FEC6B201ADB8000BE1A07 /* LeaveData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeaveData.m; sourceTree = "<group>"; };
+		0B0FEC6D201ADC0F00BE1A07 /* LeaveTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeaveTableViewCell.h; sourceTree = "<group>"; };
+		0B0FEC6E201ADC0F00BE1A07 /* LeaveTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeaveTableViewCell.m; sourceTree = "<group>"; };
 		0B43A8BF200997590079E952 /* JiSuPai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JiSuPai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B43A8C2200997590079E952 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0B43A8C3200997590079E952 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -714,15 +729,15 @@
 		0B43A963200999310079E952 /* BaseClass */ = {
 			isa = PBXGroup;
 			children = (
+				0B43A969200999310079E952 /* BaseViewModel.h */,
 				0B43A964200999310079E952 /* BaseViewModel.m */,
+				0B43A96C200999310079E952 /* BaseViewController.h */,
 				0B43A965200999310079E952 /* BaseViewController.m */,
+				0B43A96B200999310079E952 /* LostWebViewController.h */,
 				0B43A966200999310079E952 /* LostWebViewController.m */,
+				0B43A96A200999310079E952 /* BaseMethod.h */,
 				0B43A967200999310079E952 /* BaseMethod.m */,
 				0B43A968200999310079E952 /* ListDataVM.h */,
-				0B43A969200999310079E952 /* BaseViewModel.h */,
-				0B43A96A200999310079E952 /* BaseMethod.h */,
-				0B43A96B200999310079E952 /* LostWebViewController.h */,
-				0B43A96C200999310079E952 /* BaseViewController.h */,
 				0B43A96D200999310079E952 /* ListDataVM.m */,
 			);
 			path = BaseClass;
@@ -956,6 +971,10 @@
 				0BAE57CE2013A68000872123 /* EditPasswordViewController.m */,
 				0BAE57D0201446AB00872123 /* AddFreeTimeViewController.h */,
 				0BAE57D1201446AB00872123 /* AddFreeTimeViewController.m */,
+				0B0FEC61201ADA7B00BE1A07 /* LeaveViewController.h */,
+				0B0FEC62201ADA7B00BE1A07 /* LeaveViewController.m */,
+				0B0FEC64201ADADC00BE1A07 /* AddLeaveViewController.h */,
+				0B0FEC65201ADADC00BE1A07 /* AddLeaveViewController.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -967,6 +986,8 @@
 				0B9FE06A200CD8B2009F1E7E /* MeViewModel.m */,
 				0BAE57D3201446E800872123 /* FreeTimeViewModel.h */,
 				0BAE57D4201446E800872123 /* FreeTimeViewModel.m */,
+				0B0FEC67201ADB1900BE1A07 /* LeaveViewModel.h */,
+				0B0FEC68201ADB1900BE1A07 /* LeaveViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -976,6 +997,8 @@
 			children = (
 				0BAE57D6201452C500872123 /* FreeTimeData.h */,
 				0BAE57D7201452C500872123 /* FreeTimeData.m */,
+				0B0FEC6A201ADB8000BE1A07 /* LeaveData.h */,
+				0B0FEC6B201ADB8000BE1A07 /* LeaveData.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -989,6 +1012,8 @@
 				0B9FE070200CDC8C009F1E7E /* MeHeadTableViewCell.m */,
 				0BAE57D92014776700872123 /* FreeTimeTableViewCell.h */,
 				0BAE57DA2014776700872123 /* FreeTimeTableViewCell.m */,
+				0B0FEC6D201ADC0F00BE1A07 /* LeaveTableViewCell.h */,
+				0B0FEC6E201ADC0F00BE1A07 /* LeaveTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1375,6 +1400,7 @@
 				0B43AA05200999310079E952 /* PhotoThumbSvr.m in Sources */,
 				0B43A9E1200999310079E952 /* NSDate+Extend.m in Sources */,
 				0B43AA1D200999310079E952 /* NSString+hash.m in Sources */,
+				0B0FEC66201ADADC00BE1A07 /* AddLeaveViewController.m in Sources */,
 				0B43A9EF200999310079E952 /* UINavigationController+ZFPlayerRotation.m in Sources */,
 				0B5C1DCE200A07070092F25A /* HistoryViewController.m in Sources */,
 				0B43A9F3200999310079E952 /* ZFBrightnessView.m in Sources */,
@@ -1402,6 +1428,7 @@
 				0B43AA22200999310079E952 /* UIView+Extension.m in Sources */,
 				0BAE57C92013A61E00872123 /* MyCarViewController.m in Sources */,
 				0B43A9EC200999310079E952 /* UITabBarController+ZFPlayerRotation.m in Sources */,
+				0B0FEC6F201ADC0F00BE1A07 /* LeaveTableViewCell.m in Sources */,
 				0B5C1DEC200B088A0092F25A /* TaskInfoTableViewCell.m in Sources */,
 				0B43AA0B200999310079E952 /* MSSBrowseLocalViewController.m in Sources */,
 				0B43A9FB200999310079E952 /* UserData.m in Sources */,
@@ -1427,6 +1454,7 @@
 				0B5C1DE0200A1DED0092F25A /* TaskDateBarView.m in Sources */,
 				0B43A9E3200999310079E952 /* UITableView+NoData.m in Sources */,
 				0B43A9D5200999310079E952 /* UINavigationController+Extend.m in Sources */,
+				0B0FEC69201ADB1900BE1A07 /* LeaveViewModel.m in Sources */,
 				0B43AA0D200999310079E952 /* MSSBrowseModel.m in Sources */,
 				0B488569200F957C00908009 /* FirstTableViewCell.m in Sources */,
 				0B43A9E6200999310079E952 /* HybridNSURLProtocol.m in Sources */,
@@ -1457,6 +1485,7 @@
 				0B43AA25200999310079E952 /* HMSegmentedControl.m in Sources */,
 				0B9FE071200CDC8C009F1E7E /* MeHeadTableViewCell.m in Sources */,
 				0BAE57CF2013A68000872123 /* EditPasswordViewController.m in Sources */,
+				0B0FEC6C201ADB8000BE1A07 /* LeaveData.m in Sources */,
 				0B43A9F5200999310079E952 /* ASValuePopUpView.m in Sources */,
 				0B43AA0F200999310079E952 /* MSSBrowseNetworkViewController.m in Sources */,
 				0B43AA21200999310079E952 /* KNBannerView.m in Sources */,
@@ -1488,6 +1517,7 @@
 				0B43A9D6200999310079E952 /* UIColor+Extend.m in Sources */,
 				0B43A9DB200999310079E952 /* UIImage+Extend.m in Sources */,
 				0B43AA24200999310079E952 /* InputViewTableViewCell.m in Sources */,
+				0B0FEC63201ADA7B00BE1A07 /* LeaveViewController.m in Sources */,
 				0BAE57DB2014776700872123 /* FreeTimeTableViewCell.m in Sources */,
 				0B5C1DAE200A03060092F25A /* YZRoutes.m in Sources */,
 				0B5C1DC8200A06E70092F25A /* TaskViewController.m in Sources */,
