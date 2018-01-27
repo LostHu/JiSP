@@ -12,12 +12,14 @@
 @interface TaskTableViewCell : UITableViewCell
 @property (nonatomic,strong) UILabel* titleLabel;
 @property (nonatomic,strong) UIButton* phoneBtn;
-@property (nonatomic,strong) UILabel* stateLabel;
+@property (nonatomic,strong) YYLabel* stateLabel;
 
 @property (nonatomic,strong) UILabel* startLabel;
 @property (nonatomic,strong) UILabel* areaLabel;
 @property (nonatomic,strong) UILabel* dateLabel;
 @property (nonatomic,strong) UILabel* timeLabel;
+
+@property (nonatomic, strong) UIButton* stateBtn;
 
 @property (nonatomic,strong) UIButton* infoBtn;
 @property (nonatomic,strong) UIButton* okBtn;

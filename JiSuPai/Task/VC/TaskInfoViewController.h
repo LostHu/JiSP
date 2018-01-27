@@ -11,5 +11,6 @@
 #import "TaskInfoViewModel.h"
 
 @interface TaskInfoViewController : BaseTableViewController
+@property (nonatomic, strong) NSArray* arrayTitle ;
 @property (nonatomic,strong) TaskInfoViewModel* viewModel;
 @end

@@ -15,7 +15,7 @@
     self = [super init];
     if (self) {
         _startDate = [NSDate date];
-        _endDate = [_startDate dateByAddingYears:1];
+        _endDate = [_startDate dateByAddingDays:3];
     }
     return self;
 }

@@ -1,26 +1,26 @@
 //
-//  TaskInfoViewController.m
+//  WorkingViewController.m
 //  JiSuPai
 //
-//  Created by Lost on 2018/1/14.
+//  Created by Lost on 2018/1/28.
 //  Copyright © 2018年 Lost. All rights reserved.
 //
 
-#import "TaskInfoViewController.h"
+#import "WorkingViewController.h"
+#import "WorkingViewModel.h"
 
-@interface TaskInfoViewController ()
-
+@interface WorkingViewController ()
+@property (nonatomic, strong) WorkingViewModel* viewModelWoking;
 @end
 
-@implementation TaskInfoViewController
+@implementation WorkingViewController
+
+- (WorkingViewModel *)viewModelWoking
 {
-}
-- (TaskInfoViewModel *)viewModel
-{
-    if (!_viewModel) {
-        _viewModel = [[TaskInfoViewModel alloc] init];
+    if (!_viewModelWoking) {
+        _viewModelWoking = [[WorkingViewModel alloc] init];
     }
-    return _viewModel;
+    return _viewModelWoking;
 }
 
 - (void)loadView
@@ -29,7 +29,7 @@
     
     self.view.backgroundColor = hexColor(f5f8fa);
     self.tableView.backgroundColor = self.view.backgroundColor;
-//    self.cusnavigationBar.titleLabel.text = @"任务详情";
+    //    self.cusnavigationBar.titleLabel.text = @"任务详情";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 }
@@ -38,15 +38,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _arrayTitle = @[@"上传照片",@"基本信息",@"任务信息",@"货物信息及搬运信息",@"补充说明"];
+    self.arrayTitle = @[@"上传照片",@"基本信息",@"任务信息",@"货物信息及搬运信息",@"补充说明"];
     
-    [self.tableView registerClass:[TaskInfoAddPhotoTableViewCell class] forCellReuseIdentifier:[TaskInfoAddPhotoTableViewCell identify]];
-    [self.tableView registerClass:[TaskInfoBasicTableViewCell class] forCellReuseIdentifier:[TaskInfoBasicTableViewCell identify]];
-    [self.tableView registerClass:[TaskInfoTableViewCell class] forCellReuseIdentifier:[TaskInfoTableViewCell identify]];
-    [self.tableView registerClass:[TaskInfoCargoTableViewCell class] forCellReuseIdentifier:[TaskInfoCargoTableViewCell identify]];
-    [self.tableView registerClass:[TaskInfoAdditionalTableViewCell class] forCellReuseIdentifier:[TaskInfoAdditionalTableViewCell identify]];
     
-    [self.tableView reloadData];
+    @weakify(self);
+    [RACObserve(self.viewModelWoking, data) subscribeNext:^(id x) {
+        @strongify(self);
+        if (x && [x isKindOfClass:[TaskData class]]) {
+            [self.tableView reloadData];
+            self.cusnavigationBar.titleLabel.text = FormatStr(@"单号%@",((TaskData*)x).orderno);
+        }
+    }];
+    
+    [self.viewModelWoking getWorkingData:^(id data, BOOL isTodo) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -119,7 +125,7 @@
         cell.backgroundColor = tableView.backgroundColor;
         
         cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
-        cell.titleLabel.text = [_arrayTitle objectAtIndex:indexPath.row];
+        cell.titleLabel.text = [self.arrayTitle objectAtIndex:indexPath.row];
         
         return cell;
     }
@@ -130,8 +136,8 @@
         
         cell.backgroundColor = tableView.backgroundColor;
         cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
-        cell.titleLabel.text = [_arrayTitle objectAtIndex:indexPath.row];
-        cell.data = self.viewModel.data;
+        cell.titleLabel.text = [self.arrayTitle objectAtIndex:indexPath.row];
+        cell.data = self.viewModelWoking.data;
         
         return cell;
     }
@@ -142,8 +148,8 @@
         
         cell.backgroundColor = tableView.backgroundColor;
         cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
-        cell.titleLabel.text = [_arrayTitle objectAtIndex:indexPath.row];
-        cell.data = self.viewModel.data;
+        cell.titleLabel.text = [self.arrayTitle objectAtIndex:indexPath.row];
+        cell.data = self.viewModelWoking.data;
         
         return cell;
     }
@@ -154,8 +160,8 @@
         
         cell.backgroundColor = tableView.backgroundColor;
         cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
-        cell.titleLabel.text = [_arrayTitle objectAtIndex:indexPath.row];
-        cell.data = self.viewModel.data;
+        cell.titleLabel.text = [self.arrayTitle objectAtIndex:indexPath.row];
+        cell.data = self.viewModelWoking.data;
         
         return cell;
     }
@@ -166,8 +172,8 @@
         
         cell.backgroundColor = tableView.backgroundColor;
         cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
-        cell.titleLabel.text = [_arrayTitle objectAtIndex:indexPath.row];
-        ((TaskInfoAdditionalTableViewCell*)cell).contentLabel.text = self.viewModel.data.descrip;
+        cell.titleLabel.text = [self.arrayTitle objectAtIndex:indexPath.row];
+        ((TaskInfoAdditionalTableViewCell*)cell).contentLabel.text = self.viewModelWoking.data.descrip;
         
         return cell;
     }

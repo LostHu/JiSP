@@ -189,6 +189,16 @@
     cell.data = task;
     //    cell.arrayVoteData = self.viewModel.array;
     
+    @weakify(self);
+    [[cell.infoBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self);
+        TaskInfoViewController* vc = [TaskInfoViewController new];
+        vc.viewModel.data = task;
+        vc.cusnavigationBar.titleLabel.text = task.orderno;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
+    
     return cell;
 }
 
@@ -196,13 +206,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    TaskData* task = [self.viewModel.array objectAtIndex:indexPath.section];
-    
-    TaskInfoViewController* vc = [TaskInfoViewController new];
-    vc.viewModel.data = task;
-    vc.cusnavigationBar.titleLabel.text = task.orderno;
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+//    TaskData* task = [self.viewModel.array objectAtIndex:indexPath.section];
 }
 
 - (TaskDateBarView*)barView

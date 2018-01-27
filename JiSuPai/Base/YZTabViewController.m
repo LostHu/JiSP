@@ -11,6 +11,8 @@
 #import "TaskViewController.h"
 #import "HistoryViewController.h"
 #import "FirstViewController.h"
+#import "WorkingViewController.h"
+
 
 @implementation YZTabItemData
 @end
@@ -69,7 +71,7 @@
     FirstViewController *secondController = [[FirstViewController alloc] init];
     [controllerArray addObject:secondController];
     
-    HistoryViewController *thirdController = [[HistoryViewController alloc] init];
+    WorkingViewController *thirdController = [[WorkingViewController alloc] init];
     [controllerArray addObject:thirdController];
     
     MeViewController *fourController = [[MeViewController alloc] init];

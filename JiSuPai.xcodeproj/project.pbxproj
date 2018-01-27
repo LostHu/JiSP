@@ -128,6 +128,8 @@
 		0B5C1DEC200B088A0092F25A /* TaskInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5C1DEB200B088A0092F25A /* TaskInfoTableViewCell.m */; };
 		0B5C1DEF200B60110092F25A /* TaskInfoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5C1DEE200B60110092F25A /* TaskInfoViewModel.m */; };
 		0B63BA54200E58A60080357A /* TaskData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B63BA53200E58A60080357A /* TaskData.m */; };
+		0B641970201CDAF700521F92 /* WorkingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B64196F201CDAF700521F92 /* WorkingViewController.m */; };
+		0B641974201CDC2800521F92 /* WorkingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B641973201CDC2800521F92 /* WorkingViewModel.m */; };
 		0B9FE06B200CD8B2009F1E7E /* MeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9FE06A200CD8B2009F1E7E /* MeViewModel.m */; };
 		0B9FE06E200CDC1E009F1E7E /* MeGameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9FE06D200CDC1E009F1E7E /* MeGameTableViewCell.m */; };
 		0B9FE071200CDC8C009F1E7E /* MeHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9FE070200CDC8C009F1E7E /* MeHeadTableViewCell.m */; };
@@ -412,6 +414,10 @@
 		0B5C1DEE200B60110092F25A /* TaskInfoViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskInfoViewModel.m; sourceTree = "<group>"; };
 		0B63BA52200E58A60080357A /* TaskData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskData.h; sourceTree = "<group>"; };
 		0B63BA53200E58A60080357A /* TaskData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskData.m; sourceTree = "<group>"; };
+		0B64196E201CDAF700521F92 /* WorkingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkingViewController.h; sourceTree = "<group>"; };
+		0B64196F201CDAF700521F92 /* WorkingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkingViewController.m; sourceTree = "<group>"; };
+		0B641972201CDC2800521F92 /* WorkingViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkingViewModel.h; sourceTree = "<group>"; };
+		0B641973201CDC2800521F92 /* WorkingViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkingViewModel.m; sourceTree = "<group>"; };
 		0B9FE069200CD8B2009F1E7E /* MeViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewModel.h; sourceTree = "<group>"; };
 		0B9FE06A200CD8B2009F1E7E /* MeViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewModel.m; sourceTree = "<group>"; };
 		0B9FE06C200CDC1E009F1E7E /* MeGameTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeGameTableViewCell.h; sourceTree = "<group>"; };
@@ -505,10 +511,11 @@
 				0B5C1DD7200A14000092F25A /* LaunchScreen.storyboard */,
 				0B5C1DD5200A13FF0092F25A /* Main.storyboard */,
 				0B43A8F4200999300079E952 /* Config */,
-				0B5C1DB9200A06540092F25A /* First */,
-				0B5C1DB8200A06260092F25A /* History */,
 				0B5C1DB7200A061E0092F25A /* Task */,
+				0B5C1DB9200A06540092F25A /* First */,
+				0B64196C201CDAC600521F92 /* Working */,
 				0B5C1DAF200A04370092F25A /* User */,
+				0B5C1DB8200A06260092F25A /* History */,
 				0B5C1DA8200A03060092F25A /* Base */,
 				0B43A8FA200999300079E952 /* libs */,
 				0B43A8C2200997590079E952 /* AppDelegate.h */,
@@ -1165,6 +1172,33 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		0B64196C201CDAC600521F92 /* Working */ = {
+			isa = PBXGroup;
+			children = (
+				0B641971201CDC0600521F92 /* ViewModel */,
+				0B64196D201CDAD100521F92 /* VC */,
+			);
+			path = Working;
+			sourceTree = "<group>";
+		};
+		0B64196D201CDAD100521F92 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				0B64196E201CDAF700521F92 /* WorkingViewController.h */,
+				0B64196F201CDAF700521F92 /* WorkingViewController.m */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		0B641971201CDC0600521F92 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0B641972201CDC2800521F92 /* WorkingViewModel.h */,
+				0B641973201CDC2800521F92 /* WorkingViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		376F696CF29AFF5D96F708E6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1432,6 +1466,7 @@
 				0B5C1DEC200B088A0092F25A /* TaskInfoTableViewCell.m in Sources */,
 				0B43AA0B200999310079E952 /* MSSBrowseLocalViewController.m in Sources */,
 				0B43A9FB200999310079E952 /* UserData.m in Sources */,
+				0B641970201CDAF700521F92 /* WorkingViewController.m in Sources */,
 				0B43AA10200999310079E952 /* UIImage+MSSScale.m in Sources */,
 				0B43A9E4200999310079E952 /* HUD.m in Sources */,
 				0B43AA08200999310079E952 /* GTMBase64.m in Sources */,
@@ -1472,6 +1507,7 @@
 				0B43AA11200999310079E952 /* MSSBrowseBaseViewController.m in Sources */,
 				0B43AA12200999310079E952 /* MSSBrowseZoomScrollView.m in Sources */,
 				0BAE57C02013A40300872123 /* SettingViewController.m in Sources */,
+				0B641974201CDC2800521F92 /* WorkingViewModel.m in Sources */,
 				0B5C1DCB200A06F60092F25A /* FirstViewController.m in Sources */,
 				0B43A9FC200999310079E952 /* LevelManager.m in Sources */,
 				0B43A9F1200999310079E952 /* UIImageView+ZFCache.m in Sources */,

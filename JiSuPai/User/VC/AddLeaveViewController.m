@@ -130,7 +130,7 @@
     self.endDateField.tag = 1002;
     
     _textView.layer.borderWidth = 1;
-    _textView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    _textView.layer.borderColor = hexColor(ebeaeb).CGColor;
     _textView.layer.cornerRadius = 5;
     
     _startDateField.borderStyle = UITextBorderStyleRoundedRect;
@@ -168,6 +168,9 @@
     
     _startDateField.inputView = self.datePicker;
     _endDateField.inputView = self.datePicker;
+    
+    self.startDateField.text = [self.viewModel.startDate format:@"yyyy-MM-dd"];
+    self.endDateField.text = [self.viewModel.endDate format:@"yyyy-MM-dd"];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchSpace)];
     tapGesture.delegate = self;
@@ -220,8 +223,9 @@
         _textView = [YYTextView new];
         _textView.placeholderText = @"请假事由";
         _textView.placeholderTextColor = rgbfromHex(@"9c9c9c");
-        _textView.placeholderFont = Font_System(14);
-        _textView.font = Font_System(14);
+        _textView.placeholderFont = Font_System(12);
+        _textView.font = Font_System(12);
+        _textView.textColor = hexColor(a1a1a1);
         _textView.delegate = self;
     }
     return _textView;

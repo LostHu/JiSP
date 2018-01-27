@@ -199,6 +199,12 @@
     _startTimeField.inputView = self.timePicker;
     _endTimeField.inputView = self.timePicker;
     
+    self.startDateField.text = [self.viewModel.startDate format:@"yyyy-MM-dd"];
+    self.endDateField.text = [self.viewModel.endDate format:@"yyyy-MM-dd"];
+    
+    self.startTimeField.text = [self.viewModel.startDate format:@"HH:00"];
+    self.endTimeField.text = [self.viewModel.startDate format:@"HH:00"];
+    
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchSpace)];
     tapGesture.delegate = self;
     [self.view addGestureRecognizer:tapGesture];

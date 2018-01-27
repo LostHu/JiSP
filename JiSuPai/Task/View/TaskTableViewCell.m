@@ -35,6 +35,7 @@
         [bgView addSubview:self.timeLabel];
         [bgView addSubview:self.infoBtn];
         [bgView addSubview:self.okBtn];
+        [bgView addSubview:self.stateBtn];
 
         self.titleLabel.text = @"title";
         
@@ -52,6 +53,13 @@
         [self.stateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.titleLabel);
             make.left.equalTo(self.titleLabel.mas_right).offset(8);
+        }];
+        
+        [self.stateBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.titleLabel);
+            make.left.equalTo(self.titleLabel.mas_right).offset(8);
+            make.height.mas_equalTo(@(16));
+            make.width.mas_greaterThanOrEqualTo(80);
         }];
         
         UIView* lineView = [UIView new];
@@ -143,11 +151,19 @@
 - (void)setData:(TaskData *)data
 {
     _data = data;
+    self.titleLabel.text = data.customername;
     self.dateLabel.text = data.orderdate;
     self.timeLabel.text = data.daogangtime;
     self.areaLabel.text = data.peisongquyu;
     self.startLabel.text = data.fahuoaddress;
-    self.stateLabel.text = data.orderstatusInCn;
+//    self.stateLabel.text = data.orderstatusInCn;
+    [self.stateBtn setTitle:data.orderstatusInCn forState:UIControlStateNormal];
+//    NSMutableAttributedString* str = [[NSMutableAttributedString alloc] initWithString:data.orderstatusInCn];
+//    YYTextContainer* container = [YYTextContainer new];
+//    str.font = Font_System(12);
+//    container.insets = UIEdgeInsetsMake(5, 15, 5, 15);
+//    YYTextLayout *sourceTextLayout = [YYTextLayout layoutWithContainer:container text:str];
+//    _stateLabel.textLayout = sourceTextLayout;
 }
 
 - (UILabel*)titleLabel
@@ -156,22 +172,28 @@
         _titleLabel = [UILabel new];
         _titleLabel.text = @"33";
         _titleLabel.textColor = hexColor(605bf7);
-        _titleLabel.font = Font_System(12);
+        _titleLabel.font = Font_System_Bold(12);
         _titleLabel.textAlignment = NSTextAlignmentRight;
     }
     return _titleLabel;
 }
 
-- (UILabel*)stateLabel
+- (YYLabel*)stateLabel
 {
     if (!_stateLabel) {
-        _stateLabel = [UILabel new];
+        _stateLabel = [YYLabel new];
         _stateLabel.text = @"33";
         _stateLabel.textColor = hexColor(605bf7);
         _stateLabel.font = Font_System(12);
         _stateLabel.backgroundColor = hexColor(fcd45a);
         _stateLabel.layer.cornerRadius = 10;
         _stateLabel.clipsToBounds = YES;
+        NSMutableAttributedString* str = [[NSMutableAttributedString alloc] initWithString:@"33"];
+        YYTextContainer* container = [YYTextContainer new];
+        str.font = Font_System(12);
+        container.insets = UIEdgeInsetsMake(5, 15, 5, 15);
+        YYTextLayout *sourceTextLayout = [YYTextLayout layoutWithContainer:container text:str];
+        _stateLabel.textLayout = sourceTextLayout;
     }
     return _stateLabel;
 }
@@ -238,6 +260,22 @@
         [_infoBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     }
     return _infoBtn;
+}
+
+- (UIButton*)stateBtn
+{
+    if (!_stateBtn) {
+        _stateBtn = [UIButton new];
+        [_stateBtn setTitle:@"查看详情" forState:UIControlStateNormal];
+        [_stateBtn solidStyleforC:hexColor(fcd45a) D:[UIColor lightGrayColor] font:Font_System_Bold(10) corner:8];
+        [_stateBtn setTitleColor:hexColor(a38a39) forState:UIControlStateNormal];
+//        [_stateBtn setTitleEdgeInsets:UIEdgeInsetsMake(2, 8, 2, 8)];
+//        _stateLabel.textColor = hexColor(605bf7);
+//        _stateLabel.font = Font_System(12);
+//        _stateLabel.backgroundColor = hexColor(fcd45a);
+//        _stateLabel.layer.cornerRadius = 10;
+    }
+    return _stateBtn;
 }
 
 - (UIButton*)okBtn

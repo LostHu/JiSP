@@ -44,6 +44,10 @@
 // 历史订单
 #define API_CompleteTaskList            DriverPrefix(@"getCompletedTask.do")                 // forumList
 #define API_CompleteSubTaskList         DriverPrefix(@"getCompletedOrderByTask.do")
+// 正在进行订单
+#define API_WorkingTask                 DriverPrefix(@"getWorkingOrder.do")                 // forumList
+#define API_PostWorkingException        DriverPrefix(@"exception.do")
+#define API_WorkingExceptionList        DriverPrefix(@"appcommon/getDictionarySelect.do?classname=orders&attribute=exception")
 
 // 空闲时间
 #define API_FreeList                    DriverPrefix(@"getFreTime.do")

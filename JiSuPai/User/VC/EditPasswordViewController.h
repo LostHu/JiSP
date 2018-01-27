@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
+#import "MeViewModel.h"
+
 
 @interface EditPasswordViewController : BaseViewController
-
+@property (nonatomic, strong) MeViewModel* viewModel;
 @end
