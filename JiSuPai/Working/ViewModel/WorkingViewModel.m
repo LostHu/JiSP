@@ -33,6 +33,7 @@
             if (appendData.flag == YES) {
                 if (block) {
                     block(nil,YES);
+                    return;
                 }
             }
         }else{

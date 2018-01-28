@@ -59,6 +59,11 @@
 #define API_AddLeaveTime                 DriverPrefix(@"createLeave.do")
 #define API_DeleteLeaveTime              DriverPrefix(@"deleteLeave.do")
 
+// 空闲时间
+#define API_GetDriverInfo               DriverPrefix(@"getDriverInfo.do")
+#define API_PostDriverInfo              DriverPrefix(@"submitDriverInfo.do")
+#define API_GetCarTypeList              @"appcommon/getDictionarySelect.do?classname=driver&attribute=cartype"
+
 //用户
 #define API_login           DriverPrefix(@"login.do")       //登陆
 #define API_registerHuozhu  DriverPrefix(@"register.do")    //注册
@@ -70,7 +75,7 @@
 #define API_sjxy            @"driverschool.html"    //司机学院
 #define API_userprotoco     @"userprotocol.htm"     //用户协议
 #define API_share           @"share.html"           //分享
-#define API_Feedback           DriverPrefix(@"/createFankui.do")//反馈
+#define API_Feedback        DriverPrefix(@"/createFankui.do")//反馈
 
 
 
