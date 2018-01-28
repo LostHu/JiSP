@@ -8,7 +8,12 @@
 
 #import "TaskInfoViewModel.h"
 
-@interface WorkingViewModel : TaskInfoViewModel
-- (void)getWorkingData:(ModelCompleteBlock)block;
+@interface WorkingViewModel : BaseViewModel
 
+- (void)getWorkingData:(ModelCompleteBlock)block;
+- (void)getWorkingExceptionData:(ModelCompleteBlock)block;
+- (void)addWorkingExceptionType:(NSString*)type desc:(NSString*)desc block:(ModelCompleteBlock)block;
+
+@property (nonatomic, strong) TaskData* data;
+@property (nonatomic, strong) NSMutableArray* arrayException;
 @end

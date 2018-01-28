@@ -25,8 +25,12 @@
         self.code = [dictionary[@"code"] integerValue];
     }
     
-    if(![dictionary[@"flag"] isKindOfClass:[NSNull class]]){
-        self.flag = [dictionary[@"flag"] boolValue];
+//    if(![dictionary[@"flag"] isKindOfClass:[NSNull class]]){
+//        self.flag = [dictionary[@"flag"] boolValue];
+//    }
+    
+    if(![dictionary[@"result"] isKindOfClass:[NSNull class]]){
+        self.flag = [dictionary[@"result"] isEqualToString:@"true"];
     }
     
     if(![dictionary[@"msg"] isKindOfClass:[NSNull class]]){

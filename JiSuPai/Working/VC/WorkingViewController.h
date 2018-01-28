@@ -7,7 +7,9 @@
 //
 
 #import "TaskInfoViewController.h"
+#import "WorkingViewModel.h"
 
-@interface WorkingViewController : TaskInfoViewController
-
+@interface WorkingViewController : BaseTableViewController
+@property (nonatomic, strong) NSArray* arrayTitle ;
+@property (nonatomic,strong) WorkingViewModel* viewModel;
 @end

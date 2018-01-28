@@ -47,7 +47,7 @@
 // 正在进行订单
 #define API_WorkingTask                 DriverPrefix(@"getWorkingOrder.do")                 // forumList
 #define API_PostWorkingException        DriverPrefix(@"exception.do")
-#define API_WorkingExceptionList        DriverPrefix(@"appcommon/getDictionarySelect.do?classname=orders&attribute=exception")
+#define API_WorkingExceptionList        @"appcommon/getDictionarySelect.do?classname=orders&attribute=exception"
 
 // 空闲时间
 #define API_FreeList                    DriverPrefix(@"getFreTime.do")

@@ -7,7 +7,9 @@
 //
 
 #import "WorkingViewController.h"
-#import "WorkingViewModel.h"
+#import "TaskInfoTableViewCell.h"
+#import "ExceptionWorkingViewController.h"
+
 
 @interface WorkingViewController ()
 @property (nonatomic, strong) WorkingViewModel* viewModelWoking;
@@ -29,17 +31,21 @@
     
     self.view.backgroundColor = hexColor(f5f8fa);
     self.tableView.backgroundColor = self.view.backgroundColor;
-    //    self.cusnavigationBar.titleLabel.text = @"任务详情";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.cusnavigationBar.leftButton.hidden = YES;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _arrayTitle = @[@"上传照片",@"基本信息",@"任务信息",@"货物信息及搬运信息",@"补充说明"];
     
-    self.arrayTitle = @[@"上传照片",@"基本信息",@"任务信息",@"货物信息及搬运信息",@"补充说明"];
-    
+    [self.tableView registerClass:[TaskInfoAddPhotoTableViewCell class] forCellReuseIdentifier:[TaskInfoAddPhotoTableViewCell identify]];
+    [self.tableView registerClass:[TaskInfoBasicTableViewCell class] forCellReuseIdentifier:[TaskInfoBasicTableViewCell identify]];
+    [self.tableView registerClass:[TaskInfoTableViewCell class] forCellReuseIdentifier:[TaskInfoTableViewCell identify]];
+    [self.tableView registerClass:[TaskInfoCargoTableViewCell class] forCellReuseIdentifier:[TaskInfoCargoTableViewCell identify]];
+    [self.tableView registerClass:[TaskInfoAdditionalTableViewCell class] forCellReuseIdentifier:[TaskInfoAdditionalTableViewCell identify]];
     
     @weakify(self);
     [RACObserve(self.viewModelWoking, data) subscribeNext:^(id x) {
@@ -53,6 +59,34 @@
     [self.viewModelWoking getWorkingData:^(id data, BOOL isTodo) {
         
     }];
+    
+    UIView* footView = [UIView new];
+    footView.backgroundColor = self.view.backgroundColor;
+    footView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 40);
+    
+    UIButton* exceptionBtn = [UIButton new];
+    [exceptionBtn setTitle:@"异常上报" forState:UIControlStateNormal];
+    [exceptionBtn solidStyleforC:hexColor(557ef4) D:[UIColor lightGrayColor] font:Font_System(12) corner:3];
+    [exceptionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [exceptionBtn addTarget:self action:@selector(navToExceptionPage) forControlEvents:UIControlEventTouchUpInside];
+
+    [footView addSubview:exceptionBtn];
+    [exceptionBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(footView);
+        make.left.offset(5);
+        make.right.offset(-5);
+        make.height.mas_equalTo(@(26));
+    }];
+    
+    self.tableView.tableFooterView = footView;
+}
+
+- (void)navToExceptionPage
+{
+    ExceptionWorkingViewController* vc = [ExceptionWorkingViewController new];
+    vc.viewModel = self.viewModelWoking;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

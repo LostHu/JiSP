@@ -130,6 +130,7 @@
 		0B63BA54200E58A60080357A /* TaskData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B63BA53200E58A60080357A /* TaskData.m */; };
 		0B641970201CDAF700521F92 /* WorkingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B64196F201CDAF700521F92 /* WorkingViewController.m */; };
 		0B641974201CDC2800521F92 /* WorkingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B641973201CDC2800521F92 /* WorkingViewModel.m */; };
+		0B641977201DB9DA00521F92 /* ExceptionWorkingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B641976201DB9DA00521F92 /* ExceptionWorkingViewController.m */; };
 		0B9FE06B200CD8B2009F1E7E /* MeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9FE06A200CD8B2009F1E7E /* MeViewModel.m */; };
 		0B9FE06E200CDC1E009F1E7E /* MeGameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9FE06D200CDC1E009F1E7E /* MeGameTableViewCell.m */; };
 		0B9FE071200CDC8C009F1E7E /* MeHeadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9FE070200CDC8C009F1E7E /* MeHeadTableViewCell.m */; };
@@ -418,6 +419,8 @@
 		0B64196F201CDAF700521F92 /* WorkingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkingViewController.m; sourceTree = "<group>"; };
 		0B641972201CDC2800521F92 /* WorkingViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WorkingViewModel.h; sourceTree = "<group>"; };
 		0B641973201CDC2800521F92 /* WorkingViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WorkingViewModel.m; sourceTree = "<group>"; };
+		0B641975201DB9DA00521F92 /* ExceptionWorkingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExceptionWorkingViewController.h; sourceTree = "<group>"; };
+		0B641976201DB9DA00521F92 /* ExceptionWorkingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExceptionWorkingViewController.m; sourceTree = "<group>"; };
 		0B9FE069200CD8B2009F1E7E /* MeViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewModel.h; sourceTree = "<group>"; };
 		0B9FE06A200CD8B2009F1E7E /* MeViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewModel.m; sourceTree = "<group>"; };
 		0B9FE06C200CDC1E009F1E7E /* MeGameTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeGameTableViewCell.h; sourceTree = "<group>"; };
@@ -1186,6 +1189,8 @@
 			children = (
 				0B64196E201CDAF700521F92 /* WorkingViewController.h */,
 				0B64196F201CDAF700521F92 /* WorkingViewController.m */,
+				0B641975201DB9DA00521F92 /* ExceptionWorkingViewController.h */,
+				0B641976201DB9DA00521F92 /* ExceptionWorkingViewController.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1469,6 +1474,7 @@
 				0B641970201CDAF700521F92 /* WorkingViewController.m in Sources */,
 				0B43AA10200999310079E952 /* UIImage+MSSScale.m in Sources */,
 				0B43A9E4200999310079E952 /* HUD.m in Sources */,
+				0B641977201DB9DA00521F92 /* ExceptionWorkingViewController.m in Sources */,
 				0B43AA08200999310079E952 /* GTMBase64.m in Sources */,
 				0B43A9FD200999310079E952 /* YYPhotoGroupView.m in Sources */,
 				0B43A9CF200999310079E952 /* UIFont+Extend.m in Sources */,
