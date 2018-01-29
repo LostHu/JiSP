@@ -9,6 +9,7 @@
 #import "MyCarViewController.h"
 #import "MyCarViewModel.h"
 #import "MeGameTableViewCell.h"
+#import "MyCarBaseTableViewCell.h"
 
 @interface MyCarViewController ()
 @property (nonatomic, strong) MyCarViewModel* viewModel;
@@ -64,6 +65,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.tableView registerClass:[MeDefaultTableViewCell class] forCellReuseIdentifier:[MeDefaultTableViewCell identify]];
+    [self.tableView registerClass:[MyCarPhotoTableViewCell class] forCellReuseIdentifier:[MyCarPhotoTableViewCell identify]];
     
     @weakify(self);
     [RACObserve(self.viewModel, driverData) subscribeNext:^(id x) {
@@ -190,7 +192,7 @@
         return 6;
     }
     if (section == 1) {
-        return 0;
+        return 3;
     }
     return 0;
 }
@@ -250,10 +252,7 @@
         return 44;
     }
     if (indexPath.section == 1) {
-        return 40;
-    }
-    if (indexPath.section == 3) {
-        return 186;
+        return 160;
     }
     return 40;
 }
@@ -299,6 +298,37 @@
         }
         return cell;
     }
+    
+    if (indexPath.section == 1) {
+        MyCarPhotoTableViewCell *cell = (MyCarPhotoTableViewCell*)[tableView dequeueReusableCellWithIdentifier:[MyCarPhotoTableViewCell identify] forIndexPath:indexPath];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.backgroundColor = [UIColor whiteColor];
+        
+        cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
+        cell.titleLabel.text = [self.viewModel.arrayTitle objectAtIndex:indexPath.row];
+        
+        if (indexPath.row == 0) {
+            cell.infoLabel1.text = @"点击上传身份证正面照";
+            cell.infoLabel2.text = @"点击上传身份证反面照";
+        }
+        if (indexPath.row == 1) {
+            cell.infoLabel1.text = @"车牌号清晰，车头完整";
+            cell.infoLabel2.text = @"点击上传";
+        }
+        if (indexPath.row == 2) {
+            cell.infoLabel1.text = @"车辆侧面完整";
+            cell.infoLabel2.text = @"点击上传";
+        }
+        if (indexPath.row == 3) {
+            cell.infoLabel1.text = @"点击上传身份证正面照";
+            cell.infoLabel2.text = @"点击上传身份证反面照";
+        }
+        
+        return cell;
+    }
+    
     return nil;
 }
 

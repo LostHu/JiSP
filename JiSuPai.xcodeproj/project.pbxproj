@@ -150,6 +150,7 @@
 		0BAE57D5201446E800872123 /* FreeTimeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE57D4201446E800872123 /* FreeTimeViewModel.m */; };
 		0BAE57D8201452C500872123 /* FreeTimeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE57D7201452C500872123 /* FreeTimeData.m */; };
 		0BAE57DB2014776700872123 /* FreeTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE57DA2014776700872123 /* FreeTimeTableViewCell.m */; };
+		0BC9FDC5201EC9DD0055857F /* MyCarBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC9FDC4201EC9DD0055857F /* MyCarBaseTableViewCell.m */; };
 		C34F9A952F6FFC470355AEBC /* Pods_JiSuPai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6617962FEF8BB6E4DA2CBFAA /* Pods_JiSuPai.framework */; };
 /* End PBXBuildFile section */
 
@@ -461,6 +462,8 @@
 		0BAE57D7201452C500872123 /* FreeTimeData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreeTimeData.m; sourceTree = "<group>"; };
 		0BAE57D92014776700872123 /* FreeTimeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeTimeTableViewCell.h; sourceTree = "<group>"; };
 		0BAE57DA2014776700872123 /* FreeTimeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreeTimeTableViewCell.m; sourceTree = "<group>"; };
+		0BC9FDC3201EC9DD0055857F /* MyCarBaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCarBaseTableViewCell.h; sourceTree = "<group>"; };
+		0BC9FDC4201EC9DD0055857F /* MyCarBaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCarBaseTableViewCell.m; sourceTree = "<group>"; };
 		327BD5FB99B451CD04AC5C17 /* Pods-JiSuPai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiSuPai.release.xcconfig"; path = "Pods/Target Support Files/Pods-JiSuPai/Pods-JiSuPai.release.xcconfig"; sourceTree = "<group>"; };
 		6617962FEF8BB6E4DA2CBFAA /* Pods_JiSuPai.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JiSuPai.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC1D420E6E085569DE03E24 /* Pods-JiSuPai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiSuPai.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JiSuPai/Pods-JiSuPai.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1034,6 +1037,8 @@
 				0BAE57DA2014776700872123 /* FreeTimeTableViewCell.m */,
 				0B0FEC6D201ADC0F00BE1A07 /* LeaveTableViewCell.h */,
 				0B0FEC6E201ADC0F00BE1A07 /* LeaveTableViewCell.m */,
+				0BC9FDC3201EC9DD0055857F /* MyCarBaseTableViewCell.h */,
+				0BC9FDC4201EC9DD0055857F /* MyCarBaseTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1569,6 +1574,7 @@
 				0BAE57B420122CBB00872123 /* HistoryListViewModel.m in Sources */,
 				0B43A9F7200999310079E952 /* ZFPlayerView.m in Sources */,
 				0B43A9D6200999310079E952 /* UIColor+Extend.m in Sources */,
+				0BC9FDC5201EC9DD0055857F /* MyCarBaseTableViewCell.m in Sources */,
 				0B43A9DB200999310079E952 /* UIImage+Extend.m in Sources */,
 				0B43AA24200999310079E952 /* InputViewTableViewCell.m in Sources */,
 				0B0FEC63201ADA7B00BE1A07 /* LeaveViewController.m in Sources */,

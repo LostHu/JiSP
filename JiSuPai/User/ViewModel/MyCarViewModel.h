@@ -13,6 +13,7 @@
 @property (nonatomic, strong) DriverData* driverData;
 @property (nonatomic, strong) DriverData* driverData_Copy;// 用于备份数据，比较
 
+@property (nonatomic, strong) NSArray* arrayTitle;
 @property (nonatomic, strong) NSArray* arrayRegion;
 @property (nonatomic, strong) NSMutableArray* arrayCarType;
 - (void)postDirverData:(ModelCompleteBlock)block;

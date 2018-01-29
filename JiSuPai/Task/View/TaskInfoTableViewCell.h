@@ -13,7 +13,7 @@
 @property (nonatomic,strong) UILabel* titleLabel;
 @property (nonatomic,strong) UILabel* indexLabel;
 @property (nonatomic,strong) UIView* lineView;
-@property (nonatomic, strong) TaskData* data;
+@property (nonatomic,strong) TaskData* data;
 @end
 
 @interface TaskInfoAddPhotoTableViewCell : TaskInfoBaseTableViewCell
