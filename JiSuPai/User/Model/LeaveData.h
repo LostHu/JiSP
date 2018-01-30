@@ -14,4 +14,6 @@
 @property (nonatomic, strong) NSString* enddate;
 @property (nonatomic, strong) NSString* descrip;
 @property (nonatomic, strong) NSString* createtime;
+@property (nonatomic, assign) NSInteger leaveId;
+
 @end

@@ -19,4 +19,5 @@
 @property (nonatomic, strong) NSString* endTime;
 
 - (void)addFreeTime:(ModelCompleteBlock)block;
+- (void)delFreeTime:(FreeTimeData*)freeTime block:(ModelCompleteBlock)block;
 @end

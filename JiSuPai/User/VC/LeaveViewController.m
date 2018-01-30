@@ -88,8 +88,6 @@
         }
         [self.tableView reloadData];
     }];
-    
-    [self.tableView.header beginRefreshing];
 }
 
 - (void)addFreeTime
@@ -103,6 +101,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.tableView.header beginRefreshing];
+}
 
 #pragma mark -- UICollectionViewDataSource
 //定义展示的UICollectionViewCell的个数
@@ -148,6 +151,19 @@
     LeaveData* data = [self.viewModel.array objectAtIndex:indexPath.section];
     cell.dateLabel.text = FormatStr(@"%@-%@",data.startdate,data.enddate);
     cell.timeLabel.text = FormatStr(@"%@",data.descrip);
+    
+    @weakify(self);
+    [[[cell.delBtn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
+        @strongify(self);
+        
+        [self.viewModel delLeave:data block:^(id data, BOOL isTodo) {
+            @strongify(self);
+            if (isTodo) {
+                [HUD showMsg:@"删除成功" type:HUDMsgType_Success];
+                [self.viewModel getFirstList:nil];
+            }
+        }];
+    }];
     
     return cell;
 }

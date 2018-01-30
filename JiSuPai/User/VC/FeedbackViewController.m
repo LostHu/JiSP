@@ -74,7 +74,7 @@
             [param setObject:self.textView.text forKey:@"fankui"];
             [LostHttpClient GETRequestURL:API_Feedback WithParameter:param WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
                 @strongify(self);
-                if ([returnValue[@"result"] isEqualToString:@"true"]) {
+                if (appendData.flag == YES) {
                     [self.textView endEditing:YES];
                     [HUD showMsg:@"感谢您提出的建议，我们会尽快改进！" type:HUDMsgType_Success];
                     [self performSelector:@selector(sendSuccess) withObject:nil afterDelay:0.6];

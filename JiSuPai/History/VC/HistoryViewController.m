@@ -36,7 +36,6 @@
     //    }];
     self.view.backgroundColor = hexColor(f5f8fa);
     self.tableView.backgroundColor = self.view.backgroundColor;
-    [self.cusnavigationBar.leftButton removeFromSuperview];
     self.cusnavigationBar.titleLabel.text = @"历史订单";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

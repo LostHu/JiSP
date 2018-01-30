@@ -22,3 +22,8 @@
 @property (nonatomic,strong) UILabel* infoLabel1;
 @property (nonatomic,strong) UILabel* infoLabel2;
 @end
+
+@interface MyCarDriverPhotoTableViewCell : MyCarPhotoTableViewCell
+@property (nonatomic,strong) UIButton* sfz3Btn;
+@property (nonatomic,strong) UILabel* infoLabel3;
+@end

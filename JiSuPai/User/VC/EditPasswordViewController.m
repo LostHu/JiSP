@@ -116,7 +116,18 @@
 
 - (void)confirmPwd
 {
-    
+    if (self.viewModel) {
+        @weakify(self);
+        [self.viewModel resetPassword:self.startDateField.text block:^(id data, BOOL isTodo) {
+            @strongify(self);
+            if (isTodo == YES) {
+                [self touchSpace];
+                [HUD showMsg:@"密码修改成功！" type:HUDMsgType_Success];
+                [self performSelector:@selector(sendSuccess) withObject:nil afterDelay:0.6];
+            }else{
+            }
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

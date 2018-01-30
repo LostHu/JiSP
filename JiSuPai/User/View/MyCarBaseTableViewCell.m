@@ -21,13 +21,13 @@
         [self.contentView addSubview:self.lineView];
         
         self.titleLabel.text = @"title";
-        self.indexLabel.layer.cornerRadius = 6;
-        self.indexLabel.font = Font_System(8);
+        self.indexLabel.layer.cornerRadius = 8;
+        self.indexLabel.font = Font_System(12);
         self.indexLabel.clipsToBounds = YES;
         [self.indexLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.offset(15);
             make.left.offset(17);
-            make.size.mas_equalTo(CGSizeMake(12, 12));
+            make.size.mas_equalTo(CGSizeMake(16, 16));
         }];
         
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -79,7 +79,7 @@
         _indexLabel.text = @"0";
         _indexLabel.textColor = hexColor(ffffff);
         _indexLabel.font = Font_System(12);
-        _indexLabel.backgroundColor = hexColor(587def);
+        _indexLabel.backgroundColor = hexColor(999999);
         _indexLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _indexLabel;
@@ -175,3 +175,50 @@
 }
 
 @end
+
+
+@implementation MyCarDriverPhotoTableViewCell
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self)
+    {
+        
+        [self.contentView addSubview:self.sfz3Btn];
+        [self.contentView addSubview:self.infoLabel3];
+        
+        [self.sfz3Btn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.left.equalTo(self.sfz1Btn);
+            make.top.equalTo(self.sfz1Btn.mas_bottom).offset(28);
+        }];
+        
+        [self.infoLabel3 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.sfz3Btn.mas_bottom).offset(5);
+            make.centerX.equalTo(self.sfz3Btn).offset(0);
+        }];
+    }
+    return self;
+}
+
+- (UIButton*)sfz3Btn
+{
+    if (!_sfz3Btn) {
+        _sfz3Btn = [UIButton new];
+        [_sfz3Btn setBackgroundImage:ImageNamed(@"fatie_btn_add") forState:UIControlStateNormal];
+    }
+    return _sfz3Btn;
+}
+- (UILabel*)infoLabel3
+{
+    if (!_infoLabel3) {
+        _infoLabel3 = [UILabel new];
+        _infoLabel3.text = @"0";
+        _infoLabel3.textColor = hexColor(a1a1a1);
+        _infoLabel3.font = Font_System(10);
+        _infoLabel3.textAlignment = NSTextAlignmentCenter;
+    }
+    return _infoLabel3;
+}
+@end
+

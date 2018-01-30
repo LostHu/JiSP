@@ -214,7 +214,19 @@
 
 - (void)addFreeTime
 {
-    
+    self.viewModel.descrip = self.textView.text;
+    if (self.viewModel) {
+        @weakify(self);
+        [self.viewModel addLeave:^(id data, BOOL isTodo) {
+            @strongify(self);
+            if (isTodo == YES) {
+                [self touchSpace];
+                [HUD showMsg:@"添加请假成功！" type:HUDMsgType_Success];
+                [self performSelector:@selector(sendSuccess) withObject:nil afterDelay:0.6];
+            }else{
+            }
+        }];
+    }
 }
 
 - (YYTextView*)textView

@@ -23,7 +23,28 @@
 
 - (void)postDirverData:(ModelCompleteBlock)block
 {
+    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:@(self.driverData.cartype) forKey:@"cartype"];
+    [parameters setObject:self.driverData.sfzno forKey:@"sfzno"];
+    [parameters setObject:self.driverData.carno forKey:@"carno"];
+    [parameters setObject:self.driverData.jzno forKey:@"jzno"];
+    [parameters setObject:self.driverData.username forKey:@"username"];
     
+    [LostHttpClient GETRequestURL:API_Edit_Account WithParameter:parameters
+             WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
+                 if (appendData.flag == YES) {
+                     if (block) {
+                         block(nil,YES);
+                     }
+                 }
+                 else
+                 {
+                     [HUD showMsg:appendData.msg type: HUDMsgType_Error];
+                 }
+             }
+                 WithFailureBlock:^{
+                     
+                 }];
 }
 
 - (void)getDriverInfo:(ModelCompleteBlock)block

@@ -19,5 +19,6 @@
 @property (nonatomic, assign) NSInteger endhour;
 @property (nonatomic, assign) NSInteger startminute;
 @property (nonatomic, assign) NSInteger endminute;
+@property (nonatomic, assign) NSInteger freeId;
 
 @end

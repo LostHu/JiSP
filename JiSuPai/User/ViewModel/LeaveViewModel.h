@@ -14,4 +14,5 @@
 @property (nonatomic, strong) NSDate* endDate;
 @property (nonatomic, strong) NSString* descrip;
 - (void)addLeave:(ModelCompleteBlock)block;
+- (void)delLeave:(LeaveData*)data block:(ModelCompleteBlock)block;
 @end

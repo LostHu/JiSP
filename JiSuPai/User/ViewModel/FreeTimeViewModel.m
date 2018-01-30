@@ -16,6 +16,8 @@
     if (self) {
         _startDate = [NSDate date];
         _endDate = [_startDate dateByAddingMonths:2];
+        _startTime = [_startDate format:@"HH:00"];
+        _endTime = [_startDate format:@"HH:00"];
     }
     return self;
 }
@@ -30,7 +32,41 @@
     
     [LostHttpClient GETRequestURL:API_AddFreeTime WithParameter:parameters
              WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
-                 
+                 if (appendData.flag == YES) {
+                     if (block) {
+                         block(nil,YES);
+                     }
+                 }
+                 else
+                 {
+                     [HUD showMsg:appendData.msg type: HUDMsgType_Error];
+                 }
+             }
+                 WithFailureBlock:^{
+                     
+                 }];
+}
+
+- (void)delFreeTime:(FreeTimeData*)freeTime block:(ModelCompleteBlock)block
+{
+    if (!freeTime) {
+        return;
+    }
+    
+    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:@(freeTime.freeId) forKey:@"id"];
+    
+    [LostHttpClient GETRequestURL:API_DeleteFreeTime WithParameter:parameters
+             WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
+                 if (appendData.flag == YES) {
+                     if (block) {
+                         block(nil,YES);
+                     }
+                 }
+                 else
+                 {
+                     [HUD showMsg:appendData.msg type: HUDMsgType_Error];
+                 }
              }
                  WithFailureBlock:^{
                      

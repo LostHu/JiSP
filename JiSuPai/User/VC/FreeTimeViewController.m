@@ -79,8 +79,6 @@
     
     [[RACObserve(self.viewModel, array) skip:1] subscribeNext:^(id x) {
         @strongify(self);
-        //        self.tableView.emptyDataSetDelegate = self;
-        //        self.tableView.emptyDataSetSource = self;
         [self.tableView.header endRefreshing];
         [self.tableView.footer endRefreshing];
         if (self.viewModel.bLast) {
@@ -88,8 +86,6 @@
         }
         [self.tableView reloadData];
     }];
-    
-    [self.tableView.header beginRefreshing];
 }
 
 - (void)addFreeTime
@@ -103,6 +99,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.tableView.header beginRefreshing];
+}
 
 #pragma mark -- UICollectionViewDataSource
 //定义展示的UICollectionViewCell的个数
@@ -148,8 +149,19 @@
     FreeTimeData* data = [self.viewModel.array objectAtIndex:indexPath.section];
     cell.dateLabel.text = FormatStr(@"%@-%@",data.startdate,data.enddate);
     cell.timeLabel.text = FormatStr(@"%@-%@",data.starttime,data.endtime);
-//    cell.data = task;
-    //    cell.arrayVoteData = self.viewModel.array;
+
+    @weakify(self);
+    [[[cell.delBtn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
+        @strongify(self);
+        
+        [self.viewModel delFreeTime:data block:^(id data, BOOL isTodo) {
+            @strongify(self);
+            if (isTodo) {
+                [HUD showMsg:@"删除成功" type:HUDMsgType_Success];
+                [self.viewModel getFirstList:nil];
+            }
+        }];
+    }];
     
     return cell;
 }

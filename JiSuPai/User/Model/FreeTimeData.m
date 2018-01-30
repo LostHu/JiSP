@@ -9,5 +9,7 @@
 #import "FreeTimeData.h"
 
 @implementation FreeTimeData
-
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"freeId" : @"id"};
+}
 @end

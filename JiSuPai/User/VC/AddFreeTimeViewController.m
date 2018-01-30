@@ -245,7 +245,18 @@
 
 - (void)addFreeTime
 {
-    
+    if (self.viewModel) {
+        @weakify(self);
+        [self.viewModel addFreeTime:^(id data, BOOL isTodo) {
+            @strongify(self);
+            if (isTodo == YES) {
+                [self touchSpace];
+                [HUD showMsg:@"增加空闲时间成功！" type:HUDMsgType_Success];
+                [self performSelector:@selector(sendSuccess) withObject:nil afterDelay:0.6];
+            }else{
+            }
+        }];
+    }
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField

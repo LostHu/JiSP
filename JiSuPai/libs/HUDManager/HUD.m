@@ -8,6 +8,7 @@
 
 #import "HUD.h"
 
+
 @implementation HUD
 + (void)showLoading
 {
@@ -19,11 +20,39 @@
     if ([NSString isBlankString:msg]) {
         return;
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName: Notify_ShowMessage
-                                                        object:self
-                                                      userInfo:@{@"Type":@"Show",
-                                                                 @"HUDType":@(type),
-                                                                 @"Msg":msg}];
+    UIView* showInView = [YZRoutes topViewController].view;
+    // 隐藏
+    {
+        if ([NSString isBlankString:msg] && type == HUDMsgType_Normal) {
+            // 菊花
+            [MBProgressHUD showHUDAddedTo:showInView animated:YES];
+        }
+        else
+        {
+            // 有文字
+            switch (type) {
+                case HUDMsgType_Normal:
+                    [MBProgressHUD showMessage:msg view:showInView];
+                    break;
+                case HUDMsgType_Error:
+                    [MBProgressHUD showError:msg toView:showInView];
+                    break;
+                case HUDMsgType_Success:
+                    [MBProgressHUD showSuccess:msg toView:showInView];
+                    break;
+                case HUDMsgType_Warning:
+                    [MBProgressHUD showWarning:msg toView:showInView];
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    //    [[NSNotificationCenter defaultCenter] postNotificationName: Notify_ShowMessage
+    //                                                        object:self
+    //                                                      userInfo:@{@"Type":@"Show",
+    //                                                                 @"HUDType":@(type),
+    //                                                                 @"Msg":msg}];
 }
 
 + (void)showMsg:(NSString*)msg
@@ -33,8 +62,11 @@
 
 + (void)hideView
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName: Notify_ShowMessage
-                                                        object:self
-                                                      userInfo:@{@"Type":@"Hide"}];
+    UIView* showInView = [YZRoutes topViewController].view;
+    // 隐藏
+    [MBProgressHUD hideAllHUDsForView:showInView animated:YES];
+    //    [[NSNotificationCenter defaultCenter] postNotificationName: Notify_ShowMessage
+    //                                                        object:self
+    //                                                      userInfo:@{@"Type":@"Hide"}];
 }
 @end

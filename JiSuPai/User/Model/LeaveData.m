@@ -9,5 +9,7 @@
 #import "LeaveData.h"
 
 @implementation LeaveData
-
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"leaveId" : @"id"};
+}
 @end

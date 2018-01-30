@@ -84,7 +84,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 #pragma mark -- UICollectionViewDataSource
 //定义展示的UICollectionViewCell的个数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -213,7 +212,7 @@
                     [self navToCustomerFeedback];
                     break;
                 case 2:
-                    
+                    [self navToDriverSchool];
                     break;
                 case 3:
                     
@@ -238,6 +237,15 @@
         return cell;
     }
     return nil;
+}
+
+- (void)navToDriverSchool
+{
+    LostWebViewController* vc = [LostWebViewController new];
+    vc.cusnavigationBar.titleLabel.text = @"司机学院";
+    [vc startWithUrl:API_sjxy title:@"司机学院"];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)navToLeave
@@ -285,6 +293,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 1) {
         if (indexPath.row == 1) {
+            @weakify(self);
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确认申请吗？" message:nil preferredStyle:UIAlertControllerStyleAlert];
             [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField){
                 textField.placeholder = @"请输入提现金额";
@@ -295,8 +304,14 @@
             }];
         
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                @strongify(self);
                 UITextField *textField = alertController.textFields.firstObject;
                 NSString* value = textField.text;
+                [self.viewModel requestCash:[value floatValue] block:^(id data, BOOL isTodo) {
+                    if (isTodo) {
+                        [HUD showMsg:@"申请成功" type:HUDMsgType_Success];
+                    }
+                }];
             }];
         
             [alertController addAction:cancelAction];

@@ -10,12 +10,24 @@
 #import "MyCarViewModel.h"
 #import "MeGameTableViewCell.h"
 #import "MyCarBaseTableViewCell.h"
+#import "ZLPhotoActionSheet.h"
+#import "ZLPhotoConfiguration.h"
+#import <Photos/Photos.h>
+
+#define PHOTOVIEW_MAX_COUNT 1
+
 
 @interface MyCarViewController ()
 @property (nonatomic, strong) MyCarViewModel* viewModel;
+@property (nonatomic, strong) ZLPhotoActionSheet* actionSheet;
+
 @end
 
 @implementation MyCarViewController
+
+{
+    UIButton* _selectBtn;
+}
 
 - (MyCarViewModel *)viewModel
 {
@@ -66,6 +78,7 @@
     // Do any additional setup after loading the view.
     [self.tableView registerClass:[MeDefaultTableViewCell class] forCellReuseIdentifier:[MeDefaultTableViewCell identify]];
     [self.tableView registerClass:[MyCarPhotoTableViewCell class] forCellReuseIdentifier:[MyCarPhotoTableViewCell identify]];
+    [self.tableView registerClass:[MyCarDriverPhotoTableViewCell class] forCellReuseIdentifier:[MyCarDriverPhotoTableViewCell identify]];
     
     @weakify(self);
     [RACObserve(self.viewModel, driverData) subscribeNext:^(id x) {
@@ -79,16 +92,56 @@
     }];
     [self.viewModel getDriverInfo:^(id data, BOOL isTodo) {
     }];
+    
+    self.actionSheet.sender = self;
+    [self.actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
+        @strongify(self);
+        if (images && images.count > 0) {
+            // 删除本次删除的图片
+//            NSMutableArray* lastArrayAssets = [self getPhotoAssets];
+//            if (lastArrayAssets.count > 0)
+//            {
+//                // 新的选择集合中不存在上次选择的图片，删除UI上的view
+//                for (PHAsset* lastAsset in lastArrayAssets) {
+//                    if (![assets containsObject:lastAsset]) {
+//                        [self deletePhotoViewforAsset:lastAsset];
+//                    }
+//                }
+//            }
+//            // 更新后的图片选择集合
+//            lastArrayAssets = [self getPhotoAssets];
+//
+//            // 添加新图片
+            for (int i=0; i<images.count; i++) {
+                UIImage* img = [images objectAtIndex:i];
+                PHAsset* newAsset = [assets objectAtIndex:i];
+
+                [_selectBtn setBackgroundImage:img forState:UIControlStateNormal];
+                _selectBtn = nil;
+            }
+        }
+    }];
 }
 
 - (void)postDriverInfo
 {
-    
+    [self.viewModel postDirverData:^(id data, BOOL isTodo) {
+        if (isTodo) {
+            [HUD showMsg:@"更新成功" type:HUDMsgType_Success];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)change
+{
+//    self.actionSheet.arrSelectedAssets = self.arrayPhotoView.count > 0 ? [self getPhotoAssets] : nil;
+    self.actionSheet.configuration.maxSelectCount = PHOTOVIEW_MAX_COUNT;
+    [self.actionSheet showPhotoLibrary];
 }
 
 - (void)selectRegion
@@ -192,7 +245,7 @@
         return 6;
     }
     if (section == 1) {
-        return 3;
+        return 4;
     }
     return 0;
 }
@@ -208,7 +261,7 @@
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView* view = [UIView new];
-    view.backgroundColor = [UIColor clearColor];
+    view.backgroundColor = tableView.backgroundColor;
     UILabel* titleLabel = [UILabel new];
     NSString* title = @"请完善以下信息";
     NSString* info = @"带*为必填项目";
@@ -252,6 +305,9 @@
         return 44;
     }
     if (indexPath.section == 1) {
+        if (indexPath.row == 3) {
+            return 270;
+        }
         return 160;
     }
     return 40;
@@ -300,33 +356,86 @@
     }
     
     if (indexPath.section == 1) {
-        MyCarPhotoTableViewCell *cell = (MyCarPhotoTableViewCell*)[tableView dequeueReusableCellWithIdentifier:[MyCarPhotoTableViewCell identify] forIndexPath:indexPath];
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        cell.backgroundColor = [UIColor whiteColor];
-        
-        cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
-        cell.titleLabel.text = [self.viewModel.arrayTitle objectAtIndex:indexPath.row];
-        
-        if (indexPath.row == 0) {
-            cell.infoLabel1.text = @"点击上传身份证正面照";
-            cell.infoLabel2.text = @"点击上传身份证反面照";
+        if (indexPath.row < 3) {
+            MyCarPhotoTableViewCell *cell = (MyCarPhotoTableViewCell*)[tableView dequeueReusableCellWithIdentifier:[MyCarPhotoTableViewCell identify] forIndexPath:indexPath];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            cell.backgroundColor = [UIColor whiteColor];
+            
+            cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
+            cell.titleLabel.text = [self.viewModel.arrayTitle objectAtIndex:indexPath.row];
+            
+            if (indexPath.row == 0) {
+                cell.infoLabel1.text = @"点击上传身份证正面照";
+                cell.infoLabel2.text = @"点击上传身份证反面照";
+            }
+            if (indexPath.row == 1) {
+                cell.infoLabel1.text = @"车牌号清晰，车头完整";
+                cell.infoLabel2.text = @"点击上传";
+                cell.sfz1Btn.enabled = NO;
+            }
+            if (indexPath.row == 2) {
+                cell.infoLabel1.text = @"车辆侧面完整";
+                cell.infoLabel2.text = @"点击上传";
+                cell.sfz1Btn.enabled = NO;
+            }
+            cell.sfz1Btn.tag = indexPath.row*10+1;
+            cell.sfz2Btn.tag = indexPath.row*10+2;
+            
+            @weakify(self);
+            [[[cell.sfz1Btn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
+                @strongify(self);
+                _selectBtn = cell.sfz1Btn;
+                [self change];
+            }];
+            [[[cell.sfz2Btn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
+                @strongify(self);
+                _selectBtn = cell.sfz2Btn;
+                [self change];
+            }];
+            
+            return cell;
         }
-        if (indexPath.row == 1) {
-            cell.infoLabel1.text = @"车牌号清晰，车头完整";
-            cell.infoLabel2.text = @"点击上传";
-        }
-        if (indexPath.row == 2) {
-            cell.infoLabel1.text = @"车辆侧面完整";
-            cell.infoLabel2.text = @"点击上传";
-        }
-        if (indexPath.row == 3) {
-            cell.infoLabel1.text = @"点击上传身份证正面照";
-            cell.infoLabel2.text = @"点击上传身份证反面照";
+        else
+        {
+            MyCarDriverPhotoTableViewCell *cell = (MyCarDriverPhotoTableViewCell*)[tableView dequeueReusableCellWithIdentifier:[MyCarDriverPhotoTableViewCell identify] forIndexPath:indexPath];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            cell.backgroundColor = [UIColor whiteColor];
+            
+            cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
+            cell.titleLabel.text = [self.viewModel.arrayTitle objectAtIndex:indexPath.row];
+
+            cell.infoLabel1.text = @"点击上传行驶证";
+            cell.infoLabel2.text = @"点击上传驾驶证";
+            cell.infoLabel3.text = @"点击上传通行证";
+            
+            cell.sfz1Btn.tag = indexPath.row*10+1;
+            cell.sfz2Btn.tag = indexPath.row*10+2;
+            cell.sfz3Btn.tag = indexPath.row*10+3;
+            
+            @weakify(self);
+            [[[cell.sfz1Btn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
+                @strongify(self);
+                _selectBtn = cell.sfz1Btn;
+                [self change];
+            }];
+            [[[cell.sfz2Btn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
+                @strongify(self);
+                _selectBtn = cell.sfz2Btn;
+                [self change];
+            }];
+            [[[cell.sfz3Btn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
+                @strongify(self);
+                _selectBtn = cell.sfz3Btn;
+                [self change];
+            }];
+            
+            return cell;
         }
         
-        return cell;
     }
     
     return nil;
@@ -348,6 +457,21 @@
         }
     }
     
+}
+
+- (ZLPhotoActionSheet*)actionSheet
+{
+    if (!_actionSheet) {
+        _actionSheet = [ZLPhotoActionSheet new];
+//        _actionSheet.configuration.allowEditImage = YES;
+//        _actionSheet.configuration = ((ZLPhotoConfiguration*)[ZLPhotoConfiguration defaultPhotoConfiguration]);
+        _actionSheet.configuration.allowTakePhotoInLibrary = NO;    // 不允许相册内拍照
+        _actionSheet.configuration.allowSelectOriginal = NO;    // 不允许原图
+        //        _actionSheet.configuration.allowMixSelect = NO;     // 不允许同时选择视频和图片
+        //        _actionSheet.configuration.allowSelectVideo = NO;   // 不允许视频
+        //        _actionSheet.configuration.allowSelectGif = NO;     // 不允许选择gif
+    }
+    return _actionSheet;
 }
 
 @end

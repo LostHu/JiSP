@@ -31,11 +31,45 @@
     
     [LostHttpClient GETRequestURL:API_AddLeaveTime WithParameter:parameters
              WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
-        
+                 if (appendData.flag == YES) {
+                     if (block) {
+                         block(nil,YES);
+                     }
+                 }
+                 else
+                 {
+                     [HUD showMsg:appendData.msg type: HUDMsgType_Error];
+                 }
     }
                  WithFailureBlock:^{
         
     }];
+}
+
+- (void)delLeave:(LeaveData*)data block:(ModelCompleteBlock)block
+{
+    if (!data) {
+        return;
+    }
+    
+    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:@(data.leaveId) forKey:@"id"];
+    
+    [LostHttpClient GETRequestURL:API_DeleteLeaveTime WithParameter:parameters
+             WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
+                 if (appendData.flag == YES) {
+                     if (block) {
+                         block(nil,YES);
+                     }
+                 }
+                 else
+                 {
+                     [HUD showMsg:appendData.msg type: HUDMsgType_Error];
+                 }
+             }
+                 WithFailureBlock:^{
+                     
+                 }];
 }
 
 - (void)addRequestParm:(NSMutableDictionary*)parameters

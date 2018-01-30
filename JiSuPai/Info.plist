@@ -43,5 +43,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>GAMEPLUS想要访问您的相册 方便使用图片</string>
+	<key>NSCameraUsageDescription</key>
+	<string>GAMEPLUS想要访问您的相机 方便使用拍照功能</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>GAMEPLUS想要添加图片到相册</string>
 </dict>
 </plist>
