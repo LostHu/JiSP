@@ -21,6 +21,49 @@
     return self;
 }
 
+- (void)postDriverPhoto:(UIImage*)img tag:(NSInteger)tag block:(ModelCompleteBlock)block
+{
+    NSString* fileName = @"";
+    if (tag < 10) {
+        fileName = FormatStr(@"sfz%ld",tag);
+    }
+    else if(tag < 20) {
+        fileName = FormatStr(@"car1");
+    }
+    else if(tag < 30) {
+        fileName = FormatStr(@"car2");
+    }
+    else if(tag < 40) {
+        if (tag == 31) {
+            fileName = @"xsz";
+        }
+        if (tag == 32) {
+            fileName = @"jsz";
+        }
+        if (tag == 33) {
+            fileName = @"txz";
+        }
+    }
+    
+    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+//    [parameters setObject:@(self.driverData.cartype) forKey:@"cartype"];
+    [LostHttpClient POSTFileURL:API_PostPhoto parameter:parameters fileList:@[img] fileName:@[fileName] successBlock:^(id returnValue, HttpResponseData *appendData) {
+        if (appendData.flag == YES) {
+            if (block) {
+                block(nil,YES);
+            }
+        }
+        else
+        {
+            [HUD showMsg:appendData.msg type: HUDMsgType_Error];
+        }
+    } progressBlock:^(CGFloat progress) {
+        NSLog(@"%@", FormatStr(@"%.0f%%",progress));
+    } failureBlock:^{
+        
+    }];
+}
+
 - (void)postDirverData:(ModelCompleteBlock)block
 {
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];

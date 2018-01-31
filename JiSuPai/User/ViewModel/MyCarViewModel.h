@@ -19,4 +19,5 @@
 - (void)postDirverData:(ModelCompleteBlock)block;
 - (void)getDriverInfo:(ModelCompleteBlock)block;
 - (void)getCarTypeList:(ModelCompleteBlock)block;
+- (void)postDriverPhoto:(UIImage*)img tag:(NSInteger)tag block:(ModelCompleteBlock)block;
 @end

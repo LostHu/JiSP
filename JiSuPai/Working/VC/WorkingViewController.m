@@ -34,6 +34,10 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.cusnavigationBar.leftButton.hidden = YES;
+    
+    self.cusnavigationBar.bgView.backgroundColor = hexColor(556af6);
+    self.cusnavigationBar.bottomLine.backgroundColor = hexColor(556af6);
+    self.cusnavigationBar.titleLabel.textColor = [UIColor whiteColor];
 }
 
 - (void)viewDidLoad {
@@ -51,6 +55,7 @@
     [RACObserve(self.viewModelWoking, data) subscribeNext:^(id x) {
         @strongify(self);
         if (x && [x isKindOfClass:[TaskData class]]) {
+            self.tableView.tableFooterView.hidden = NO;
             [self.tableView reloadData];
             self.cusnavigationBar.titleLabel.text = FormatStr(@"单号%@",((TaskData*)x).orderno);
         }
@@ -79,6 +84,7 @@
     }];
     
     self.tableView.tableFooterView = footView;
+    self.tableView.tableFooterView.hidden = YES;
 }
 
 - (void)navToExceptionPage
@@ -102,7 +108,10 @@
 }
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    if (self.viewModel.data) {
+        return 5;
+    }
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

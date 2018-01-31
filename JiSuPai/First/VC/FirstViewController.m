@@ -36,6 +36,9 @@
     self.tableView.backgroundColor = self.view.backgroundColor;
     [self.cusnavigationBar.leftButton removeFromSuperview];
     self.cusnavigationBar.titleLabel.text = @"抢单列表";
+    self.cusnavigationBar.bgView.backgroundColor = hexColor(556af6);
+    self.cusnavigationBar.bottomLine.backgroundColor = hexColor(556af6);
+    self.cusnavigationBar.titleLabel.textColor = [UIColor whiteColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 }
@@ -124,6 +127,16 @@
     TaskData* task = [self.viewModel.array objectAtIndex:indexPath.section];
     cell.data = task;
     
+    @weakify(self);
+    [[[cell.okBtn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
+        @strongify(self);
+        TaskInfoViewController* vc = [TaskInfoViewController new];
+        vc.viewModel.data = task;
+        vc.cusnavigationBar.titleLabel.text = FormatStr(@"任务号%@",task.firstorderid);
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
+    
     return cell;
 }
 
@@ -131,13 +144,13 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    TaskData* task = [self.viewModel.array objectAtIndex:indexPath.section];
-
-    TaskInfoViewController* vc = [TaskInfoViewController new];
-    vc.viewModel.data = task;
-    vc.cusnavigationBar.titleLabel.text = FormatStr(@"任务号%@",task.firstorderid);
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+//    TaskData* task = [self.viewModel.array objectAtIndex:indexPath.section];
+//
+//    TaskInfoViewController* vc = [TaskInfoViewController new];
+//    vc.viewModel.data = task;
+//    vc.cusnavigationBar.titleLabel.text = FormatStr(@"任务号%@",task.firstorderid);
+//    vc.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

@@ -338,7 +338,7 @@
     if (!_okBtn) {
         _okBtn = [UIButton new];
         [_okBtn setTitle:@"查看详情" forState:UIControlStateNormal];
-        [_okBtn solidStyleforC:hexColor(5662f6) D:[UIColor lightGrayColor] font:Font_System(12) corner:4];
+        [_okBtn solidStyleforC:hexColor(5662f6) D:[UIColor lightGrayColor] font:Font_System_Bold(12) corner:4];
         [_okBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     }
     return _okBtn;

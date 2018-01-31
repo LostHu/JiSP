@@ -210,8 +210,8 @@ DEFINE_SINGLETON_FOR_CLASS(LostHttpClient)
 
 + (void) POSTFileURL: (NSString *) requestURLString
            parameter: (NSMutableDictionary *) parameter
-                file: (NSArray*) arrayFile
-            FileName: (NSArray*) fileNameArray
+            fileList: (NSArray*) arrayFile
+            fileName: (NSArray*) fileNameArray
         successBlock: (ReturnValueBlock) block
        progressBlock: (ProgressBlock) progressBlock
         failureBlock: (FailureBlock) failureBlock
@@ -248,6 +248,7 @@ DEFINE_SINGLETON_FOR_CLASS(LostHttpClient)
     parameter = [NSMutableDictionary dictionaryWithDictionary:parameter];
     [self addTokenToParameter:parameter withUrl:requestURLString];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", nil];
     
     NSString *requestUrl = [AppBaseUrl stringByAppendingString:requestURLString];
     

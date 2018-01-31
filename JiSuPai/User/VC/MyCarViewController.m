@@ -20,13 +20,13 @@
 @interface MyCarViewController ()
 @property (nonatomic, strong) MyCarViewModel* viewModel;
 @property (nonatomic, strong) ZLPhotoActionSheet* actionSheet;
-
+@property (nonatomic, strong) UIButton* selectBtn;
 @end
 
 @implementation MyCarViewController
 
 {
-    UIButton* _selectBtn;
+//    UIButton* _selectBtn;
 }
 
 - (MyCarViewModel *)viewModel
@@ -116,8 +116,15 @@
                 UIImage* img = [images objectAtIndex:i];
                 PHAsset* newAsset = [assets objectAtIndex:i];
 
-                [_selectBtn setBackgroundImage:img forState:UIControlStateNormal];
-                _selectBtn = nil;
+                if (self.selectBtn) {
+                    [self.viewModel postDriverPhoto:img tag:self.selectBtn.tag block:^(id data, BOOL isTodo) {
+                        @strongify(self);
+                        if (isTodo) {
+                            [self.selectBtn setBackgroundImage:img forState:UIControlStateNormal];
+                        }
+                        self.selectBtn = nil;
+                    }];
+                }
             }
         }
     }];

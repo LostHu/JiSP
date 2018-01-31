@@ -47,6 +47,9 @@
     self.tableView.backgroundColor = self.view.backgroundColor;
     [self.cusnavigationBar.leftButton removeFromSuperview];
     self.cusnavigationBar.titleLabel.text = @"任务大厅";
+    self.cusnavigationBar.bgView.backgroundColor = hexColor(556af6);
+    self.cusnavigationBar.bottomLine.backgroundColor = hexColor(556af6);
+    self.cusnavigationBar.titleLabel.textColor = [UIColor whiteColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 }

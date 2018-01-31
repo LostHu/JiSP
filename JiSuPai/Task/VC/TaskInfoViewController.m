@@ -47,6 +47,15 @@
     [self.tableView registerClass:[TaskInfoAdditionalTableViewCell class] forCellReuseIdentifier:[TaskInfoAdditionalTableViewCell identify]];
     
     [self.tableView reloadData];
+//    [self.class className]
+    
+}
+
+- (void)checkSourcePage
+{
+    if ([self.preClassName isEqualToString:@""]) {
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {

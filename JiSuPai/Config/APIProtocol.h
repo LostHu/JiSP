@@ -81,6 +81,7 @@
 #define API_userprotoco     @"userprotocol.htm"     //用户协议
 #define API_share           @"share.html"           //分享
 #define API_Feedback        DriverPrefix(@"/createFankui.do")//反馈
+#define API_PostPhoto       DriverPrefix(@"/submitZhengjianPic.do")//上传证件照片
 
 
 

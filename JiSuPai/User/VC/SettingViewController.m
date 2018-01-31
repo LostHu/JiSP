@@ -21,10 +21,7 @@
     self.view.backgroundColor = hexColor(556af6);
     self.tableView.backgroundColor = hexColor(efefef);
     
-    self.cusnavigationBar.bgView.backgroundColor = hexColor(556af6);
-    self.cusnavigationBar.bottomLine.backgroundColor = hexColor(556af6);
     self.cusnavigationBar.titleLabel.text = @"设置";
-    self.cusnavigationBar.titleLabel.textColor = [UIColor whiteColor];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
