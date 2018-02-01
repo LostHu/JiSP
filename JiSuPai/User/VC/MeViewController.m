@@ -19,6 +19,8 @@
 #import "EditPasswordViewController.h"
 #import "FreeTimeViewController.h"
 #import "LeaveViewController.h"
+#import "LogInViewController.h"
+
 
 @interface MeViewController ()
 @property (nonatomic,strong) MeViewModel* viewModel;
@@ -215,7 +217,7 @@
                     [self navToDriverSchool];
                     break;
                 case 3:
-                    
+                    [self navToLogin];
                     break;
                 case 4:
                     [self navToFreeTime];
@@ -237,6 +239,13 @@
         return cell;
     }
     return nil;
+}
+
+- (void)navToLogin
+{
+    LogInViewController* vc = [LogInViewController new];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)navToDriverSchool

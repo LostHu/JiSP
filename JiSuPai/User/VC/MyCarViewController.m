@@ -114,7 +114,7 @@
 //            // 添加新图片
             for (int i=0; i<images.count; i++) {
                 UIImage* img = [images objectAtIndex:i];
-                PHAsset* newAsset = [assets objectAtIndex:i];
+//                PHAsset* newAsset = [assets objectAtIndex:i];
 
                 if (self.selectBtn) {
                     [self.viewModel postDriverPhoto:img tag:self.selectBtn.tag block:^(id data, BOOL isTodo) {

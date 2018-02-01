@@ -111,6 +111,11 @@
 		0B43AA2C200999310079E952 /* TYTabPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B43A9C8200999310079E952 /* TYTabPagerController.m */; };
 		0B43AA2D200999310079E952 /* TYTabPagerBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B43A9C9200999310079E952 /* TYTabPagerBarCell.m */; };
 		0B43AA2E200999310079E952 /* TYPagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B43A9CB200999310079E952 /* TYPagerView.m */; };
+		0B43DD2B2023533E004A76D2 /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B43DD1F2023533E004A76D2 /* LoginViewModel.m */; };
+		0B43DD2C2023533E004A76D2 /* ForgotSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B43DD212023533E004A76D2 /* ForgotSuccessViewController.m */; };
+		0B43DD2D2023533E004A76D2 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B43DD222023533E004A76D2 /* LogInViewController.m */; };
+		0B43DD2E2023533E004A76D2 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B43DD232023533E004A76D2 /* SignUpViewController.m */; };
+		0B43DD2F2023533E004A76D2 /* ForgotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B43DD272023533E004A76D2 /* ForgotViewController.m */; };
 		0B488566200F885300908009 /* FirstListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B488565200F885300908009 /* FirstListViewModel.m */; };
 		0B488569200F957C00908009 /* FirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B488568200F957C00908009 /* FirstTableViewCell.m */; };
 		0B5C1DAD200A03060092F25A /* YZTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5C1DA9200A03060092F25A /* YZTabViewController.m */; };
@@ -386,6 +391,16 @@
 		0B43A9CC200999310079E952 /* TYPagerViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerViewLayout.h; sourceTree = "<group>"; };
 		0B43A9CD200999310079E952 /* TYPagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerController.h; sourceTree = "<group>"; };
 		0B43A9CE200999310079E952 /* TYPagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPagerView.h; sourceTree = "<group>"; };
+		0B43DD1E2023533E004A76D2 /* LoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewModel.h; sourceTree = "<group>"; };
+		0B43DD1F2023533E004A76D2 /* LoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
+		0B43DD212023533E004A76D2 /* ForgotSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotSuccessViewController.m; sourceTree = "<group>"; };
+		0B43DD222023533E004A76D2 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
+		0B43DD232023533E004A76D2 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		0B43DD242023533E004A76D2 /* ForgotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotViewController.h; sourceTree = "<group>"; };
+		0B43DD252023533E004A76D2 /* ForgotSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotSuccessViewController.h; sourceTree = "<group>"; };
+		0B43DD262023533E004A76D2 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
+		0B43DD272023533E004A76D2 /* ForgotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotViewController.m; sourceTree = "<group>"; };
+		0B43DD282023533E004A76D2 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		0B488564200F885300908009 /* FirstListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstListViewModel.h; sourceTree = "<group>"; };
 		0B488565200F885300908009 /* FirstListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstListViewModel.m; sourceTree = "<group>"; };
 		0B488567200F957C00908009 /* FirstTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstTableViewCell.h; sourceTree = "<group>"; };
@@ -523,6 +538,7 @@
 				0B5C1DD7200A14000092F25A /* LaunchScreen.storyboard */,
 				0B5C1DD5200A13FF0092F25A /* Main.storyboard */,
 				0B43A8F4200999300079E952 /* Config */,
+				0B43DD1C2023533E004A76D2 /* Sign */,
 				0B5C1DB7200A061E0092F25A /* Task */,
 				0B5C1DB9200A06540092F25A /* First */,
 				0B64196C201CDAC600521F92 /* Working */,
@@ -945,6 +961,55 @@
 				0B43A9CA200999310079E952 /* TYTabPagerView.h */,
 			);
 			path = TabPager;
+			sourceTree = "<group>";
+		};
+		0B43DD1C2023533E004A76D2 /* Sign */ = {
+			isa = PBXGroup;
+			children = (
+				0B43DD202023533E004A76D2 /* Controller */,
+				0B43DD1D2023533E004A76D2 /* ViewModel */,
+				0B43DD292023533E004A76D2 /* Model */,
+				0B43DD2A2023533E004A76D2 /* View */,
+			);
+			path = Sign;
+			sourceTree = "<group>";
+		};
+		0B43DD1D2023533E004A76D2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0B43DD1E2023533E004A76D2 /* LoginViewModel.h */,
+				0B43DD1F2023533E004A76D2 /* LoginViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0B43DD202023533E004A76D2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0B43DD262023533E004A76D2 /* LogInViewController.h */,
+				0B43DD222023533E004A76D2 /* LogInViewController.m */,
+				0B43DD282023533E004A76D2 /* SignUpViewController.h */,
+				0B43DD232023533E004A76D2 /* SignUpViewController.m */,
+				0B43DD242023533E004A76D2 /* ForgotViewController.h */,
+				0B43DD272023533E004A76D2 /* ForgotViewController.m */,
+				0B43DD252023533E004A76D2 /* ForgotSuccessViewController.h */,
+				0B43DD212023533E004A76D2 /* ForgotSuccessViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0B43DD292023533E004A76D2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0B43DD2A2023533E004A76D2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		0B5C1DA8200A03060092F25A /* Base */ = {
@@ -1468,8 +1533,10 @@
 				0B63BA54200E58A60080357A /* TaskData.m in Sources */,
 				0B43AA07200999310079E952 /* LostTimer.m in Sources */,
 				0B43AA13200999310079E952 /* MSSBrowseRemindView.m in Sources */,
+				0B43DD2C2023533E004A76D2 /* ForgotSuccessViewController.m in Sources */,
 				0B43A9FF200999310079E952 /* BaseViewModel.m in Sources */,
 				0B9FE06B200CD8B2009F1E7E /* MeViewModel.m in Sources */,
+				0B43DD2D2023533E004A76D2 /* LogInViewController.m in Sources */,
 				0BAE57BA20123A3B00872123 /* HistorySubListViewController.m in Sources */,
 				0B43A9E0200999310079E952 /* NSString+Extend.m in Sources */,
 				0B43A9DA200999310079E952 /* UILabel+Extend.m in Sources */,
@@ -1504,6 +1571,7 @@
 				0B43A9E8200999310079E952 /* HttpTask.m in Sources */,
 				0B43AA03200999310079E952 /* ListDataVM.m in Sources */,
 				0B43A9F6200999310079E952 /* ZFPlayerControlView.m in Sources */,
+				0B43DD2B2023533E004A76D2 /* LoginViewModel.m in Sources */,
 				0B43A9D2200999310079E952 /* UITabBar+Extend.m in Sources */,
 				0B5C1DB6200A05EE0092F25A /* MeViewController.m in Sources */,
 				0B43AA2E200999310079E952 /* TYPagerView.m in Sources */,
@@ -1558,6 +1626,7 @@
 				0B43AA29200999310079E952 /* TYTabPagerBar.m in Sources */,
 				0B43A9D8200999310079E952 /* UIImage+RTTint.m in Sources */,
 				0B43AA15200999310079E952 /* MSSBrowseActionSheetCell.m in Sources */,
+				0B43DD2E2023533E004A76D2 /* SignUpViewController.m in Sources */,
 				0B5C1DEF200B60110092F25A /* TaskInfoViewModel.m in Sources */,
 				0B43A9FE200999310079E952 /* YYControl.m in Sources */,
 				0B43AA1F200999310079E952 /* KNJudgementTool.m in Sources */,
@@ -1570,6 +1639,7 @@
 				0B43AA01200999310079E952 /* LostWebViewController.m in Sources */,
 				0B43AA02200999310079E952 /* BaseMethod.m in Sources */,
 				0B43AA2D200999310079E952 /* TYTabPagerBarCell.m in Sources */,
+				0B43DD2F2023533E004A76D2 /* ForgotViewController.m in Sources */,
 				0B43AA0A200999310079E952 /* MSSBrowseLoadingImageView.m in Sources */,
 				0BAE57B420122CBB00872123 /* HistoryListViewModel.m in Sources */,
 				0B43A9F7200999310079E952 /* ZFPlayerView.m in Sources */,

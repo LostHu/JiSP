@@ -201,7 +201,7 @@
 // 橙色实体按钮
 - (void)orangeSolidStyle
 {
-    [self solidStyleforC:hexColor(eb6700) H:rgbfromHex(@"cccccc") font:Font_System(15) corner:5];
+    [self solidStyleforC:hexColor(eb6700) H:rgbfromHex(@"cccccc") font:Font_System_Bold(15) corner:5];
 }
 
 // 橙色镂空边框
