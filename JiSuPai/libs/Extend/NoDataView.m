@@ -18,12 +18,14 @@
         self.userInteractionEnabled = YES;
         [self addSubview:self.imageView];
         [self addSubview:self.titleLabel];
-        self.titleLabel.text = @"NO DATA";
-        self.imageView.backgroundColor = RandomColor;
-        self.titleLabel.backgroundColor = RandomColor;
+        self.titleLabel.text = @"Nothing content";
+        self.imageView.image = [UIImage imageNamed:@"pic_blank"];
+//        self.imageView.backgroundColor = RandomColor;
+//        self.titleLabel.backgroundColor = RandomColor;
         
-        self.imageView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height*0.7);
-        self.titleLabel.frame = CGRectMake(0, CGRectGetMaxY(self.imageView.frame), frame.size.width, frame.size.height*0.3);
+        self.imageView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height*0.8);
+//        self.imageView.centerY = self.centerY;
+        self.titleLabel.frame = CGRectMake(0, CGRectGetMaxY(self.imageView.frame), frame.size.width, frame.size.height*0.2);
         
         UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
         tap.delegate = self;
@@ -43,8 +45,8 @@
 {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = [UIFont systemFontOfSize:15];
-        _titleLabel.textColor = rgbfromHex(@"3a3a3a");
+        _titleLabel.font = [UIFont systemFontOfSize:14];
+        _titleLabel.textColor = rgbfromHex(@"797979");
         _titleLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _titleLabel;
@@ -54,7 +56,8 @@
 {
     if (!_imageView) {
         _imageView = [[UIImageView alloc] init];
-        _imageView.image = [UIImage imageNamed:@"chuqin_con_tong"];
+        _imageView.image = [UIImage imageNamed:@"pic_blank"];
+        _imageView.contentMode = UIViewContentModeCenter;
     }
     return _imageView;
 }

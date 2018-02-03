@@ -12,5 +12,6 @@
 @interface UITableView (NoData)
 @property (nonatomic, assign) BOOL firstReload;
 @property (nonatomic, strong) NoDataView *placeholderView;
+@property (nonatomic, assign) BOOL bIgnoreNoData;
 @property (nonatomic,   copy) void(^reloadBlock)(void);
 @end

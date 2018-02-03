@@ -8,6 +8,7 @@
 
 #import "SettingViewController.h"
 #import "MeGameTableViewCell.h"
+#import "LogInViewController.h"
 
 @interface SettingViewController ()
 
@@ -115,9 +116,10 @@
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                 
             }];
-            
+            @weakify(self);
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认退出" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
+                @strongify(self);
+                [self navToLogin];
             }];
             [alertController addAction:cancelAction];
             [alertController addAction:okAction];
@@ -126,6 +128,16 @@
         }
     }
     
+}
+
+- (void)navToLogin
+{
+    [[UserManager sharedInstance] clearUserData];
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    LogInViewController* vc = [LogInViewController new];
+    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    nav.navigationBarHidden = YES;
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 @end

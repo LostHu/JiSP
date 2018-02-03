@@ -77,7 +77,7 @@
         make.top.equalTo(self.imageView.mas_bottom).offset(12);
         make.width.mas_equalTo(@(SCREEN_WIDTH-48));
         make.centerX.equalTo(self.scrollView);
-        make.height.mas_equalTo(@(120));
+        make.height.mas_equalTo(@(110));
     }];
     
     
@@ -105,7 +105,7 @@
     [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.centerX.equalTo(inputFrameView);
         make.top.equalTo(self.nameTextField.mas_bottom).offset(4);
-        make.height.mas_equalTo(@(1));
+        make.height.mas_equalTo(@(0.5));
     }];
     
     UIView* lineView2 = [UIView new];
@@ -115,7 +115,7 @@
     [lineView2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.centerX.equalTo(inputFrameView);
         make.top.equalTo(self.pwdTextField.mas_bottom).offset(4);
-        make.height.mas_equalTo(@(1));
+        make.height.mas_equalTo(@(0.5));
     }];
     
     UIImageView* leftView = [[UIImageView alloc] initWithImage:ImageNamed(@"icon_pl")];
@@ -132,10 +132,10 @@
     self.nameTextField.placeholder = @"请输入手机号";
     self.pwdTextField.placeholder = @"请输入密码";
     
-    [self.nameTextField setValue:hexColor(5662f6) forKeyPath:@"_placeholderLabel.textColor"];
-    [self.nameTextField setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
-    [self.pwdTextField setValue:hexColor(5662f6) forKeyPath:@"_placeholderLabel.textColor"];
-    [self.pwdTextField setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
+    [self.nameTextField setValue:hexColor(666666) forKeyPath:@"_placeholderLabel.textColor"];
+    [self.nameTextField setValue:[UIFont systemFontOfSize:13] forKeyPath:@"_placeholderLabel.font"];
+    [self.pwdTextField setValue:hexColor(666666) forKeyPath:@"_placeholderLabel.textColor"];
+    [self.pwdTextField setValue:[UIFont systemFontOfSize:13] forKeyPath:@"_placeholderLabel.font"];
     
 //    [self.loginButton setTitle:@"Log In" forState:UIControlStateNormal];
     
@@ -183,21 +183,22 @@
         topMar = 180;
     }
     CGFloat topReadPos = topMar+40*3+20+15+10+15+15+6;
-    NSString* basic = @"  I have read and agree to the Terms of service and Prviacy Policy";
-    NSString* service = @"the Terms of service and Prviacy Policy";
+    NSString* basic = @"  点击立即注册代表已经同意《吉速派服务协议》";
+    NSString* service = @"《吉速派服务协议》";
     self.selectButton.frame = CGRectMake(0, 0, 13, 13);
     NSMutableAttributedString* attrStr = [[NSMutableAttributedString alloc] init];
     NSMutableAttributedString* attachment = [NSMutableAttributedString attachmentStringWithContent:self.selectButton
                                                                                        contentMode:UIViewContentModeCenter
-                                                                                    attachmentSize:self.selectButton.size alignToFont:Font_System(12) alignment:YYTextVerticalAlignmentCenter];
+                                                                                    attachmentSize:self.selectButton.size alignToFont:Font_System(11) alignment:YYTextVerticalAlignmentCenter];
     [attrStr appendAttributedString:attachment];
     [attrStr appendAttributedString:[[NSMutableAttributedString alloc] initWithString:basic]];
     NSRange range_service = [attrStr.mutableString rangeOfString:service];
     
     [attrStr setLineSpacing:6];
-    [attrStr setFont:Font_System(12)];
+    [attrStr setFont:Font_System(11)];
     [attrStr setColor:hexColor(69707d)];
     [attrStr setColor:hexColor(5890FF) range:range_service];
+    [attrStr setAlignment:NSTextAlignmentCenter];
     CGSize size = CGSizeMake(SCREEN_WIDTH-50, CGFLOAT_MAX);
     YYTextLayout *layout = [YYTextLayout layoutWithContainerSize:size text:attrStr];
     self.readLabel.size = layout.textBoundingSize;
@@ -227,6 +228,7 @@
     tapGesture.delegate = self;
     [self.view addGestureRecognizer:tapGesture];
     
+    [self.loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
     [self.signUpButton addTarget:self action:@selector(signUp) forControlEvents:UIControlEventTouchUpInside];
     [self.forgotButton addTarget:self action:@selector(forgot) forControlEvents:UIControlEventTouchUpInside];
     
@@ -234,11 +236,60 @@
     self.readLabel.highlightTapAction = ^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
         
         @strongify(self);
+        
         LostWebViewController* vc = [LostWebViewController new];
-        [vc startWithUrl:H5_P_Rule title:@"抽奖规则"];
+        vc.cusnavigationBar.titleLabel.text = @"用户协议";
+        [vc startWithUrl:API_userprotoco title:@"用户协议"];
+        vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
         
     };
+}
+
+- (void)login
+{
+    NSString* value = [NSString trimWhitespaceAndNewline:self.nameTextField.text];
+    if ([NSString isBlankString:value]) {
+        [HUD showMsg:@"请输入手机号码"];
+        return;
+    }
+    if (![NSString isMobileNumber:value]) {
+        [HUD showMsg:@"手机号码格式不对"];
+        return;
+    }
+    
+    NSString* pwd = [NSString trimWhitespaceAndNewline:self.pwdTextField.text];
+    if ([NSString isBlankString:pwd]) {
+        [HUD showMsg:@"请输入密码"];
+        return;
+    }
+    
+    
+    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:value forKey:@"loginname"];
+    [parameters setObject:[pwd md5] forKey:@"password"];
+
+    @weakify(self);
+    [LostHttpClient GETRequestURL:API_login WithParameter:parameters
+             WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
+                 @strongify(self);
+                 if (appendData.flag == YES) {
+                     [self performSelector:@selector(sendSuccess) withObject:nil afterDelay:0.3];
+                 }
+                 else
+                 {
+                     [HUD showMsg:appendData.msg type: HUDMsgType_Error];
+                 }
+             }
+                 WithFailureBlock:^{
+                     
+                 }];
+}
+
+- (void)sendSuccess
+{
+    [[UserManager sharedInstance] getUserDatafromNetWork];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)signUp
@@ -272,7 +323,8 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch  {
     //    NSLog(@"%@", NSStringFromClass([touch.view class]));
     if ([touch.view isKindOfClass:[UITextField class]] ||
-        [touch.view isKindOfClass:[YYTextContainerView class]]) {
+        [touch.view isKindOfClass:[YYTextContainerView class]] ||
+        [touch.view isKindOfClass:[YYLabel class]]) {
         return NO;
     }
     return  YES;
@@ -310,7 +362,7 @@
     if (!_loginButton) {
         _loginButton = [UIButton new];
         [_loginButton orangeSolidStyle];
-        [_loginButton setBackgroundImage:[UIImage imageWithColor:hexColor(5662f6)] forState:UIControlStateNormal];
+        [_loginButton setBackgroundImage:[UIImage imageWithColor:hexColor(5651f7)] forState:UIControlStateNormal];
         [_loginButton setTitle:@"立即登录" forState:UIControlStateNormal];
     }
     return _loginButton;
@@ -321,6 +373,7 @@
     if (!_forgotButton) {
         _forgotButton = [UIButton new];
         [_forgotButton orangeNoBorderHollowStyle];
+        [_forgotButton setTitleColor:hexColor(666666) forState:UIControlStateNormal];
     }
     return _forgotButton;
 }
@@ -341,7 +394,7 @@
 {
     if (!_signUpButton) {
         _signUpButton = [UIButton new];
-        [_signUpButton borderHollowStyleforC:hexColor(5662f6) H:[UIColor grayColor] font:Font_System_Bold(15) border:1];
+        [_signUpButton borderHollowStyleforC:hexColor(5651f7) H:[UIColor grayColor] font:Font_System_Bold(15) border:0.6];
         [_signUpButton setTitle:@"新用户注册" forState:UIControlStateNormal];
     }
     return _signUpButton;

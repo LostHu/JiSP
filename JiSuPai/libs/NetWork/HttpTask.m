@@ -33,8 +33,8 @@
         self.flag = [dictionary[@"result"] isEqualToString:@"true"];
     }
     
-    if(![dictionary[@"msg"] isKindOfClass:[NSNull class]]){
-        self.msg = dictionary[@"msg"];
+    if(![dictionary[@"reason"] isKindOfClass:[NSNull class]]){
+        self.msg = dictionary[@"reason"];
     }
     return self;
 }

@@ -57,13 +57,13 @@ DEFINE_SINGLETON_FOR_CLASS(LostHttpClient)
 
 + (void)addTokenToParameter:(NSMutableDictionary*)parameter withUrl:(NSString*)url
 {
+    [parameter setObject:@"2" forKey:@"device"];
     if (![NSString isBlankString:url]) {
-//        if ([url isEqualToString:API_CheckCode] ||
-//            [url isEqualToString:API_Login] ||
-//            [url isEqualToString:API_Register] ||
-//            [url isEqualToString:API_Updpwd]) {
-//            return;
-//        }
+        if ([url isEqualToString:API_registerHuozhu] ||
+            [url isEqualToString:API_login] ||
+            [url isEqualToString:API_sendPhoneCode] ) {
+            return;
+        }
     }
 //    NSString* token = [UserManager sharedInstance].token;
 //    if (parameter && ![NSString isBlankString:token]) {
@@ -75,7 +75,6 @@ DEFINE_SINGLETON_FOR_CLASS(LostHttpClient)
 
     [parameter setObject:[pwd md5] forKey:@"password"];
     [parameter setObject:phone forKey:@"loginname"];
-    [parameter setObject:@"2" forKey:@"device"];
 //    [parameter setObject:@(1) forKey:@"version"];
 }
 #define DebugLog

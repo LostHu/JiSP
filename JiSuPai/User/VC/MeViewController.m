@@ -244,8 +244,9 @@
 - (void)navToLogin
 {
     LogInViewController* vc = [LogInViewController new];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    nav.navigationBarHidden = YES;
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)navToDriverSchool

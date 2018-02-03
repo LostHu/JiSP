@@ -41,9 +41,9 @@
 
 - (void)createPlaceholderView
 {
-    CGRect rc = CGRectMake(10, self.frame.size.height/4, self.frame.size.width-20, self.frame.size.height/4);
+    CGRect rc = CGRectMake(20, self.frame.size.height/5, self.frame.size.width-40, 200);
     NoDataView *placeholderView = [[NoDataView alloc] initWithFrame:rc];
-    placeholderView.backgroundColor = [UIColor orangeColor];
+//    placeholderView.backgroundColor = [UIColor orangeColor];
     __weak typeof(self) weakSelf = self;
     [placeholderView setReloadClickBlock:^{
         if (weakSelf.reloadBlock) {
@@ -55,6 +55,9 @@
 
 - (BOOL)checkEmpty
 {
+    if (self.bIgnoreNoData) {
+        return NO;
+    }
     BOOL isEmpty = YES;
     
     NSInteger sectionCount = 1;
@@ -83,6 +86,16 @@
 - (void)setPlaceholderView:(NoDataView *)placeholderView
 {
     objc_setAssociatedObject(self, @selector(placeholderView), placeholderView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)bIgnoreNoData
+{
+    return [objc_getAssociatedObject(self, @selector(bIgnoreNoData)) boolValue];
+}
+
+- (void)setBIgnoreNoData:(BOOL)bIgnoreNoData
+{
+    objc_setAssociatedObject(self, @selector(bIgnoreNoData), @(bIgnoreNoData), OBJC_ASSOCIATION_ASSIGN);
 }
 
 - (BOOL)firstReload

@@ -154,10 +154,9 @@ DEFINE_SINGLETON_FOR_CLASS(UserManager)
 
 - (void)getUserDatafromNetWork
 {
-
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [LostHttpClient GETRequestURL:API_accountInfo WithParameter:parameters WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
-        if ([returnValue[@"result"] isEqualToString:@"true"]) {
+        if (appendData.flag == YES) {
             UserData *data = [UserData modelWithDictionary:returnValue[@"data"]];
             self.userData = data;
         }else{
