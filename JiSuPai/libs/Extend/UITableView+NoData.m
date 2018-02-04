@@ -41,7 +41,7 @@
 
 - (void)createPlaceholderView
 {
-    CGRect rc = CGRectMake(20, self.frame.size.height/5, self.frame.size.width-40, 200);
+    CGRect rc = CGRectMake(20, self.frame.size.height/6, self.frame.size.width-40, 200);
     NoDataView *placeholderView = [[NoDataView alloc] initWithFrame:rc];
 //    placeholderView.backgroundColor = [UIColor orangeColor];
     __weak typeof(self) weakSelf = self;
@@ -60,9 +60,9 @@
     }
     BOOL isEmpty = YES;
     
-    NSInteger sectionCount = 1;
+    NSInteger sectionCount = 0;
     if ([self.dataSource respondsToSelector:@selector(numberOfSectionsInTableView:)]) {
-        [self.dataSource numberOfSectionsInTableView:self];
+        sectionCount = [self.dataSource numberOfSectionsInTableView:self];
     }
     for (int i=0; i<sectionCount; i++) {
         NSInteger rowCount = 0;

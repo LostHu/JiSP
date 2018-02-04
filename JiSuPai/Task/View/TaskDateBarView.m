@@ -36,13 +36,13 @@
             make.height.equalTo(self).multipliedBy(0.5);
         }];
         
-        @weakify(self);
-        [RACObserve(self, timeStamp) subscribeNext:^(id x) {
-            @strongify(self);
-            if (x && [x isKindOfClass:[NSNumber class]]) {
-                self.titleLabel.text = [LostTimer parseDate:[x integerValue]];
-            }
-        }];
+//        @weakify(self);
+//        [RACObserve(self, timeStamp) subscribeNext:^(id x) {
+//            @strongify(self);
+//            if (x && [x isKindOfClass:[NSNumber class]]) {
+//                self.titleLabel.text = [LostTimer parseDate:[x integerValue]];
+//            }
+//        }];
     }
     return self;
 }

@@ -43,6 +43,17 @@
         make.top.equalTo(self.view).offset(-20);
     }];
     
+    UIButton* backBtn = [UIButton new];
+    [backBtn setImage:ImageNamed(@"tab_back") forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(sendSuccess) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:backBtn];
+    
+    [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.offset(StatusBarHeight);
+        make.left.offset(6);
+        make.size.mas_equalTo(CGSizeMake(44, 44));
+    }];
+    
     [self.scrollView addSubview:self.imageView];
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.scrollView);
@@ -288,7 +299,7 @@
 
 - (void)changeCountDown
 {
-    __block int timeout=60; //倒计时时间
+    __block int timeout = 59; //倒计时时间
     
     dispatch_queue_t queue =dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0);
     

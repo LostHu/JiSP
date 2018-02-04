@@ -12,9 +12,12 @@
 #import "TaskDateBarView.h"
 #import "TaskListViewModel.h"
 
-@interface TaskViewController ()
+@interface TaskViewController ()<UIGestureRecognizerDelegate>
 @property (nonatomic,strong) TaskListViewModel* viewModel;
 @property (nonatomic,strong) TaskDateBarView* barView;
+@property (nonatomic, strong) UIDatePicker* datePicker;
+@property (nonatomic, strong) UIView* maskView;
+@property (nonatomic, strong) UIToolbar *toolBar;
 @end
 
 @implementation TaskViewController
@@ -52,6 +55,17 @@
     self.cusnavigationBar.titleLabel.textColor = [UIColor whiteColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    [self.view addSubview:self.maskView];
+    [self.maskView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    self.maskView.hidden = YES;
+    
+    [self.view addSubview:self.toolBar];
+    [self.view addSubview:self.datePicker];
+    self.toolBar.hidden = YES;
+    self.datePicker.hidden = YES;
 }
 
 - (void)viewDidLoad {
@@ -62,6 +76,10 @@
     
     [self.barView.selBtn addTarget:self action:@selector(selectDay) forControlEvents:UIControlEventTouchUpInside];
     [self.barView.dateBtn addTarget:self action:@selector(selectDate) forControlEvents:UIControlEventTouchUpInside];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchSpace)];
+    tapGesture.delegate = self;
+    [self.maskView addGestureRecognizer:tapGesture];
     
     __weak typeof(self) weakSelf = self;
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -77,16 +95,14 @@
     }];
     self.tableView.footer = footer;
     
-    [[RACObserve(self.viewModel, array) skip:1] subscribeNext:^(id x) {
+    [[RACObserve(self.viewModel, resultArray) skip:0] subscribeNext:^(id x) {
         @strongify(self);
-//        self.tableView.emptyDataSetDelegate = self;
-//        self.tableView.emptyDataSetSource = self;
+        [self.tableView reloadData];
         [self.tableView.header endRefreshing];
         [self.tableView.footer endRefreshing];
         if (self.viewModel.bLast) {
             [self.tableView.footer endRefreshingWithNoMoreData];
         }
-        [self.tableView reloadData];
     }];
     
     [self.tableView.header beginRefreshing];
@@ -94,7 +110,11 @@
     [RACObserve(self.viewModel, date) subscribeNext:^(id x) {
         @strongify(self);
         if (x && [x isKindOfClass:[NSDate class]]) {
-            self.barView.timeStamp = [((NSDate*)x) timeIntervalSince1970];
+            if ([(NSDate*)x isEqualToDate:AllDate]) {
+                self.barView.titleLabel.text = @"所有";
+            }
+            else
+                self.barView.titleLabel.text = [LostTimer parseDate:[((NSDate*)x) timeIntervalSince1970]];
         }
     }];
 }
@@ -121,7 +141,7 @@
         self.viewModel.date = [[NSDate date] dateByAddingDays:-2];
     }];
     UIAlertAction* allDayAction = [UIAlertAction actionWithTitle:@"所有" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+        self.viewModel.date = AllDate;
     }];
     UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
@@ -139,7 +159,72 @@
 
 - (void)selectDate
 {
+    self.maskView.hidden = NO;
+    [self.toolBar setHidden:NO];
+    CGRect rect_tool_bar = self.toolBar.frame;
+    rect_tool_bar.origin.y = SCREEN_HEIGHT - 210.f - 40.f;
+    [self.toolBar setFrame:rect_tool_bar];
+    [self showViewWithAnimation:self.toolBar YPostion:self.toolBar.frame.origin.y];//动画显示
     
+    [self.datePicker setHidden:NO];
+    CGRect rect_date_picker = self.datePicker.frame;
+    rect_date_picker.origin.y = SCREEN_HEIGHT - 210.f;
+    [self.datePicker setFrame:rect_date_picker];
+    [self showViewWithAnimation:self.datePicker YPostion:self.datePicker.frame.origin.y];//动画显示
+}
+
+- (void)chooseDate:(UIDatePicker*)sender
+{
+    self.viewModel.date = self.datePicker.date;
+    [self touchSpace];
+}
+
+- (void)touchSpace
+{
+    self.maskView.hidden = YES;
+    [self hideViewWithAnimation:self.toolBar];
+    [self hideViewWithAnimation:self.datePicker];
+    [self.view endEditing:YES];
+}
+
+//显示动画
+- (void)showViewWithAnimation:(UIView *)view YPostion:(float)yPosition
+{
+    CGRect rect_origin = view.frame;
+    rect_origin.origin.y = SCREEN_HEIGHT;
+    view.frame = rect_origin;
+    //    view.alpha = 0.5f;
+    
+    [UIView animateWithDuration:0.5f animations:^{
+        CGRect rect_current = view.frame;
+        rect_current.origin.y = yPosition;
+        view.frame = rect_current;
+        //        view.alpha = 1.0f;
+    } completion:^(BOOL finished){
+        
+    }];
+}
+
+//隐藏动画
+- (void)hideViewWithAnimation:(UIView *)view
+{
+    [UIView animateWithDuration:0.5f animations:^{
+        CGRect rect_current = view.frame;
+        rect_current.origin.y = SCREEN_HEIGHT;
+        view.frame = rect_current;
+    } completion:^(BOOL finished){
+        [view setHidden:YES];
+    }];
+}
+
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+
+- (void)dealloc
+{
+    _toolBar = nil;
+    _datePicker = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -151,7 +236,7 @@
 //定义展示的UICollectionViewCell的个数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.viewModel.array.count;
+    return self.viewModel.resultArray.count;
 }
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
@@ -188,9 +273,8 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     cell.backgroundColor = tableView.backgroundColor;
-    TaskData* task = [self.viewModel.array objectAtIndex:indexPath.section];
+    TaskData* task = [self.viewModel.resultArray objectAtIndex:indexPath.section];
     cell.data = task;
-    //    cell.arrayVoteData = self.viewModel.array;
     
     @weakify(self);
     [[cell.infoBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
@@ -208,8 +292,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-//    TaskData* task = [self.viewModel.array objectAtIndex:indexPath.section];
 }
 
 - (TaskDateBarView*)barView
@@ -220,4 +302,54 @@
     return _barView;
 }
 
+
+- (UIDatePicker*)datePicker
+{
+    if (!_datePicker) {
+        _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-210.f, SCREEN_WIDTH, 210.f)];
+        _datePicker.datePickerMode = UIDatePickerModeDate;
+        _datePicker.tag = 1009;
+        
+        NSDate *date = [NSDate date];
+        _datePicker.date = date;
+        _datePicker.minimumDate = [date dateByAddingMonths:-3];
+        
+        double birthDate = [date timeIntervalSince1970];
+        NSLog(@"%.2f",birthDate);
+        
+        _datePicker.backgroundColor = [UIColor whiteColor];
+        _datePicker.locale = [NSLocale localeWithLocaleIdentifier:@"zh_CN"];
+//        [_datePicker addTarget:self action:@selector(chooseDate:) forControlEvents:UIControlEventValueChanged];
+    }
+    return _datePicker;
+}
+
+- (UIToolbar*)toolBar
+{
+    if (!_toolBar) {
+        _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.f, SCREEN_HEIGHT-210.f-40.f, SCREEN_WIDTH, 40.f)];
+        _toolBar.barStyle = UIBarStyleDefault;
+        _toolBar.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        [_toolBar sizeToFit];
+        
+        UIBarButtonItem *doneBtn =[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(chooseDate:)];
+        UIBarButtonItem *flexibleSpaceLeft = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        
+        NSArray *array = [NSArray arrayWithObjects:flexibleSpaceLeft, doneBtn, nil];
+        [_toolBar setItems:array];
+    }
+    return _toolBar;
+}
+    
+
+
+- (UIView*)maskView
+{
+    if (!_maskView) {
+        _maskView = [UIView new];
+        _maskView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.3];
+        _maskView.userInteractionEnabled = YES;
+    }
+    return _maskView;
+}
 @end

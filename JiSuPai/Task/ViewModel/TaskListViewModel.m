@@ -10,11 +10,46 @@
 
 @implementation TaskListViewModel
 
+- (void)setDate:(NSDate *)date
+{
+    _date = date;
+    if ([date isEqualToDate:AllDate]) {
+        if (self.array.count > 0)
+            self.resultArray = self.array;
+        else
+            self.resultArray = nil;
+        return;
+    }
+        
+    if (self.array.count > 0) {
+        NSString* nowDate = [LostTimer parseDate:[_date timeIntervalSince1970]];
+        NSMutableArray* tempArray = [NSMutableArray array];
+        for (int i = 0; i<self.array.count; i++) {
+            TaskData *task = [self.array objectAtIndex:i];
+            if ([task.orderdate isEqualToString:nowDate]) {
+                [tempArray addObject:task];
+            }
+        }
+        self.resultArray = tempArray;
+    }
+    else
+        self.resultArray = nil;
+    ;
+}
+
 - (id)init
 {
     self = [super init];
     if (self) {
-        _date = [NSDate date];
+        _date = AllDate;
+        
+        @weakify(self);
+        [[RACObserve(self, array) skip:0] subscribeNext:^(id x) {
+            @strongify(self);
+            if (x) {
+                self.date = AllDate;
+            }
+        }];
     }
     return self;
 }

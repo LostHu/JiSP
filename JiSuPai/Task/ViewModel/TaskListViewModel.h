@@ -9,8 +9,11 @@
 #import "BaseViewModel.h"
 #import "TaskData.h"
 
+#define AllDate [NSDate dateWithString:@"1900-01-01" format:@"yyyy-MM-dd"]
+
 @interface TaskListViewModel : BaseTableViewModel
 
-@property (nonatomic,strong) NSDate* date;
+@property (nonatomic, strong) NSDate* date;
+@property (nonatomic, strong) NSArray* resultArray;
 
 @end
