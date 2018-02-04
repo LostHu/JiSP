@@ -108,7 +108,7 @@
 }
 
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.viewModel.data) {
+    if (self.viewModelWoking.data) {
         return 5;
     }
     return 0;

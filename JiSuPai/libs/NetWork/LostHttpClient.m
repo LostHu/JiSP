@@ -70,11 +70,16 @@ DEFINE_SINGLETON_FOR_CLASS(LostHttpClient)
 //        [parameter setObject:token forKey:@"token"];
 //    }
     
-    NSString *phone = @"13524285631";
-    NSString *pwd = @"111111";          // 所有接口添加平台参数  1、ios 2、android
+    NSString *phone = [UserManager sharedInstance].loginname;
+    NSString *pwd = [UserManager sharedInstance].password;          // 所有接口添加平台参数  1、ios 2、android
 
-    [parameter setObject:[pwd md5] forKey:@"password"];
-    [parameter setObject:phone forKey:@"loginname"];
+    if (![NSString isBlankString:pwd]) {
+        [parameter setObject:[pwd md5] forKey:@"password"];
+    }
+    if (![NSString isBlankString:phone]) {
+        [parameter setObject:phone forKey:@"loginname"];
+    }
+    
 //    [parameter setObject:@(1) forKey:@"version"];
 }
 #define DebugLog

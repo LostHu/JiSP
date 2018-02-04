@@ -23,10 +23,11 @@
 
 @property (nonatomic, strong) NSString * username;
 @property (nonatomic, strong) NSString * telephone;
-@property (nonatomic, assign) NSInteger status;
+@property (nonatomic, assign) NSInteger  status;
 @property (nonatomic, strong) NSString * statusInCn;
 @property (nonatomic, strong) NSString * yunlimgrtel;
 @property (nonatomic, strong) NSString * yunlimgrname;
+
 //@property (nonatomic, strong) NSString * pwd;
            // 0:临时账号   1:手机账号       为1显示根据level显示用户勋章，type为3显示小编固定勋章
 //@property (nonatomic, assign) NSInteger pCount;           // P豆

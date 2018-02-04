@@ -11,7 +11,8 @@
 #define kFistOpenApp    @"kFistOpenApp"
 #define MyDB            @"my_db"
 #define CACHEKEY_MyInfoData   @"CACHEKEY_MyInfoData"
-#define CACHEKEY_UserToken    @"CACHEKEY_Token"
+#define CACHEKEY_UserLoginName    @"CACHEKEY_UserLoginName"
+#define CACHEKEY_UserPWD    @"CACHEKEY_UserPWD"
 
 @implementation UserManager
 DEFINE_SINGLETON_FOR_CLASS(UserManager)
@@ -27,16 +28,19 @@ DEFINE_SINGLETON_FOR_CLASS(UserManager)
             _userData = userdata;
             
             YYCache *cache = [YYCache cacheWithName:MyDB];
-            NSString* token = (NSString*)[cache objectForKey:CACHEKEY_UserToken];
-//            NSString* token = (NSString*)[[CacheStore instanceCacheStore] dataForKey:CACHEKEY_UserToken forType:PropertyList];
-//            if (![NSString isBlankString:token]) {
-//                _token = token;
-//            }
+            NSString* name = (NSString*)[cache objectForKey:CACHEKEY_UserLoginName];
+            NSString* pwd = (NSString*)[cache objectForKey:CACHEKEY_UserPWD];
+            if (![NSString isBlankString:name]) {
+                _loginname = name;
+            }
+            if (![NSString isBlankString:pwd]) {
+                _password = pwd;
+            }
         }
         else
         {
-            [[YYCache cacheWithName:MyDB] removeObjectForKey:CACHEKEY_UserToken];
-//            [[CacheStore instanceCacheStore] deleteCacheForKey:CACHEKEY_UserToken];
+            [[YYCache cacheWithName:MyDB] removeObjectForKey:CACHEKEY_UserLoginName];
+            [[YYCache cacheWithName:MyDB] removeObjectForKey:CACHEKEY_UserPWD];
         }
         
         return self;
@@ -70,15 +74,22 @@ DEFINE_SINGLETON_FOR_CLASS(UserManager)
 //    return NO;
 //}
 //
-//- (void)setToken:(NSString *)token
-//{
-//     _token = token;
-//    if (![NSString isBlankString:token]) {
-//
-//        [[YYCache cacheWithName:MyDB] setObject:_token forKey:CACHEKEY_UserToken];
-////        [[CacheStore instanceCacheStore] writeData:_token forKey:CACHEKEY_UserToken forType:PropertyList timeOut:0];
-//    }
-//}
+- (void)setLoginname:(NSString *)loginname
+{
+     _loginname = loginname;
+    if (![NSString isBlankString:loginname]) {
+
+        [[YYCache cacheWithName:MyDB] setObject:_loginname forKey:CACHEKEY_UserLoginName];
+    }
+}
+
+- (void)setPassword:(NSString *)password
+{
+    _password = password;
+    if (![NSString isBlankString:password]) {
+        [[YYCache cacheWithName:MyDB] setObject:_password forKey:CACHEKEY_UserPWD];
+    }
+}
 
 - (void)setUserData:(UserData *)userData
 {
@@ -87,12 +98,11 @@ DEFINE_SINGLETON_FOR_CLASS(UserManager)
     }
     else
     {
-//        self.token = nil;
-        [[YYCache cacheWithName:MyDB] removeObjectForKey:CACHEKEY_UserToken];
+        self.loginname = nil;
+        self.password = nil;
+        [[YYCache cacheWithName:MyDB] removeObjectForKey:CACHEKEY_UserLoginName];
+        [[YYCache cacheWithName:MyDB] removeObjectForKey:CACHEKEY_UserPWD];
         [[YYCache cacheWithName:MyDB] removeObjectForKey:CACHEKEY_MyInfoData];
-
-//        [[CacheStore instanceCacheStore] deleteCacheForKey:CACHEKEY_UserToken];
-//        [[CacheStore instanceCacheStore] deleteCacheForKey:CACHEKEY_MyInfoData];
     }
     _userData = userData;
 }
@@ -101,7 +111,6 @@ DEFINE_SINGLETON_FOR_CLASS(UserManager)
 {
     YYCache *cache = [YYCache cacheWithName:MyDB];
     UserData *data = (UserData *)[cache objectForKey:cacheKey];
-//    return (UserData *)[[CacheStore instanceCacheStore] dataForKey:cacheKey forType:Archiver];
     return data;
 }
 
@@ -109,7 +118,6 @@ DEFINE_SINGLETON_FOR_CLASS(UserManager)
 {
     YYCache *cache = [YYCache cacheWithName:MyDB];
     [cache setObject:userData forKey:CACHEKEY_MyInfoData];
-//    [[CacheStore instanceCacheStore] writeData:userData forKey:CACHEKEY_MyInfoData forType:Archiver timeOut:0];
 }
 
 - (void)clearUserData

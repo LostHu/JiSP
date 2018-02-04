@@ -274,6 +274,8 @@
              WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
                  @strongify(self);
                  if (appendData.flag == YES) {
+                     [UserManager sharedInstance].loginname = value;
+                     [UserManager sharedInstance].password = pwd;
                      [self performSelector:@selector(sendSuccess) withObject:nil afterDelay:0.3];
                  }
                  else

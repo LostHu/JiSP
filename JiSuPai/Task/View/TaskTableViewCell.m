@@ -40,7 +40,7 @@
         self.titleLabel.text = @"title";
         
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(bgView.mas_left).offset(50);
+            make.right.equalTo(bgView.mas_left).offset(60);
             make.top.offset(9);
         }];
         
@@ -158,6 +158,21 @@
     self.startLabel.text = data.fahuoaddress;
 //    self.stateLabel.text = data.orderstatusInCn;
     [self.stateBtn setTitle:data.orderstatusInCn forState:UIControlStateNormal];
+    
+    if (_data.orderstatus == 1) {
+        [self.okBtn setTitle:@"抢单" forState:UIControlStateNormal];
+    }
+    if (_data.orderstatus == 2) {
+        [self.okBtn setTitle:@"取消订单" forState:UIControlStateNormal];
+    }
+    if (_data.orderstatus == 3) {
+        [self.okBtn setTitle:@"开始工作" forState:UIControlStateNormal];
+    }
+    if (_data.orderstatus == 4) {
+        [self.okBtn setTitle:@"完成工作" forState:UIControlStateNormal];
+    }
+    self.okBtn.hidden = _data.orderstatus > 4 || _data.orderstatus < 1;
+    
 //    NSMutableAttributedString* str = [[NSMutableAttributedString alloc] initWithString:data.orderstatusInCn];
 //    YYTextContainer* container = [YYTextContainer new];
 //    str.font = Font_System(12);

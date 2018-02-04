@@ -13,7 +13,9 @@
 DEFINE_SINGLETON_FOR_HEADER(UserManager)
 
 @property (nonatomic, strong) UserData*  userData;
-//@property (nonatomic, strong, readwrite) NSString*  token;
+@property (nonatomic, strong, readwrite) NSString*  loginname;
+@property (nonatomic, strong, readwrite) NSString*  password;
+
 
 /**
  *  返回是否有账号存在，用于启动判定

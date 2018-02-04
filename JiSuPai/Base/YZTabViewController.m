@@ -55,6 +55,9 @@
     // Do any additional setup after loading the view.
     self.tabData = [YZTabData new];
     [self initTabItems];
+    
+    [[UserManager sharedInstance] getUserDatafromNetWork];
+    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
