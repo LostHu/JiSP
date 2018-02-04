@@ -34,7 +34,94 @@
     }
     else
         self.resultArray = nil;
-    ;
+}
+
+- (void)cancelTask:(TaskData*)task
+{
+    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:task.taskid forKey:@"id"];
+    @weakify(self);
+    [LostHttpClient GETRequestURL:API_CancelOrder WithParameter:parameters
+             WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
+                 @strongify(self);
+                 if (appendData.flag == YES) {
+                     // 操作成功后更新数据列表
+                     [self getFirstList:nil];
+                 }
+                 else
+                 {
+                     [HUD showMsg:appendData.msg type: HUDMsgType_Error];
+                 }
+             }
+                 WithFailureBlock:^{
+                     
+                 }];
+}
+
+- (void)startTask:(TaskData*)task
+{
+    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:task.taskid forKey:@"id"];
+    @weakify(self);
+    [LostHttpClient GETRequestURL:API_TaskStart WithParameter:parameters
+             WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
+                 @strongify(self);
+                 if (appendData.flag == YES) {
+                     // 操作成功后更新数据列表
+                     [self getFirstList:nil];
+                 }
+                 else
+                 {
+                     [HUD showMsg:appendData.msg type: HUDMsgType_Error];
+                 }
+             }
+                 WithFailureBlock:^{
+                     
+                 }];
+}
+
+- (void)endTask:(TaskData*)task
+{
+    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:task.taskid forKey:@"id"];
+    @weakify(self);
+    [LostHttpClient GETRequestURL:API_TaskEnd WithParameter:parameters
+             WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
+                 @strongify(self);
+                 if (appendData.flag == YES) {
+                     // 操作成功后更新数据列表
+                     [self getFirstList:nil];
+                 }
+                 else
+                 {
+                     [HUD showMsg:appendData.msg type: HUDMsgType_Error];
+                 }
+             }
+                 WithFailureBlock:^{
+                     
+                 }];
+}
+
+- (void)firstTask:(TaskData*)task
+{
+    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:task.taskid forKey:@"id"];
+    @weakify(self);
+    [LostHttpClient GETRequestURL:API_MatchOrder WithParameter:parameters
+             WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
+                 @strongify(self);
+                 if (appendData.flag == YES) {
+                     // 操作成功后更新数据列表
+                     [self getFirstList:nil];
+                 }
+                 else
+                 {
+                     [HUD showMsg:appendData.msg type: HUDMsgType_Error];
+                 }
+             }
+                 WithFailureBlock:^{
+                     
+                 }];
 }
 
 - (id)init

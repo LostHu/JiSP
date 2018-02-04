@@ -277,7 +277,7 @@
     cell.data = task;
     
     @weakify(self);
-    [[cell.infoBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+    [[[cell.infoBtn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
         @strongify(self);
         TaskInfoViewController* vc = [TaskInfoViewController new];
         vc.viewModel.data = task;
@@ -286,12 +286,60 @@
         [self.navigationController pushViewController:vc animated:YES];
     }];
     
+    [[[cell.okBtn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
+        @strongify(self);
+        [self opTask:task];
+    }];
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)opTask:(TaskData*)task
+{
+    NSString* title = @"";
+    
+    if (task.orderstatus == 1) {
+        title = @"确认抢单吗？";
+    }
+    if (task.orderstatus == 2) {
+        title = @"确认取消订单吗？";
+    }
+    if (task.orderstatus == 3) {
+        title = @"确认开始工作吗？";
+    }
+    if (task.orderstatus == 4) {
+        title = @"确认完成工作吗？";
+    }
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    @weakify(self);
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        @strongify(self);
+        if (task.orderstatus == 1) {
+            [self.viewModel firstTask:task];
+        }
+        if (task.orderstatus == 2) {
+            [self.viewModel cancelTask:task];
+        }
+        if (task.orderstatus == 3) {
+            [self.viewModel startTask:task];
+        }
+        if (task.orderstatus == 4) {
+            [self.viewModel endTask:task];
+        }
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:okAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (TaskDateBarView*)barView

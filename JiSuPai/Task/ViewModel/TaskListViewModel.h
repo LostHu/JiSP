@@ -16,4 +16,8 @@
 @property (nonatomic, strong) NSDate* date;
 @property (nonatomic, strong) NSArray* resultArray;
 
+- (void)cancelTask:(TaskData*)task;
+- (void)startTask:(TaskData*)task;
+- (void)endTask:(TaskData*)task;
+- (void)firstTask:(TaskData*)task;
 @end
