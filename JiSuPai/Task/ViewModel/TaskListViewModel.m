@@ -39,7 +39,7 @@
 - (void)cancelTask:(TaskData*)task
 {
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:task.taskid forKey:@"id"];
+    [parameters setObject:task.pureid forKey:@"id"];
     @weakify(self);
     [LostHttpClient GETRequestURL:API_CancelOrder WithParameter:parameters
              WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
@@ -61,7 +61,7 @@
 - (void)startTask:(TaskData*)task
 {
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:task.taskid forKey:@"id"];
+    [parameters setObject:task.pureid forKey:@"id"];
     @weakify(self);
     [LostHttpClient GETRequestURL:API_TaskStart WithParameter:parameters
              WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
@@ -83,7 +83,7 @@
 - (void)endTask:(TaskData*)task
 {
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:task.taskid forKey:@"id"];
+    [parameters setObject:task.pureid forKey:@"id"];
     @weakify(self);
     [LostHttpClient GETRequestURL:API_TaskEnd WithParameter:parameters
              WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
@@ -105,7 +105,7 @@
 - (void)firstTask:(TaskData*)task
 {
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:task.taskid forKey:@"id"];
+    [parameters setObject:task.pureid forKey:@"id"];
     @weakify(self);
     [LostHttpClient GETRequestURL:API_MatchOrder WithParameter:parameters
              WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {

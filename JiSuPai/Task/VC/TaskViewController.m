@@ -74,6 +74,7 @@
     [self.tableView registerClass:[TaskTableViewCell class] forCellReuseIdentifier:[TaskTableViewCell identify]];
     
     
+    self.tableView.placeholderView.titleLabel.text = @"暂无出车计划";
     [self.barView.selBtn addTarget:self action:@selector(selectDay) forControlEvents:UIControlEventTouchUpInside];
     [self.barView.dateBtn addTarget:self action:@selector(selectDate) forControlEvents:UIControlEventTouchUpInside];
     

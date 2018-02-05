@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface TaskData : NSObject
+@property (nonatomic, strong) NSString* pureid;
+
 @property (nonatomic, strong) NSString* taskid;
 @property (nonatomic, strong) NSString* firstorderid;
 @property (nonatomic, strong) NSString* userid;

@@ -9,5 +9,7 @@
 #import "TaskData.h"
 
 @implementation TaskData
-
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"pureid" : @"id"};
+}
 @end

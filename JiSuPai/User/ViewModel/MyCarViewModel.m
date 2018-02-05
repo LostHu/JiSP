@@ -72,6 +72,7 @@
     [parameters setObject:self.driverData.carno forKey:@"carno"];
     [parameters setObject:self.driverData.jzno forKey:@"jzno"];
     [parameters setObject:self.driverData.username forKey:@"username"];
+    [parameters setObject:self.driverData.region forKey:@"region"];
     
     [LostHttpClient GETRequestURL:API_Edit_Account WithParameter:parameters
              WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {

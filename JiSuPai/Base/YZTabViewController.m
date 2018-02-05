@@ -116,7 +116,7 @@
                                                         }
                                              forState: UIControlStateNormal];
     [[UITabBarItem appearance] setTitleTextAttributes:@{
-                                                        NSForegroundColorAttributeName: rgbfromHex(@"06b0ff"),
+                                                        NSForegroundColorAttributeName: rgbfromHex(@"5758f3"),
                                                         NSFontAttributeName: Font_System_Bold(10)
                                                         }
                                              forState: UIControlStateSelected];
