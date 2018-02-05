@@ -10,6 +10,8 @@
 
 @interface TaskDateBarView : UIView
 @property (nonatomic,strong) UILabel* titleLabel;
+@property (nonatomic,strong) UILabel* dayLabel;
+
 @property (nonatomic,strong) UIButton* selBtn;
 @property (nonatomic,strong) UIButton* dateBtn;
 @property (nonatomic,assign) NSInteger timeStamp;

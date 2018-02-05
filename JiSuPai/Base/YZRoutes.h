@@ -13,5 +13,5 @@
 
 + (UIViewController *)topViewController;
 + (void)routeToUserPage4Id:(NSString*)userId;
-
++ (void)showLoginPage;
 @end

@@ -261,7 +261,7 @@
 {
     if (!_phoneBtn) {
         _phoneBtn = [UIButton new];
-        [_phoneBtn setImage:ImageNamed(@"pic_libao") forState:UIControlStateNormal];
+        [_phoneBtn setImage:ImageNamed(@"iohone") forState:UIControlStateNormal];
     }
     return _phoneBtn;
 }

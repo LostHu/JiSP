@@ -126,21 +126,26 @@
     UIAlertController* alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *tomorrowAction = [UIAlertAction actionWithTitle:@"明天" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         @strongify(self);
+        self.barView.dayLabel.text = @"明天";
         self.viewModel.date = [[NSDate date] dateByAddingDays:1];
     }];
     UIAlertAction* todayAction = [UIAlertAction actionWithTitle:@"今天" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         @strongify(self);
+        self.barView.dayLabel.text = @"今天";
         self.viewModel.date = [NSDate date];
     }];
     UIAlertAction* yesterdayAction = [UIAlertAction actionWithTitle:@"昨天" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         @strongify(self);
+        self.barView.dayLabel.text = @"昨天";
         self.viewModel.date = [[NSDate date] dateByAddingDays:-1];
     }];
     UIAlertAction* beforeYesterdayAction = [UIAlertAction actionWithTitle:@"前天" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         @strongify(self);
+        self.barView.dayLabel.text = @"前天";
         self.viewModel.date = [[NSDate date] dateByAddingDays:-2];
     }];
     UIAlertAction* allDayAction = [UIAlertAction actionWithTitle:@"所有" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.barView.dayLabel.text = @"所有";
         self.viewModel.date = AllDate;
     }];
     UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {

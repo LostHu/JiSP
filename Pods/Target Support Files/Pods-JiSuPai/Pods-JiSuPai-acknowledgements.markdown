@@ -24,6 +24,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+## AMapFoundation
+
+Copyright © 2014 AutoNavi. All Rights Reserved.
+
+
+## AMapLocation
+
+Copyright © 2014 AutoNavi. All Rights Reserved.
+
+
 ## DZNEmptyDataSet
 
 The MIT License (MIT)

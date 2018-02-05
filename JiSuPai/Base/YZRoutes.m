@@ -7,6 +7,7 @@
 //
 
 #import "YZRoutes.h"
+#import "LogInViewController.h"
 
 @implementation YZRoutes
 //DEFINE_SINGLETON_FOR_CLASS(YZRoutes)
@@ -17,6 +18,17 @@
     if (vc) {
 //        uservie
 //        [vc.navigationController pushViewController:<#(nonnull UIViewController *)#> animated:<#(BOOL)#>]
+    }
+}
+
++ (void)showLoginPage
+{
+    LogInViewController* vc = [LogInViewController new];
+    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    nav.navigationBarHidden = YES;
+    UIViewController* current_VC = [self topViewController];
+    if (current_VC) {
+        [current_VC presentViewController:nav animated:YES completion:nil];
     }
 }
 

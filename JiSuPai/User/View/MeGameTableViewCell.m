@@ -22,18 +22,17 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        self.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wo_btn_you_gray"]];
+        self.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"light_btn"]];
         self.accessoryView.backgroundColor = [UIColor whiteColor];
         
         [self.contentView addSubview:self.iconView];
         [self.iconView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.contentView);
-            make.left.equalTo(self.contentView).offset(12);
-            make.size.mas_equalTo(CGSizeMake(25, 25));
+            make.centerX.equalTo(self.contentView.mas_left).offset(25);
+//            make.size.mas_equalTo(CGSizeMake(25, 25));
         }];
-        _iconView.layer.cornerRadius = 12.5;
+//        _iconView.layer.cornerRadius = 12.5;
 
-        
         [self.contentView addSubview:self.titleLabel];
         self.titleLabel.text = @"我的游戏";
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -121,6 +120,7 @@
         _iconView = [[UIImageView alloc] init];
         _iconView.image = [UIImage imageNamed:@"tab_icon_faxian_pre"];
         _iconView.clipsToBounds = YES;
+        _iconView.contentMode = UIViewContentModeCenter;
     }
     return _iconView;
 }

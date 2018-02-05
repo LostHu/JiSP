@@ -30,6 +30,8 @@
     self.window.rootViewController = _vc;
     [self.window makeKeyAndVisible];
     
+    [[GDLocationManager sharedInstance] startLoaction];
+    
     return YES;
 }
 

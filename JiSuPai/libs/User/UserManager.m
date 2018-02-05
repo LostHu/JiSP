@@ -47,10 +47,10 @@ DEFINE_SINGLETON_FOR_CLASS(UserManager)
     }
 }
 
-//- (BOOL)hasAccount
-//{
-//    return ![NSString isBlankString:_token];
-//}
+- (BOOL)hasAccount
+{
+    return ![NSString isBlankString:self.loginname];
+}
 //
 //- (BOOL)isTemporaryAccount
 //{

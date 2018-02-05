@@ -25,8 +25,8 @@
     if (self)
     {
         NSArray* arrayTitle = @[@"任务大厅",@"抢单列表",@"正在配送",@"个人中心"];
-        NSArray *iocnNormalArray = @[@"tab_icon_dongtai",@"tab_icon_faxian",@"tab_icon_faxian",@"tab_icon_wo"];
-        NSArray *iconSeclectArray = @[@"tab_icon_dongtai_pre",@"tab_icon_faxian_pre",@"tab_icon_faxian_pre",@"tab_icon_wo_pre"];
+        NSArray *iocnNormalArray = @[@"任务大厅1",@"抢单列表1",@"完成列表1",@"个人中心1"];
+        NSArray *iconSeclectArray = @[@"任务大厅2",@"抢单列表2",@"完成列表2",@"个人中心2"];
         
         _arrayTabData = [NSMutableArray new];
         for (int i = 0; i < arrayTitle.count; i++) {
@@ -55,9 +55,6 @@
     // Do any additional setup after loading the view.
     self.tabData = [YZTabData new];
     [self initTabItems];
-    
-    [[UserManager sharedInstance] getUserDatafromNetWork];
-    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -132,6 +129,14 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    if (![[UserManager sharedInstance] hasAccount]) {
+        [YZRoutes showLoginPage];
+    }
+    else{
+        // 有数据，更新信息
+        [[UserManager sharedInstance] getUserDatafromNetWork];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

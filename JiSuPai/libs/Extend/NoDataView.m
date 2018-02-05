@@ -18,8 +18,8 @@
         self.userInteractionEnabled = YES;
         [self addSubview:self.imageView];
         [self addSubview:self.titleLabel];
-        self.titleLabel.text = @"暂无出行计划";
-        self.imageView.image = [UIImage imageNamed:@"pic_blank"];
+        self.titleLabel.text = @"暂无出车计划";
+        self.imageView.image = ImageNamed(@"暂无出车计划");
 //        self.imageView.backgroundColor = RandomColor;
 //        self.titleLabel.backgroundColor = RandomColor;
         

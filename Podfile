@@ -16,7 +16,7 @@ pod 'ReactiveCocoa', '2.3.1'
 #pod 'pop','1.0.9'
 pod 'UITableView+FDTemplateLayoutCell'
 pod 'DZNEmptyDataSet'
-#pod 'AMapLocation'
+pod 'AMapLocation'
 #pod 'AMapSearch'
 #pod 'SCRecorder'
 pod 'IQKeyboardManager' , '3.3.7'    #最后一版技术IOS7以上

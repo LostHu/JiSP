@@ -328,36 +328,47 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         cell.backgroundColor = [UIColor whiteColor];
+        
+//        [cell.iconView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//            
+//        };
+        
         cell.infoLabel.font = Font_System(12);
         if (indexPath.row == 0) {
             cell.titleLabel.text = @"姓名";
             cell.gapLineView.hidden = NO;
             cell.infoLabel.text = self.viewModel.driverData.username;
+            cell.iconView.image = ImageNamed(@"车牌号");
         }
         if (indexPath.row == 1) {
             cell.titleLabel.text = @"区域";
             cell.gapLineView.hidden = NO;
             cell.infoLabel.text = self.viewModel.driverData.region;
+            cell.iconView.image = ImageNamed(@"车型");
         }
         if (indexPath.row == 2) {
             cell.titleLabel.text = @"车型";
             cell.gapLineView.hidden = NO;
             cell.infoLabel.text = self.viewModel.driverData.cartypeInCn;
+            cell.iconView.image = ImageNamed(@"车型");
         }
         if (indexPath.row == 3) {
             cell.titleLabel.text = @"车牌号";
             cell.gapLineView.hidden = NO;
             cell.infoLabel.text = self.viewModel.driverData.carno;
+            cell.iconView.image = ImageNamed(@"车牌号");
         }
         if (indexPath.row == 4) {
             cell.titleLabel.text = @"身份证";
             cell.gapLineView.hidden = NO;
             cell.infoLabel.text = self.viewModel.driverData.sfzno;
+            cell.iconView.image = ImageNamed(@"车牌号");
         }
         if (indexPath.row == 5) {
             cell.titleLabel.text = @"驾驶证";
             cell.gapLineView.hidden = NO;
             cell.infoLabel.text = self.viewModel.driverData.jzno;
+            cell.iconView.image = ImageNamed(@"车牌号");
         }
         return cell;
     }
@@ -381,11 +392,13 @@
                 cell.infoLabel1.text = @"车牌号清晰，车头完整";
                 cell.infoLabel2.text = @"点击上传";
                 cell.sfz1Btn.enabled = NO;
+                [cell.sfz1Btn setImage:ImageNamed(@"车头") forState:UIControlStateDisabled];
             }
             if (indexPath.row == 2) {
                 cell.infoLabel1.text = @"车辆侧面完整";
                 cell.infoLabel2.text = @"点击上传";
                 cell.sfz1Btn.enabled = NO;
+                [cell.sfz1Btn setImage:ImageNamed(@"车辆侧面") forState:UIControlStateDisabled];
             }
             cell.sfz1Btn.tag = indexPath.row*10+1;
             cell.sfz2Btn.tag = indexPath.row*10+2;

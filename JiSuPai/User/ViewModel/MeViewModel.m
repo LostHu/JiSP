@@ -16,7 +16,7 @@
     {
         NSArray* arrayTitle = @[@"车辆信息",@"客户评价",@"司机学院",@"联系我们",@"空闲时间",@"",@"请假申请",@"修改密码"];
         NSArray* arrayInfo = @[@"完善车辆信息",@"查看客户评价",@"查看司机学院",@"",@"查看空闲时间",@"",@"点击申请请假",@"点击修改密码"];
-        NSArray *iocnNormalArray = @[@"tab_icon_dongtai",@"tab_icon_faxian",@"tab_icon_faxian",@"tab_icon_wo",@"tab_icon_faxian",@"tab_icon_wo",@"tab_icon_faxian",@"tab_icon_wo"];
+        NSArray *iocnNormalArray = @[@"车辆信息",@"客户评价",@"司机学院",@"tab_icon_wo",@"tab_icon_faxian",@"tab_icon_wo",@"tab_icon_faxian",@"tab_icon_wo"];
         NSArray *iconSeclectArray = @[@"tab_icon_dongtai_pre",@"tab_icon_faxian_pre",@"tab_icon_faxian_pre",@"tab_icon_wo_pre",@"tab_icon_faxian_pre",@"tab_icon_wo_pre",@"tab_icon_faxian_pre",@"tab_icon_wo_pre"];
         
         _arrayTabData = [NSMutableArray new];

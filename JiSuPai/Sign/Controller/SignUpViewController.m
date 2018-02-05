@@ -57,7 +57,7 @@
     [self.scrollView addSubview:self.imageView];
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.scrollView);
-        make.size.mas_equalTo(CGSizeMake(60, 40));
+        make.size.mas_equalTo(CGSizeMake(120, 50));
         make.top.offset(NavigationBarHeight+20);
     }];
     
@@ -159,10 +159,6 @@
     NSString* service = @"《吉速派服务协议》";
     self.selectButton.frame = CGRectMake(0, 0, 13, 13);
     NSMutableAttributedString* attrStr = [[NSMutableAttributedString alloc] init];
-    NSMutableAttributedString* attachment = [NSMutableAttributedString attachmentStringWithContent:self.selectButton
-                                                                                       contentMode:UIViewContentModeCenter
-                                                                                    attachmentSize:self.selectButton.size alignToFont:Font_System(12) alignment:YYTextVerticalAlignmentCenter];
-    [attrStr appendAttributedString:attachment];
     [attrStr appendAttributedString:[[NSMutableAttributedString alloc] initWithString:basic]];
     NSRange range_service = [attrStr.mutableString rangeOfString:service];
     
@@ -193,9 +189,9 @@
     self.pwdTextField.placeholder = @"密码";
     self.inviteTextField.placeholder = @"邀请码";
     
-    UIImageView* leftView = [[UIImageView alloc] initWithImage:ImageNamed(@"icon_pl")];
+    UIImageView* leftView = [[UIImageView alloc] initWithImage:ImageNamed(@"手机号码")];
     leftView.contentMode = UIViewContentModeCenter;
-    UIImageView* rightView = [[UIImageView alloc] initWithImage:ImageNamed(@"icon_pl")];
+    UIImageView* rightView = [[UIImageView alloc] initWithImage:ImageNamed(@"验证码")];
     rightView.contentMode = UIViewContentModeCenter;
     self.mailTextField.leftView = leftView;
     self.mailTextField.leftViewMode = UITextFieldViewModeAlways;
@@ -204,9 +200,9 @@
     self.codeTextField.leftViewMode = UITextFieldViewModeAlways;
     self.codeTextField.leftView.width = 50;
     
-    UIImageView* topView = [[UIImageView alloc] initWithImage:ImageNamed(@"icon_pl")];
+    UIImageView* topView = [[UIImageView alloc] initWithImage:ImageNamed(@"密码")];
     topView.contentMode = UIViewContentModeCenter;
-    UIImageView* bottomView = [[UIImageView alloc] initWithImage:ImageNamed(@"icon_pl")];
+    UIImageView* bottomView = [[UIImageView alloc] initWithImage:ImageNamed(@"验证码")];
     bottomView.contentMode = UIViewContentModeCenter;
     self.pwdTextField.leftView = topView;
     self.pwdTextField.leftViewMode = UITextFieldViewModeAlways;
@@ -560,7 +556,7 @@
 {
     if (!_imageView) {
         _imageView = [[UIImageView alloc] init];
-        _imageView.image = ImageNamed(@"pic_bg");
+        _imageView.image = ImageNamed(@"logo");
     }
     return _imageView;
 }

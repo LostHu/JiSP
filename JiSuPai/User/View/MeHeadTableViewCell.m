@@ -135,13 +135,12 @@
         [self.contentView addSubview: self.photoView];
         [self.contentView addSubview: self.titleLabel];
         [self.contentView addSubview: self.infoLabel];
-        self.photoView.backgroundColor = RandomColor;
 
         [self.photoView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.contentView).offset(0);
 //            make.centerY.equalTo(self.contentView).offset(-15);
-            make.top.offset(20);
-            make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH/5, SCREEN_WIDTH/7));
+            make.top.offset(8);
+            make.size.mas_equalTo(CGSizeMake(78, 79));
         }];
         
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -169,7 +168,7 @@
 {
     if (!_photoView) {
         _photoView = [[UIImageView alloc] init];
-        _photoView.image = [UIImage imageNamed:@"chuqin_con_tong"];
+        _photoView.image = [UIImage imageNamed:@"头像"];
     }
     return _photoView;
 }

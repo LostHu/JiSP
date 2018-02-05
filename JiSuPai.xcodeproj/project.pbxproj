@@ -155,6 +155,7 @@
 		0BAE57D5201446E800872123 /* FreeTimeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE57D4201446E800872123 /* FreeTimeViewModel.m */; };
 		0BAE57D8201452C500872123 /* FreeTimeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE57D7201452C500872123 /* FreeTimeData.m */; };
 		0BAE57DB2014776700872123 /* FreeTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE57DA2014776700872123 /* FreeTimeTableViewCell.m */; };
+		0BC4DC74202845F5001D2C58 /* GDLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4DC73202845F5001D2C58 /* GDLocationManager.m */; };
 		0BC9FDC5201EC9DD0055857F /* MyCarBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC9FDC4201EC9DD0055857F /* MyCarBaseTableViewCell.m */; };
 		C34F9A952F6FFC470355AEBC /* Pods_JiSuPai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6617962FEF8BB6E4DA2CBFAA /* Pods_JiSuPai.framework */; };
 /* End PBXBuildFile section */
@@ -477,6 +478,8 @@
 		0BAE57D7201452C500872123 /* FreeTimeData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreeTimeData.m; sourceTree = "<group>"; };
 		0BAE57D92014776700872123 /* FreeTimeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FreeTimeTableViewCell.h; sourceTree = "<group>"; };
 		0BAE57DA2014776700872123 /* FreeTimeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreeTimeTableViewCell.m; sourceTree = "<group>"; };
+		0BC4DC72202845F5001D2C58 /* GDLocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GDLocationManager.h; sourceTree = "<group>"; };
+		0BC4DC73202845F5001D2C58 /* GDLocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GDLocationManager.m; sourceTree = "<group>"; };
 		0BC9FDC3201EC9DD0055857F /* MyCarBaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCarBaseTableViewCell.h; sourceTree = "<group>"; };
 		0BC9FDC4201EC9DD0055857F /* MyCarBaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCarBaseTableViewCell.m; sourceTree = "<group>"; };
 		327BD5FB99B451CD04AC5C17 /* Pods-JiSuPai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiSuPai.release.xcconfig"; path = "Pods/Target Support Files/Pods-JiSuPai/Pods-JiSuPai.release.xcconfig"; sourceTree = "<group>"; };
@@ -538,13 +541,13 @@
 				0B5C1DD7200A14000092F25A /* LaunchScreen.storyboard */,
 				0B5C1DD5200A13FF0092F25A /* Main.storyboard */,
 				0B43A8F4200999300079E952 /* Config */,
+				0B5C1DA8200A03060092F25A /* Base */,
 				0B43DD1C2023533E004A76D2 /* Sign */,
 				0B5C1DB7200A061E0092F25A /* Task */,
 				0B5C1DB9200A06540092F25A /* First */,
 				0B64196C201CDAC600521F92 /* Working */,
 				0B5C1DAF200A04370092F25A /* User */,
 				0B5C1DB8200A06260092F25A /* History */,
-				0B5C1DA8200A03060092F25A /* Base */,
 				0B43A8FA200999300079E952 /* libs */,
 				0B43A8C2200997590079E952 /* AppDelegate.h */,
 				0B43A8C3200997590079E952 /* AppDelegate.m */,
@@ -590,6 +593,7 @@
 		0B43A8FA200999300079E952 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				0BC4DC71202842B7001D2C58 /* GPS */,
 				0B43A8FB200999300079E952 /* Extend */,
 				0B43A925200999300079E952 /* HUDManager */,
 				0B43A928200999300079E952 /* CustomNavigationBar */,
@@ -1284,6 +1288,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		0BC4DC71202842B7001D2C58 /* GPS */ = {
+			isa = PBXGroup;
+			children = (
+				0BC4DC72202845F5001D2C58 /* GDLocationManager.h */,
+				0BC4DC73202845F5001D2C58 /* GDLocationManager.m */,
+			);
+			path = GPS;
+			sourceTree = "<group>";
+		};
 		376F696CF29AFF5D96F708E6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1557,6 +1570,7 @@
 				0B641970201CDAF700521F92 /* WorkingViewController.m in Sources */,
 				0B43AA10200999310079E952 /* UIImage+MSSScale.m in Sources */,
 				0B43A9E4200999310079E952 /* HUD.m in Sources */,
+				0BC4DC74202845F5001D2C58 /* GDLocationManager.m in Sources */,
 				0B641977201DB9DA00521F92 /* ExceptionWorkingViewController.m in Sources */,
 				0B43AA08200999310079E952 /* GTMBase64.m in Sources */,
 				0B43A9FD200999310079E952 /* YYPhotoGroupView.m in Sources */,
@@ -1824,7 +1838,7 @@
 				INFOPLIST_FILE = JiSuPai/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Lost.JiSuPai;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jsp.driver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1841,7 +1855,7 @@
 				INFOPLIST_FILE = JiSuPai/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Lost.JiSuPai;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jsp.driver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

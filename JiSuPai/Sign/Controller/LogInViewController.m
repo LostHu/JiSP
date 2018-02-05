@@ -61,7 +61,7 @@
     [self.scrollView addSubview:self.imageView];
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.scrollView);
-        make.size.mas_equalTo(CGSizeMake(60, 40));
+        make.size.mas_equalTo(CGSizeMake(120, 50));
         make.top.offset(NavigationBarHeight+20);
     }];
     
@@ -118,9 +118,9 @@
         make.height.mas_equalTo(@(0.5));
     }];
     
-    UIImageView* leftView = [[UIImageView alloc] initWithImage:ImageNamed(@"icon_pl")];
+    UIImageView* leftView = [[UIImageView alloc] initWithImage:ImageNamed(@"手机号码")];
     leftView.contentMode = UIViewContentModeCenter;
-    UIImageView* rightView = [[UIImageView alloc] initWithImage:ImageNamed(@"icon_pl")];
+    UIImageView* rightView = [[UIImageView alloc] initWithImage:ImageNamed(@"密码")];
     rightView.contentMode = UIViewContentModeCenter;
     self.nameTextField.leftView = leftView;
     self.nameTextField.leftViewMode = UITextFieldViewModeAlways;
@@ -187,10 +187,6 @@
     NSString* service = @"《吉速派服务协议》";
     self.selectButton.frame = CGRectMake(0, 0, 13, 13);
     NSMutableAttributedString* attrStr = [[NSMutableAttributedString alloc] init];
-    NSMutableAttributedString* attachment = [NSMutableAttributedString attachmentStringWithContent:self.selectButton
-                                                                                       contentMode:UIViewContentModeCenter
-                                                                                    attachmentSize:self.selectButton.size alignToFont:Font_System(11) alignment:YYTextVerticalAlignmentCenter];
-    [attrStr appendAttributedString:attachment];
     [attrStr appendAttributedString:[[NSMutableAttributedString alloc] initWithString:basic]];
     NSRange range_service = [attrStr.mutableString rangeOfString:service];
     
@@ -402,29 +398,11 @@
     return _signUpButton;
 }
 
-- (UIButton*)fbButton
-{
-    if (!_fbButton) {
-        _fbButton = [UIButton new];
-        [_fbButton setBackgroundImage:ImageNamed(@"icon_facebook") forState:UIControlStateNormal];
-    }
-    return _fbButton;
-}
-
-- (UIButton*)ttButton
-{
-    if (!_ttButton) {
-        _ttButton = [UIButton new];
-        [_ttButton setBackgroundImage:ImageNamed(@"icon_twitter") forState:UIControlStateNormal];
-    }
-    return _ttButton;
-}
-
 - (UIImageView *)imageView
 {
     if (!_imageView) {
         _imageView = [[UIImageView alloc] init];
-        _imageView.image = ImageNamed(@"pic_bg");
+        _imageView.image = ImageNamed(@"logo");
     }
     return _imageView;
 }

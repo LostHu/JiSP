@@ -23,7 +23,7 @@ DEFINE_SINGLETON_FOR_HEADER(UserManager)
  *  @return bool
  */
 //- (BOOL)isTemporaryAccount;                     // 是否为临时账号
-//- (BOOL)hasAccount;
+- (BOOL)hasAccount;
 //// 是否是合法账号，非以上2种账号
 //- (BOOL)isLegalAccount;
 - (void)getUserDatafromNetWork;

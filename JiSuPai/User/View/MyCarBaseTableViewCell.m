@@ -112,7 +112,10 @@
         [self.sfz1Btn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.lineView.mas_bottom).offset(12);
             make.left.equalTo(self.lineView).offset(5);
-            make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH/3.2, 80));
+//            161              103
+//            SCREEN_WIDTH/3.2 80
+            
+            make.size.mas_equalTo(CGSizeMake(SCREEN_WIDTH/3.2, (SCREEN_WIDTH/3.2)*103/161));
         }];
         
         [self.sfz2Btn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -137,7 +140,7 @@
 {
     if (!_sfz1Btn) {
         _sfz1Btn = [UIButton new];
-        [_sfz1Btn setBackgroundImage:ImageNamed(@"fatie_btn_add") forState:UIControlStateNormal];
+        [_sfz1Btn setBackgroundImage:ImageNamed(@"+") forState:UIControlStateNormal];
     }
     return _sfz1Btn;
 }
@@ -146,7 +149,7 @@
 {
     if (!_sfz2Btn) {
         _sfz2Btn = [UIButton new];
-        [_sfz2Btn setBackgroundImage:ImageNamed(@"fatie_btn_add") forState:UIControlStateNormal];
+        [_sfz2Btn setBackgroundImage:ImageNamed(@"+") forState:UIControlStateNormal];
     }
     return _sfz2Btn;
 }
@@ -205,7 +208,7 @@
 {
     if (!_sfz3Btn) {
         _sfz3Btn = [UIButton new];
-        [_sfz3Btn setBackgroundImage:ImageNamed(@"fatie_btn_add") forState:UIControlStateNormal];
+        [_sfz3Btn setBackgroundImage:ImageNamed(@"+") forState:UIControlStateNormal];
     }
     return _sfz3Btn;
 }

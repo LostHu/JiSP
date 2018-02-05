@@ -48,7 +48,7 @@
     self.cusnavigationBar.titleLabel.text = @"个人中心";
     self.cusnavigationBar.titleLabel.textColor = [UIColor whiteColor];
     
-    [self.cusnavigationBar.rightButton setImage:ImageNamed(@"tab_icon_wo") forState:UIControlStateNormal];
+    [self.cusnavigationBar.rightButton setImage:ImageNamed(@"shezhi") forState:UIControlStateNormal];
     [self.cusnavigationBar.rightButton addTarget:self action:@selector(setting) forControlEvents:UIControlEventTouchUpInside];
     
     self.tableView.delegate = self;
@@ -125,7 +125,7 @@
 {
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            return 148;
+            return 152;
         }
         if (indexPath.row == 1) {
             return 44;
@@ -174,15 +174,21 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         cell.backgroundColor = [UIColor whiteColor];
+//        [cell.iconView mas_updateConstraints:^(MASConstraintMaker *make) {
+//            make.size.mas_equalTo(CGSizeMake(15, 15));
+//        }];
         if (indexPath.row == 0) {
+            cell.iconView.image = ImageNamed(@"提现记录");
             cell.titleLabel.text = @"提现记录";
             cell.gapLineView.hidden = NO;
         }
         if (indexPath.row == 1) {
+            cell.iconView.image = ImageNamed(@"历史订单");
             cell.titleLabel.text = @"申请提现";
             cell.gapLineView.hidden = NO;
         }
         if (indexPath.row == 2) {
+            cell.iconView.image = ImageNamed(@"历史订单");
             cell.titleLabel.text = @"历史订单";
         }
         return cell;
@@ -194,6 +200,10 @@
         
         cell.backgroundColor = [UIColor whiteColor];
         cell.titleLabel.text = @"意见反馈";
+        cell.iconView.image = ImageNamed(@"意见反馈");
+        [cell.iconView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(15, 15));
+        }];
         
         return cell;
     }
