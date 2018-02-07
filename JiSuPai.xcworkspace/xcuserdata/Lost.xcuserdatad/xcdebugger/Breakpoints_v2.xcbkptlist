@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/User/VC/FreeTimeViewController.m"
-            timestampString = "539012851.214946"
+            timestampString = "539710100.480806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
             <Locations>
@@ -52,12 +52,12 @@
                   moduleName = "JiSuPai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Lost/Work/ing/JiSuPai/JiSuPai/User/VC/FreeTimeViewController.m"
-                  timestampString = "539694610.941494"
+                  timestampString = "539708955.099443"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "157"
                   endingLineNumber = "157"
-                  offsetFromSymbolStart = "92">
+                  offsetFromSymbolStart = "91">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -67,12 +67,12 @@
                   moduleName = "JiSuPai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Lost/Work/ing/JiSuPai/JiSuPai/User/VC/FreeTimeViewController.m"
-                  timestampString = "539694610.94514"
+                  timestampString = "539708955.103789"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "158"
                   endingLineNumber = "158"
-                  offsetFromSymbolStart = "60">
+                  offsetFromSymbolStart = "57">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -116,12 +116,12 @@
                   moduleName = "JiSuPai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Lost/Work/ing/JiSuPai/JiSuPai/libs/NetWork/LostHttpClient.m"
-                  timestampString = "539694610.963268"
+                  timestampString = "539708955.129862"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "259"
                   endingLineNumber = "259"
-                  offsetFromSymbolStart = "700">
+                  offsetFromSymbolStart = "758">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -131,12 +131,12 @@
                   moduleName = "JiSuPai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Lost/Work/ing/JiSuPai/JiSuPai/libs/NetWork/LostHttpClient.m"
-                  timestampString = "539694610.969427"
+                  timestampString = "539708955.1329859"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "259"
                   endingLineNumber = "259"
-                  offsetFromSymbolStart = "24">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -196,7 +196,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/Sign/Controller/SignUpViewController.m"
-            timestampString = "539694610.749169"
+            timestampString = "539703180.527445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "404"
@@ -212,7 +212,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/Sign/Controller/LogInViewController.m"
-            timestampString = "539694610.749285"
+            timestampString = "539703180.534125"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "269"
@@ -228,7 +228,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/Sign/Controller/LogInViewController.m"
-            timestampString = "539694610.7493809"
+            timestampString = "539703180.534595"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "272"
@@ -244,7 +244,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/Task/ViewModel/TaskListViewModel.m"
-            timestampString = "539694610.749506"
+            timestampString = "539703180.535"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
@@ -260,7 +260,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/Task/VC/TaskViewController.m"
-            timestampString = "539694610.749631"
+            timestampString = "539710100.480999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
@@ -276,7 +276,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/Task/VC/TaskViewController.m"
-            timestampString = "539694610.749698"
+            timestampString = "539710100.481397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "191"
@@ -288,15 +288,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/Working/VC/WorkingViewController.m"
-            timestampString = "539694610.749782"
+            timestampString = "539710100.481648"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
@@ -308,7 +308,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/Task/ViewModel/TaskListViewModel.m"
-            timestampString = "539694610.749844"
+            timestampString = "539703180.53708"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
@@ -324,7 +324,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/Task/ViewModel/TaskListViewModel.m"
-            timestampString = "539694610.74989"
+            timestampString = "539703180.537378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
@@ -356,7 +356,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/Base/YZRoutes.m"
-            timestampString = "539694610.749977"
+            timestampString = "539703180.537837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
@@ -372,7 +372,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/Base/YZRoutes.m"
-            timestampString = "539694610.75036"
+            timestampString = "539703180.592878"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
@@ -404,7 +404,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/User/VC/EditPasswordViewController.m"
-            timestampString = "539694610.750996"
+            timestampString = "539703180.594188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "123"
@@ -420,7 +420,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/User/VC/EditPasswordViewController.m"
-            timestampString = "539694610.751107"
+            timestampString = "539703180.5947551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "119"
@@ -436,7 +436,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/User/ViewModel/MeViewModel.m"
-            timestampString = "539694610.7511899"
+            timestampString = "539710100.482047"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
@@ -452,7 +452,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/User/ViewModel/MeViewModel.m"
-            timestampString = "539694610.7512619"
+            timestampString = "539710100.482093"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -468,7 +468,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/Sign/Controller/LogInViewController.m"
-            timestampString = "539694610.751331"
+            timestampString = "539703180.596126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "279"
@@ -500,12 +500,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/Base/YZRoutes.m"
-            timestampString = "539694610.751464"
+            timestampString = "539703180.5967"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
             endingLineNumber = "41"
             landmarkName = "+topViewController"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JiSuPai/Working/VC/WorkingViewController.m"
+            timestampString = "539710100.482178"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JiSuPai/Working/VC/WorkingViewController.m"
+            timestampString = "539710100.48244"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

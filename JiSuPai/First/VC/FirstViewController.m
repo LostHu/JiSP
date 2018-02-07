@@ -133,6 +133,7 @@
         @strongify(self);
         HistoryTaskInfoViewController* vc = [HistoryTaskInfoViewController new];
         vc.viewModel.data = task;
+        vc.preClass = @"FirstViewController";
         vc.sectionCount = 4;
         vc.cusnavigationBar.titleLabel.text = FormatStr(@"任务号%@",task.firstorderid);
         vc.hidesBottomBarWhenPushed = YES;

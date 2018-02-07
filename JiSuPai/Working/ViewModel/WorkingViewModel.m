@@ -19,6 +19,42 @@
     return self;
 }
 
+- (NSMutableArray*)arrayPhotos
+{
+    if (!_arrayPhotos) {
+        _arrayPhotos = [NSMutableArray new];
+    }
+    return _arrayPhotos;
+}
+
+- (void)getOrderPhoto:(ModelCompleteBlock)block
+{
+    NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:self.data.pureid forKey:@"id"];
+    @weakify(self);
+    [LostHttpClient GETRequestURL:API_GetOrderPhoto WithParameter:parameters
+             WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
+                 @strongify(self);
+                 if (appendData.flag == YES) {
+                     NSMutableArray* tempArray = [NSMutableArray new];
+                     for (NSString* url in returnValue[@"data"]) {
+                         NSLog(@"%@",url);
+                         NSString* tempurl = [url stringByReplacingOccurrencesOfString:@"\\" withString:@"/"];
+                         NSString* full_url = FormatStr(@"%@%@",AppBaseUrl,tempurl);
+                         [tempArray addObject:full_url];
+                     }
+                     self.arrayPhotos = tempArray;
+                 }
+                 else
+                 {
+                     [HUD showMsg:appendData.msg type: HUDMsgType_Error];
+                 }
+             }
+                 WithFailureBlock:^{
+                     
+                 }];
+}
+
 - (void)addWorkingExceptionType:(NSString*)type desc:(NSString*)desc block:(ModelCompleteBlock)block
 {
     NSMutableDictionary* parameters = [NSMutableDictionary new];

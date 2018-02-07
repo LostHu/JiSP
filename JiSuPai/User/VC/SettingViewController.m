@@ -92,10 +92,12 @@
         
         cell.backgroundColor = [UIColor whiteColor];
         if (indexPath.row == 0) {
+            cell.iconView.image = ImageNamed(@"分享");
             cell.titleLabel.text = @"分享";
             cell.gapLineView.hidden = NO;
         }
         if (indexPath.row == 1) {
+            cell.iconView.image = ImageNamed(@"退出");
             cell.titleLabel.text = @"退出";
         }
         return cell;
@@ -109,7 +111,10 @@
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            
+            LostWebViewController* vc = [LostWebViewController new];
+            [vc startWithUrl:API_sjxy title:@"邀请朋友"];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
         }
         if (indexPath.row == 1) {
             UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确认退出账号吗？" message:nil preferredStyle:UIAlertControllerStyleAlert];

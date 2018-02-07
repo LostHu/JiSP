@@ -31,7 +31,8 @@
     [super loadView];
     
     UIButton* addBtn = [UIButton new];
-    [addBtn blueSolidStyle];
+//    [addBtn blueSolidStyle];
+    [addBtn solidStyleforC:hexColor(5662f6) D:[UIColor lightGrayColor] font:Font_System(14) corner:0];
     addBtn.layer.cornerRadius = 0;
     [addBtn setTitle:@"申请请假" forState:UIControlStateNormal];
     [self.view addSubview:addBtn];

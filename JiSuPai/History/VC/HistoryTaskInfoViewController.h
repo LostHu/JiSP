@@ -12,6 +12,7 @@
 
 @interface HistoryTaskInfoViewController : BaseTableViewController
 @property (nonatomic, assign) NSInteger sectionCount;
+@property (nonatomic, strong) NSString* preClass;
 @property (nonatomic, strong) NSArray* arrayTitle ;
 @property (nonatomic, strong) TaskInfoViewModel* viewModel;
 @end

@@ -88,7 +88,7 @@
 {
     if (!_delBtn) {
         _delBtn = [UIButton new];
-        [_delBtn setImage:ImageNamed(@"icon_jian") forState:UIControlStateNormal];
+        [_delBtn setImage:ImageNamed(@"删除") forState:UIControlStateNormal];
     }
     return _delBtn;
 }

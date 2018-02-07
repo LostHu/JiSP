@@ -145,6 +145,10 @@
         cell.titleLabel.text = [_arrayTitle objectAtIndex:indexPath.row];
         cell.data = self.viewModel.data;
         
+        if ([self.preClass isEqualToString:@"FirstViewController"]) {
+            [cell hideYDRQ];
+        }
+        
         return cell;
     }
     if (indexPath.row == 2) {

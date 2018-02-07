@@ -589,6 +589,7 @@
         
         UILabel* name9Label = [self newTitleLabel];
         name9Label.text = @"配送日期";
+        name9Label.tag = InfoTag + 99;
         [self.bgView addSubview:name9Label];
         
         [name9Label mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -606,6 +607,7 @@
         }];
         
         UILabel* name10Label = [self newTitleLabel];
+        name10Label.tag = InfoTag+100;
         name10Label.text = @"运单日期";
         [self.bgView addSubview:name10Label];
         
@@ -625,6 +627,16 @@
         }];
     }
     return self;
+}
+
+- (void)hideYDRQ
+{
+    [[self labelForTag:InfoTag+99] mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.offset(-6);
+    }];
+    
+    [self labelForTag:InfoTag+100].hidden = YES;
+    [self labelForTag:InfoTag+10].hidden = YES;
 }
 
 - (void)setData:(TaskData *)data

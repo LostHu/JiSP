@@ -16,4 +16,7 @@
 
 @property (nonatomic, strong) TaskData* data;
 @property (nonatomic, strong) NSMutableArray* arrayException;
+@property (nonatomic, strong) NSMutableArray* arrayPhotos;
+- (void)getOrderPhoto:(ModelCompleteBlock)block;
+
 @end

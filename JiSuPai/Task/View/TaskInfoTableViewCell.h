@@ -25,7 +25,7 @@
 @end
 
 @interface TaskInfoTableViewCell : TaskInfoBaseTableViewCell
-
+- (void)hideYDRQ;
 @end
 
 @interface TaskInfoCargoTableViewCell : TaskInfoBaseTableViewCell

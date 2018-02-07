@@ -57,10 +57,18 @@
     [self.tableView registerClass:[TaskInfoCargoTableViewCell class] forCellReuseIdentifier:[TaskInfoCargoTableViewCell identify]];
     [self.tableView registerClass:[TaskInfoAdditionalTableViewCell class] forCellReuseIdentifier:[TaskInfoAdditionalTableViewCell identify]];
     
+    __weak typeof(self) weakSelf = self;
+    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self.viewModelWoking getWorkingData:^(id data, BOOL isTodo) {
+            
+        }];
+    }];
+    
     @weakify(self);
     [RACObserve(self.viewModelWoking, data) subscribeNext:^(id x) {
         @strongify(self);
         if (x && [x isKindOfClass:[TaskData class]]) {
+            [self.tableView.header endRefreshing];
             self.tableView.tableFooterView.hidden = NO;
             [self.tableView reloadData];
             self.cusnavigationBar.titleLabel.text = FormatStr(@"单号%@",((TaskData*)x).orderno);
@@ -69,10 +77,6 @@
         {
             self.cusnavigationBar.titleLabel.text = @"无配送任务";
         }
-    }];
-    
-    [self.viewModelWoking getWorkingData:^(id data, BOOL isTodo) {
-        
     }];
     
     UIView* footView = [UIView new];
@@ -95,6 +99,16 @@
     
     self.tableView.tableFooterView = footView;
     self.tableView.tableFooterView.hidden = YES;
+    
+    [self.tableView.header beginRefreshing];
+    [RACObserve(self.viewModelWoking, arrayPhotos) subscribeNext:^(id x) {
+        @strongify(self);
+        if (x && [x isKindOfClass:[NSArray class]]) {
+            [self.tableView reloadData];
+        }
+    }];
+    
+    [self.viewModel getOrderPhoto:nil];
 }
 
 - (void)navToExceptionPage
@@ -159,11 +173,12 @@
     }
     if (indexPath.row == 3) {
         return [tableView fd_heightForCellWithIdentifier:[TaskInfoAdditionalTableViewCell identify] cacheByIndexPath:indexPath configuration:^(id cell) {
-            ((TaskInfoAdditionalTableViewCell*)cell).contentLabel.text = self.viewModel.data.descrip;;
+            ((TaskInfoAdditionalTableViewCell*)cell).contentLabel.text = self.viewModelWoking.data.descrip;;
         }];
     }
     if (indexPath.row == 4) {
         return [tableView fd_heightForCellWithIdentifier:[TaskInfoAddPhotoTableViewCell identify] cacheByIndexPath:indexPath configuration:^(id cell) {
+            ((TaskInfoAddPhotoTableViewCell*)cell).array = self.viewModelWoking.arrayPhotos;
         }];
     }
     return 176;
@@ -228,6 +243,7 @@
         
         cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
         cell.titleLabel.text = [_arrayTitle objectAtIndex:indexPath.row];
+        ((TaskInfoAddPhotoTableViewCell*)cell).array = self.viewModelWoking.arrayPhotos;
         
         return cell;
     }
