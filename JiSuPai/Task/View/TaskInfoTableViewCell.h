@@ -18,6 +18,7 @@
 
 @interface TaskInfoAddPhotoTableViewCell : TaskInfoBaseTableViewCell
 @property (nonatomic,strong) UIButton* addBtn;
+@property (nonatomic, strong) NSArray* array;
 @end
 
 @interface TaskInfoBasicTableViewCell : TaskInfoBaseTableViewCell

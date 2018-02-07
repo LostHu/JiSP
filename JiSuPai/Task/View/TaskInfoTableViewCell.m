@@ -7,6 +7,9 @@
 //
 
 #import "TaskInfoTableViewCell.h"
+#import "MSSBrowseDefine.h"
+#import "YYPhotoGroupView.h"
+
 
 @implementation TaskInfoBaseTableViewCell
 
@@ -118,6 +121,8 @@
 
 @end
 
+#define AddTag 1768
+#define BtnSize CGSizeMake(52, 52)
 @implementation TaskInfoAddPhotoTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -127,14 +132,95 @@
     {
         [self.bgView addSubview:self.addBtn];
         
-        [self.addBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.indexLabel.mas_centerX).offset(0);
-            make.top.equalTo(self.lineView).offset(10);
-            make.size.mas_equalTo(CGSizeMake(48, 48));
-            make.bottom.offset(-10);
-        }];
+//        [self.addBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.equalTo(self.indexLabel.mas_centerX).offset(0);
+//            make.top.equalTo(self.lineView).offset(10);
+//            make.size.mas_equalTo(BtnSize);
+//            make.bottom.offset(-10);
+//        }];
+        
+//        [self.addBtn addTarget:self action:<#(nonnull SEL)#> forControlEvents:<#(UIControlEvents)#>]
     }
     return self;
+}
+
+- (void)setArray:(NSArray *)array
+{
+    _array = array;
+    
+    CGFloat gap_left = 12;
+    CGFloat gap_top = 10;
+    NSInteger line_count = 4;
+    CGFloat gap = ((SCREEN_WIDTH-6*2-gap_left*2)-BtnSize.width*line_count)/line_count;
+    CGFloat gap_line = 10;
+    
+    UIButton* lastView = nil;
+    for (int i = 0; i<=array.count; i++) {
+        NSInteger line_index = (i)/line_count*1.0;
+        NSInteger col_index = i%line_count;
+        
+        if (i == array.count) {
+            [self.addBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.offset(gap_left+(BtnSize.width+gap)*col_index);
+                make.top.equalTo(self.lineView.mas_bottom).offset(gap_top+(BtnSize.height+gap_line)*line_index);
+                make.size.mas_equalTo(BtnSize);
+                make.bottom.offset(-10);
+            }];
+            break;
+        }
+        
+        NSString* url = [array objectAtIndex:i];
+        NSInteger tag = AddTag+i;
+        UIButton* card = [self.bgView viewWithTag:tag];
+        if (!card) {
+            card = [UIButton new];
+//            [card setBackgroundImage:ImageNamed(@"fatie_btn_add") forState:UIControlStateNormal];
+            card.backgroundColor = RandomColor;
+            card.tag = tag;
+            [card.imageView setContentMode:UIViewContentModeScaleAspectFill];
+            [self.bgView addSubview:card];
+            
+            [card mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.offset(gap_left+(BtnSize.width+gap)*col_index);
+                make.top.equalTo(self.lineView.mas_bottom).offset(gap_top+(BtnSize.height+gap_line)*line_index);
+                make.size.mas_equalTo(BtnSize);
+            }];
+            [card addTarget:self action:@selector(clickPhoto:) forControlEvents:UIControlEventTouchUpInside];
+        }
+        if (![NSString isBlankString: url]) {
+            
+            [card setImageWithURL:URLStr(url) forState:UIControlStateNormal options:YYWebImageOptionProgressive];
+        }
+        
+        lastView = card;
+    }
+//    if (lastView) {
+//        [lastView mas_updateConstraints:^(MASConstraintMaker *make) {
+//            make.bottom.offset(-15);
+//        }];
+//    }
+    
+}
+
+- (void)clickPhoto:(UIButton*)card
+{
+    UIImageView *fromView = card;
+    
+    NSMutableArray *items = [NSMutableArray new];
+    for (NSUInteger i = 0, max = self.array.count; i < max; i++) {
+        
+        UIImageView *imageView = nil ;
+        imageView = [self.bgView viewWithTag:i + AddTag];
+        NSString *imageItem = self.array[i];
+        
+        YYPhotoGroupItem *item = [YYPhotoGroupItem new];
+        item.thumbView = imageView;
+        item.largeImageURL = URLStr(imageItem);
+        [items addObject:item];
+    }
+    
+    YYPhotoGroupView *v = [[YYPhotoGroupView alloc] initWithGroupItems:items];
+    [v presentFromImageView:fromView toContainer:[UIViewController topViewController].navigationController.view animated:YES completion:nil];
 }
 
 - (UIButton*)addBtn

@@ -130,8 +130,9 @@
     @weakify(self);
     [[[cell.okBtn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
         @strongify(self);
-        TaskInfoViewController* vc = [TaskInfoViewController new];
+        HistoryTaskInfoViewController* vc = [HistoryTaskInfoViewController new];
         vc.viewModel.data = task;
+        vc.sectionCount = 4;
         vc.cusnavigationBar.titleLabel.text = FormatStr(@"任务号%@",task.firstorderid);
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
@@ -143,14 +144,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-//    TaskData* task = [self.viewModel.array objectAtIndex:indexPath.section];
-//
-//    TaskInfoViewController* vc = [TaskInfoViewController new];
-//    vc.viewModel.data = task;
-//    vc.cusnavigationBar.titleLabel.text = FormatStr(@"任务号%@",task.firstorderid);
-//    vc.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

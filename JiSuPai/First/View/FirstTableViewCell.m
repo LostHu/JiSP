@@ -27,6 +27,7 @@
         }];
         
         [bgView addSubview:self.titleLabel];
+        [bgView addSubview:self.driverEnoughLabel];
         [bgView addSubview:self.codeLabel];
         [bgView addSubview:self.priceLabel];
         [bgView addSubview:self.startLabel];
@@ -46,6 +47,11 @@
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(bgView.mas_left).offset(30);
             make.top.offset(9);
+        }];
+        
+        [self.driverEnoughLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(self.titleLabel);
+            make.left.equalTo(self.titleLabel.mas_right).offset(4);
         }];
         
         [self.codeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -199,6 +205,7 @@
     self.titleLabel.text = data.customername;
     self.codeLabel.text = FormatStr(@"任务编号：%@",data.firstorderid);
     self.priceLabel.text = FormatStr(@"约%ld",data.lastprice);
+    self.driverEnoughLabel.hidden = (data.driverenough != 1);
 }
 
 - (UILabel*)titleLabel
@@ -301,6 +308,18 @@
         _timeLabel.font = Font_System(12);
     }
     return _timeLabel;
+}
+
+- (UILabel*)driverEnoughLabel
+{
+    if (!_driverEnoughLabel) {
+        _driverEnoughLabel = [UILabel new];
+        _driverEnoughLabel.textColor = [UIColor redColor];
+        _driverEnoughLabel.font = Font_System(13);
+        _driverEnoughLabel.text = @"(司机已满)";
+        _driverEnoughLabel.hidden = YES;
+    }
+    return _driverEnoughLabel;
 }
 
 - (UILabel*)timeEndLabel

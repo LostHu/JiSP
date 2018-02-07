@@ -171,10 +171,10 @@
     //    }];
     CGFloat topMar = 120;
     if (iphone_3_5) {
-        topMar = 80;
+        topMar = 140;
     }
     if (iphone_4_0) {
-        topMar = 140;
+        topMar = 180;
     }
     if (iphone_4_7 || iphone_5_5) {
         topMar = 220;

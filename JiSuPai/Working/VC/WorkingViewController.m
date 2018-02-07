@@ -43,7 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _arrayTitle = @[@"上传照片",@"基本信息",@"任务信息",@"货物信息及搬运信息",@"补充说明"];
+    _arrayTitle = @[@"基本信息",@"任务信息",@"货物信息及搬运信息",@"补充说明",@"照片",];
     
     [self.tableView registerClass:[TaskInfoAddPhotoTableViewCell class] forCellReuseIdentifier:[TaskInfoAddPhotoTableViewCell identify]];
     [self.tableView registerClass:[TaskInfoBasicTableViewCell class] forCellReuseIdentifier:[TaskInfoBasicTableViewCell identify]];
@@ -58,6 +58,10 @@
             self.tableView.tableFooterView.hidden = NO;
             [self.tableView reloadData];
             self.cusnavigationBar.titleLabel.text = FormatStr(@"单号%@",((TaskData*)x).orderno);
+        }
+        else
+        {
+            self.cusnavigationBar.titleLabel.text = @"无配送任务";
         }
     }];
     
@@ -134,25 +138,26 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     if (indexPath.row == 0) {
-        return [tableView fd_heightForCellWithIdentifier:[TaskInfoAddPhotoTableViewCell identify] cacheByIndexPath:indexPath configuration:^(id cell) {
-        }];
-    }
-    if (indexPath.row == 1) {
         return [tableView fd_heightForCellWithIdentifier:[TaskInfoBasicTableViewCell identify] cacheByIndexPath:indexPath configuration:^(id cell) {
         }];
     }
-    if (indexPath.row == 2) {
+    if (indexPath.row == 1) {
         return [tableView fd_heightForCellWithIdentifier:[TaskInfoTableViewCell identify] cacheByIndexPath:indexPath configuration:^(id cell) {
         }];
     }
-    if (indexPath.row == 3) {
+    if (indexPath.row == 2) {
         return [tableView fd_heightForCellWithIdentifier:[TaskInfoCargoTableViewCell identify] cacheByIndexPath:indexPath configuration:^(id cell) {
         }];
     }
-    if (indexPath.row == 4) {
+    if (indexPath.row == 3) {
         return [tableView fd_heightForCellWithIdentifier:[TaskInfoAdditionalTableViewCell identify] cacheByIndexPath:indexPath configuration:^(id cell) {
             ((TaskInfoAdditionalTableViewCell*)cell).contentLabel.text = self.viewModel.data.descrip;;
+        }];
+    }
+    if (indexPath.row == 4) {
+        return [tableView fd_heightForCellWithIdentifier:[TaskInfoAddPhotoTableViewCell identify] cacheByIndexPath:indexPath configuration:^(id cell) {
         }];
     }
     return 176;
@@ -161,6 +166,54 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
+        TaskInfoBasicTableViewCell *cell = (TaskInfoBasicTableViewCell*)[tableView dequeueReusableCellWithIdentifier:[TaskInfoBasicTableViewCell identify] forIndexPath:indexPath];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.backgroundColor = tableView.backgroundColor;
+        cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
+        cell.titleLabel.text = [_arrayTitle objectAtIndex:indexPath.row];
+        cell.data = self.viewModelWoking.data;
+        
+        return cell;
+    }
+    if (indexPath.row == 1) {
+        TaskInfoTableViewCell *cell = (TaskInfoTableViewCell*)[tableView dequeueReusableCellWithIdentifier:[TaskInfoTableViewCell identify] forIndexPath:indexPath];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.backgroundColor = tableView.backgroundColor;
+        cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
+        cell.titleLabel.text = [_arrayTitle objectAtIndex:indexPath.row];
+        cell.data = self.viewModelWoking.data;
+        
+        return cell;
+    }
+    if (indexPath.row == 2) {
+        TaskInfoCargoTableViewCell *cell = (TaskInfoCargoTableViewCell*)[tableView dequeueReusableCellWithIdentifier:[TaskInfoCargoTableViewCell identify] forIndexPath:indexPath];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.backgroundColor = tableView.backgroundColor;
+        cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
+        cell.titleLabel.text = [_arrayTitle objectAtIndex:indexPath.row];
+        cell.data = self.viewModelWoking.data;
+        
+        return cell;
+    }
+    if (indexPath.row == 3) {
+        TaskInfoAdditionalTableViewCell *cell = (TaskInfoAdditionalTableViewCell*)[tableView dequeueReusableCellWithIdentifier:[TaskInfoAdditionalTableViewCell identify] forIndexPath:indexPath];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.backgroundColor = tableView.backgroundColor;
+        cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
+        cell.titleLabel.text = [_arrayTitle objectAtIndex:indexPath.row];
+        ((TaskInfoAdditionalTableViewCell*)cell).contentLabel.text = self.viewModelWoking.data.descrip;
+        
+        return cell;
+    }
+    if (indexPath.row == 4) {
         TaskInfoAddPhotoTableViewCell *cell = (TaskInfoAddPhotoTableViewCell*)[tableView dequeueReusableCellWithIdentifier:[TaskInfoAddPhotoTableViewCell identify] forIndexPath:indexPath];
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -168,55 +221,7 @@
         cell.backgroundColor = tableView.backgroundColor;
         
         cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
-        cell.titleLabel.text = [self.arrayTitle objectAtIndex:indexPath.row];
-        
-        return cell;
-    }
-    if (indexPath.row == 1) {
-        TaskInfoBasicTableViewCell *cell = (TaskInfoBasicTableViewCell*)[tableView dequeueReusableCellWithIdentifier:[TaskInfoBasicTableViewCell identify] forIndexPath:indexPath];
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        cell.backgroundColor = tableView.backgroundColor;
-        cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
-        cell.titleLabel.text = [self.arrayTitle objectAtIndex:indexPath.row];
-        cell.data = self.viewModelWoking.data;
-        
-        return cell;
-    }
-    if (indexPath.row == 2) {
-        TaskInfoTableViewCell *cell = (TaskInfoTableViewCell*)[tableView dequeueReusableCellWithIdentifier:[TaskInfoTableViewCell identify] forIndexPath:indexPath];
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        cell.backgroundColor = tableView.backgroundColor;
-        cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
-        cell.titleLabel.text = [self.arrayTitle objectAtIndex:indexPath.row];
-        cell.data = self.viewModelWoking.data;
-        
-        return cell;
-    }
-    if (indexPath.row == 3) {
-        TaskInfoCargoTableViewCell *cell = (TaskInfoCargoTableViewCell*)[tableView dequeueReusableCellWithIdentifier:[TaskInfoCargoTableViewCell identify] forIndexPath:indexPath];
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        cell.backgroundColor = tableView.backgroundColor;
-        cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
-        cell.titleLabel.text = [self.arrayTitle objectAtIndex:indexPath.row];
-        cell.data = self.viewModelWoking.data;
-        
-        return cell;
-    }
-    if (indexPath.row == 4) {
-        TaskInfoAdditionalTableViewCell *cell = (TaskInfoAdditionalTableViewCell*)[tableView dequeueReusableCellWithIdentifier:[TaskInfoAdditionalTableViewCell identify] forIndexPath:indexPath];
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        cell.backgroundColor = tableView.backgroundColor;
-        cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
-        cell.titleLabel.text = [self.arrayTitle objectAtIndex:indexPath.row];
-        ((TaskInfoAdditionalTableViewCell*)cell).contentLabel.text = self.viewModelWoking.data.descrip;
+        cell.titleLabel.text = [_arrayTitle objectAtIndex:indexPath.row];
         
         return cell;
     }

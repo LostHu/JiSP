@@ -79,4 +79,6 @@
 @property (nonatomic, assign) NSInteger weitixian;
 @property (nonatomic, assign) NSInteger yitixian;
 @property (nonatomic, strong) NSString* drivernum;
+
+@property (nonatomic, assign) NSInteger driverenough;
 @end

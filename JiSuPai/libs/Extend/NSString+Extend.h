@@ -49,4 +49,6 @@
 
 + (NSString *)dataTOjsonString:(id)object;
 
++(NSString *)return16LetterAndNumber;
+
 @end

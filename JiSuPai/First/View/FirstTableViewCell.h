@@ -24,6 +24,9 @@
 @property (nonatomic,strong) UILabel* timeLabel;
 @property (nonatomic,strong) UILabel* timeEndLabel;
 
+@property (nonatomic,strong) UILabel* driverEnoughLabel;
+
+
 @property (nonatomic,strong) UIButton* infoBtn;
 @property (nonatomic,strong) UIButton* okBtn;
 

@@ -19,6 +19,14 @@ DEFINE_SINGLETON_FOR_CLASS(GDLocationManager)
         self.locationManager = [[AMapLocationManager alloc] init];
         self.locationManager.delegate = self;
         self.locationManager.distanceFilter = 100;
+        
+        //iOS 9（不包含iOS 9） 之前设置允许后台定位参数，保持不会被系统挂起
+        [self.locationManager setPausesLocationUpdatesAutomatically:NO];
+        
+        //iOS 9（包含iOS 9）之后新特性：将允许出现这种场景，同一app中多个locationmanager：一些只能在前台定位，另一些可在后台定位，并可随时禁止其后台定位。
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9) {
+            self.locationManager.allowsBackgroundLocationUpdates = YES;
+        }
     }
     return self;
 }

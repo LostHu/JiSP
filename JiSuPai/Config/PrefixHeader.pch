@@ -71,6 +71,7 @@
 //#import "NewestManager.h"
 #import "LostTimer.h"
 #import "GDLocationManager.h"
+#import "CallManager.h"
 
 #import "BaseViewController.h"
 #import "PhotoThumbSvr.h"
@@ -86,6 +87,8 @@
 //#import "HomeGameData.h"
 #import "TaskData.h"
 #import "TaskInfoViewController.h"
+#import "HistoryTaskInfoViewController.h"
+
 #import "LostWebViewController.h"
 #import "YZTabViewController.h"
 

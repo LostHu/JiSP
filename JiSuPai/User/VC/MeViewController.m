@@ -227,13 +227,13 @@
                     [self navToDriverSchool];
                     break;
                 case 3:
-                    [self navToLogin];
+                    [CallManager callPhone:self.viewModel.userData.telephone];
                     break;
                 case 4:
                     [self navToFreeTime];
                     break;
                 case 5:
-                    
+                    [CallManager callPhone:self.viewModel.userData.yunlimgrtel];
                     break;
                 case 6:
                     [self navToLeave];

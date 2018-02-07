@@ -7,8 +7,12 @@
 //
 
 #import "TaskInfoViewController.h"
+#import "ZLPhotoActionSheet.h"
+#import "ZLPhotoConfiguration.h"
+#import <Photos/Photos.h>
 
 @interface TaskInfoViewController ()
+@property (nonatomic, strong) ZLPhotoActionSheet* actionSheet;
 
 @end
 
@@ -46,9 +50,45 @@
     [self.tableView registerClass:[TaskInfoCargoTableViewCell class] forCellReuseIdentifier:[TaskInfoCargoTableViewCell identify]];
     [self.tableView registerClass:[TaskInfoAdditionalTableViewCell class] forCellReuseIdentifier:[TaskInfoAdditionalTableViewCell identify]];
     
-    [self.tableView reloadData];
-//    [self.class className]
+    @weakify(self);
+    self.actionSheet.sender = self;
+    [self.actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
+        @strongify(self);
+        if (images && images.count > 0) {
+            //            // 添加新图片
+            for (int i=0; i<images.count; i++) {
+                UIImage* img = [images objectAtIndex:i];
+                //                PHAsset* newAsset = [assets objectAtIndex:i];
+                
+//                if (self.selectBtn) {
+                NSString* fileName = FormatStr(@"%@.jpg", [NSString return16LetterAndNumber]);
+                    [self.viewModel postOrderPhoto:img name:fileName block:^(id data, BOOL isTodo) {
+                        @strongify(self);
+                        if (isTodo) {
+                            [self.viewModel.arrayPhotos addObject:fileName];
+                            [self.viewModel getOrderPhoto:nil];
+                        }
+                    }];
+//                }
+            }
+        }
+    }];
     
+    [RACObserve(self.viewModel, arrayPhotos) subscribeNext:^(id x) {
+        @strongify(self);
+        if (x && [x isKindOfClass:[NSArray class]]) {
+            [self.tableView reloadData];
+        }
+    }];
+    
+    [self.viewModel getOrderPhoto:nil];
+}
+
+- (void)change
+{
+    //    self.actionSheet.arrSelectedAssets = self.arrayPhotoView.count > 0 ? [self getPhotoAssets] : nil;
+    self.actionSheet.configuration.maxSelectCount = 1;
+    [self.actionSheet showPhotoLibrary];
 }
 
 - (void)checkSourcePage
@@ -96,6 +136,7 @@
 {
     if (indexPath.row == 0) {
         return [tableView fd_heightForCellWithIdentifier:[TaskInfoAddPhotoTableViewCell identify] cacheByIndexPath:indexPath configuration:^(id cell) {
+            ((TaskInfoAddPhotoTableViewCell*)cell).array = self.viewModel.arrayPhotos;
         }];
     }
     if (indexPath.row == 1) {
@@ -129,6 +170,11 @@
         
         cell.indexLabel.text = FormatStr(@"%ld",indexPath.row+1);
         cell.titleLabel.text = [_arrayTitle objectAtIndex:indexPath.row];
+        ((TaskInfoAddPhotoTableViewCell*)cell).array = self.viewModel.arrayPhotos;
+        
+        [[[cell.addBtn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
+            [self change];
+        }];
         
         return cell;
     }
@@ -190,6 +236,16 @@
     
     //    TopicDetailViewController* vc = [TopicDetailViewController new];
     //    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (ZLPhotoActionSheet*)actionSheet
+{
+    if (!_actionSheet) {
+        _actionSheet = [ZLPhotoActionSheet new];
+        _actionSheet.configuration.allowTakePhotoInLibrary = NO;    // 不允许相册内拍照
+        _actionSheet.configuration.allowSelectOriginal = NO;    // 不允许原图
+    }
+    return _actionSheet;
 }
 
 @end

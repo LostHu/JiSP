@@ -84,7 +84,9 @@
 #define API_PostPhoto       DriverPrefix(@"/submitZhengjianPic.do")//上传证件照片
 
 
-
+#define API_PostOrderPhoto   DriverPrefix(@"/submitOrderPic.do")//上传证件照片
+#define API_GetOrderPhoto    DriverPrefix(@"/getOrderPics.do")  //获取证件照片
+#define API_DeleteOrderPhoto DriverPrefix(@"/deleteOrderPic.do")//删除证件照片
 
 
 

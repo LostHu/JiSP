@@ -11,4 +11,8 @@
 
 @interface TaskInfoViewModel : BaseViewModel
 @property (nonatomic, strong) TaskData* data;
+@property (nonatomic, strong) NSMutableArray* arrayPhotos;
+- (void)getOrderPhoto:(ModelCompleteBlock)block;
+- (void)postOrderPhoto:(UIImage*)img name:(NSString*)name block:(ModelCompleteBlock)block;
+
 @end

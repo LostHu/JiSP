@@ -41,7 +41,7 @@
 
 - (void)createPlaceholderView
 {
-    CGRect rc = CGRectMake(20, self.frame.size.height/6, self.frame.size.width-40, 160);
+    CGRect rc = CGRectMake(20, self.frame.size.height/5, self.frame.size.width-40, 120);
     NoDataView *placeholderView = [[NoDataView alloc] initWithFrame:rc];
 //    placeholderView.backgroundColor = [UIColor orangeColor];
     __weak typeof(self) weakSelf = self;

@@ -12,6 +12,7 @@
 		0B0FEC69201ADB1900BE1A07 /* LeaveViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FEC68201ADB1900BE1A07 /* LeaveViewModel.m */; };
 		0B0FEC6C201ADB8000BE1A07 /* LeaveData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FEC6B201ADB8000BE1A07 /* LeaveData.m */; };
 		0B0FEC6F201ADC0F00BE1A07 /* LeaveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FEC6E201ADC0F00BE1A07 /* LeaveTableViewCell.m */; };
+		0B355BC1202AB4BB00720A7D /* CallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B355BC0202AB4BB00720A7D /* CallManager.m */; };
 		0B43A8C4200997590079E952 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B43A8C3200997590079E952 /* AppDelegate.m */; };
 		0B43A8C7200997590079E952 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B43A8C6200997590079E952 /* ViewController.m */; };
 		0B43A8CC200997590079E952 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B43A8CB200997590079E952 /* Assets.xcassets */; };
@@ -156,6 +157,7 @@
 		0BAE57D8201452C500872123 /* FreeTimeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE57D7201452C500872123 /* FreeTimeData.m */; };
 		0BAE57DB2014776700872123 /* FreeTimeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE57DA2014776700872123 /* FreeTimeTableViewCell.m */; };
 		0BC4DC74202845F5001D2C58 /* GDLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4DC73202845F5001D2C58 /* GDLocationManager.m */; };
+		0BC4DC7720299F96001D2C58 /* HistoryTaskInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC4DC7620299F96001D2C58 /* HistoryTaskInfoViewController.m */; };
 		0BC9FDC5201EC9DD0055857F /* MyCarBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC9FDC4201EC9DD0055857F /* MyCarBaseTableViewCell.m */; };
 		C34F9A952F6FFC470355AEBC /* Pods_JiSuPai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6617962FEF8BB6E4DA2CBFAA /* Pods_JiSuPai.framework */; };
 /* End PBXBuildFile section */
@@ -188,6 +190,8 @@
 		0B0FEC6B201ADB8000BE1A07 /* LeaveData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeaveData.m; sourceTree = "<group>"; };
 		0B0FEC6D201ADC0F00BE1A07 /* LeaveTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeaveTableViewCell.h; sourceTree = "<group>"; };
 		0B0FEC6E201ADC0F00BE1A07 /* LeaveTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeaveTableViewCell.m; sourceTree = "<group>"; };
+		0B355BBF202AB4BB00720A7D /* CallManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallManager.h; sourceTree = "<group>"; };
+		0B355BC0202AB4BB00720A7D /* CallManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CallManager.m; sourceTree = "<group>"; };
 		0B43A8BF200997590079E952 /* JiSuPai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JiSuPai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B43A8C2200997590079E952 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0B43A8C3200997590079E952 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -480,6 +484,8 @@
 		0BAE57DA2014776700872123 /* FreeTimeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreeTimeTableViewCell.m; sourceTree = "<group>"; };
 		0BC4DC72202845F5001D2C58 /* GDLocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GDLocationManager.h; sourceTree = "<group>"; };
 		0BC4DC73202845F5001D2C58 /* GDLocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GDLocationManager.m; sourceTree = "<group>"; };
+		0BC4DC7520299F96001D2C58 /* HistoryTaskInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryTaskInfoViewController.h; sourceTree = "<group>"; };
+		0BC4DC7620299F96001D2C58 /* HistoryTaskInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryTaskInfoViewController.m; sourceTree = "<group>"; };
 		0BC9FDC3201EC9DD0055857F /* MyCarBaseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCarBaseTableViewCell.h; sourceTree = "<group>"; };
 		0BC9FDC4201EC9DD0055857F /* MyCarBaseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCarBaseTableViewCell.m; sourceTree = "<group>"; };
 		327BD5FB99B451CD04AC5C17 /* Pods-JiSuPai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiSuPai.release.xcconfig"; path = "Pods/Target Support Files/Pods-JiSuPai/Pods-JiSuPai.release.xcconfig"; sourceTree = "<group>"; };
@@ -513,6 +519,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B355BBE202AB43F00720A7D /* Call */ = {
+			isa = PBXGroup;
+			children = (
+				0B355BBF202AB4BB00720A7D /* CallManager.h */,
+				0B355BC0202AB4BB00720A7D /* CallManager.m */,
+			);
+			path = Call;
+			sourceTree = "<group>";
+		};
 		0B43A8B6200997590079E952 = {
 			isa = PBXGroup;
 			children = (
@@ -593,6 +608,7 @@
 		0B43A8FA200999300079E952 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				0B355BBE202AB43F00720A7D /* Call */,
 				0BC4DC71202842B7001D2C58 /* GPS */,
 				0B43A8FB200999300079E952 /* Extend */,
 				0B43A925200999300079E952 /* HUDManager */,
@@ -1196,6 +1212,8 @@
 				0B5C1DCD200A07070092F25A /* HistoryViewController.m */,
 				0BAE57B820123A3B00872123 /* HistorySubListViewController.h */,
 				0BAE57B920123A3B00872123 /* HistorySubListViewController.m */,
+				0BC4DC7520299F96001D2C58 /* HistoryTaskInfoViewController.h */,
+				0BC4DC7620299F96001D2C58 /* HistoryTaskInfoViewController.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1385,6 +1403,11 @@
 					0B43A8BE200997590079E952 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					0B43A8D6200997590079E952 = {
 						CreatedOnToolsVersion = 9.2;
@@ -1604,11 +1627,13 @@
 				0B488566200F885300908009 /* FirstListViewModel.m in Sources */,
 				0B5C1DE3200A4D4A0092F25A /* TaskTableViewCell.m in Sources */,
 				0BAE57BD20139F1500872123 /* FeedbackViewController.m in Sources */,
+				0BC4DC7720299F96001D2C58 /* HistoryTaskInfoViewController.m in Sources */,
 				0BAE57D5201446E800872123 /* FreeTimeViewModel.m in Sources */,
 				0B43A9F2200999310079E952 /* UIViewController+ZFPlayerRotation.m in Sources */,
 				0B43AA06200999310079E952 /* JSBadgeView.m in Sources */,
 				0B43A9E7200999310079E952 /* NSURLProtocol+WKWebVIew.m in Sources */,
 				0B43AA11200999310079E952 /* MSSBrowseBaseViewController.m in Sources */,
+				0B355BC1202AB4BB00720A7D /* CallManager.m in Sources */,
 				0B43AA12200999310079E952 /* MSSBrowseZoomScrollView.m in Sources */,
 				0BAE57C02013A40300872123 /* SettingViewController.m in Sources */,
 				0B641974201CDC2800521F92 /* WorkingViewModel.m in Sources */,
@@ -1832,6 +1857,7 @@
 			baseConfigurationReference = ABC1D420E6E085569DE03E24 /* Pods-JiSuPai.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 38HX4M2D34;
 				GCC_PREFIX_HEADER = JiSuPai/Config/PrefixHeader.pch;
@@ -1849,6 +1875,7 @@
 			baseConfigurationReference = 327BD5FB99B451CD04AC5C17 /* Pods-JiSuPai.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 38HX4M2D34;
 				GCC_PREFIX_HEADER = JiSuPai/Config/PrefixHeader.pch;

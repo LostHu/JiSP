@@ -8,6 +8,7 @@
 
 #import "HistorySubListViewController.h"
 #import "HistoryTableViewCell.h"
+#import "HistoryTaskInfoViewController.h"
 
 @interface HistorySubListViewController ()
 @end
@@ -130,7 +131,7 @@
     
     TaskData* task = [self.viewModel.array objectAtIndex:indexPath.section];
     
-    TaskInfoViewController* vc = [TaskInfoViewController new];
+    HistoryTaskInfoViewController* vc = [HistoryTaskInfoViewController new];
     vc.viewModel.data = task;
     vc.cusnavigationBar.titleLabel.text = task.orderno;
     vc.hidesBottomBarWhenPushed = YES;
