@@ -19,6 +19,7 @@ DEFINE_SINGLETON_FOR_CLASS(GDLocationManager)
         self.locationManager = [[AMapLocationManager alloc] init];
         self.locationManager.delegate = self;
         self.locationManager.distanceFilter = 100;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
         
         //iOS 9（不包含iOS 9） 之前设置允许后台定位参数，保持不会被系统挂起
         [self.locationManager setPausesLocationUpdatesAutomatically:NO];

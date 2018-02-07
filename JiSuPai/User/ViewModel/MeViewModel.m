@@ -48,7 +48,7 @@
 
 - (void)resetPassword:(NSString*)pwd block:(ModelCompleteBlock)block
 {
-    if (![NSString isBlankString:pwd]) {
+    if ([NSString isBlankString:pwd]) {
         return;
     }
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];

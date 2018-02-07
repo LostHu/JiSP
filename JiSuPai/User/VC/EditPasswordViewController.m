@@ -121,6 +121,7 @@
         [self.viewModel resetPassword:self.startDateField.text block:^(id data, BOOL isTodo) {
             @strongify(self);
             if (isTodo == YES) {
+                [UserManager sharedInstance].password = self.startDateField.text;
                 [self touchSpace];
                 [HUD showMsg:@"密码修改成功！" type:HUDMsgType_Success];
                 [self performSelector:@selector(sendSuccess) withObject:nil afterDelay:0.6];
@@ -140,7 +141,7 @@
     if (!_startDateField) {
         _startDateField = [UITextField new];
         _startDateField.textAlignment = NSTextAlignmentLeft;
-        if (SYSTEMVER_F >= 10) {
+        if (SYSTEMVER_F >= 11) {
             _startDateField.textContentType = UITextContentTypePassword;
         }
         else
@@ -158,7 +159,7 @@
 {
     if (!_endDateField) {
         _endDateField = [UITextField new];
-        if (SYSTEMVER_F >= 10) {
+        if (SYSTEMVER_F >= 11) {
             _endDateField.textContentType = UITextContentTypePassword;
         }
         else

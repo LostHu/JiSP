@@ -119,7 +119,9 @@
             @weakify(self);
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认退出" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 @strongify(self);
-                [self navToLogin];
+                [[UserManager sharedInstance] clearUserData];
+                [self.navigationController popToRootViewControllerAnimated:NO];
+                [YZRoutes showLoginPage];
             }];
             [alertController addAction:cancelAction];
             [alertController addAction:okAction];

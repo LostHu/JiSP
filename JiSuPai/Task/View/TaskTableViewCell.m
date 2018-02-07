@@ -46,7 +46,7 @@
         
         [self.phoneBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(self.titleLabel);
-            make.size.mas_equalTo(CGSizeMake(20, 20));
+            make.size.mas_equalTo(CGSizeMake(30, 30));
             make.right.equalTo(bgView).offset(-10);
         }];
         

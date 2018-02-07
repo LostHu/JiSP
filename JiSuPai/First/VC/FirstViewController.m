@@ -28,10 +28,11 @@
 {
     [super loadView];
     
-//    [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.barView.mas_bottom);
-//        make.left.right.bottom.centerX.equalTo(self.view);
-//    }];
+    [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.top.offset(NavigationBarHeight);
+        make.left.right.centerX.equalTo(self.view);
+        make.bottom.offset(-UITabBarHeight);
+    }];
     self.view.backgroundColor = hexColor(f5f8fa);
     self.tableView.backgroundColor = self.view.backgroundColor;
     [self.cusnavigationBar.leftButton removeFromSuperview];

@@ -171,19 +171,19 @@
     //    }];
     CGFloat topMar = 120;
     if (iphone_3_5) {
-        topMar = 140;
+        topMar = 200;
     }
     if (iphone_4_0) {
-        topMar = 180;
+        topMar = 200;
     }
     if (iphone_4_7 || iphone_5_5) {
         topMar = 220;
     }
     if (iphoneX) {
-        topMar = 180;
+        topMar = 240;
     }
     CGFloat topReadPos = topMar+40*3+20+15+10+15+15+6;
-    NSString* basic = @"  点击立即注册代表已经同意《吉速派服务协议》";
+    NSString* basic = @"点击立即注册代表已经同意《吉速派服务协议》";
     NSString* service = @"《吉速派服务协议》";
     self.selectButton.frame = CGRectMake(0, 0, 13, 13);
     NSMutableAttributedString* attrStr = [[NSMutableAttributedString alloc] init];

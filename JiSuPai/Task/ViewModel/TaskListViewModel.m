@@ -133,9 +133,9 @@
         @weakify(self);
         [[RACObserve(self, array) skip:0] subscribeNext:^(id x) {
             @strongify(self);
-            if (x) {
+//            if (x) {
                 self.date = AllDate;
-            }
+//            }
         }];
     }
     return self;

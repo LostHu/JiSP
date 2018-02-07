@@ -1862,7 +1862,7 @@
 				DEVELOPMENT_TEAM = 38HX4M2D34;
 				GCC_PREFIX_HEADER = JiSuPai/Config/PrefixHeader.pch;
 				INFOPLIST_FILE = JiSuPai/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jsp.driver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1880,7 +1880,7 @@
 				DEVELOPMENT_TEAM = 38HX4M2D34;
 				GCC_PREFIX_HEADER = JiSuPai/Config/PrefixHeader.pch;
 				INFOPLIST_FILE = JiSuPai/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jsp.driver;
 				PRODUCT_NAME = "$(TARGET_NAME)";

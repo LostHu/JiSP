@@ -44,7 +44,8 @@
     
     [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.barView.mas_bottom);
-        make.left.right.bottom.centerX.equalTo(self.view);
+        make.left.right.centerX.equalTo(self.view);
+        make.bottom.offset(-UITabBarHeight);
     }];
     self.view.backgroundColor = hexColor(f5f8fa);
     self.tableView.backgroundColor = self.view.backgroundColor;
@@ -295,6 +296,11 @@
     [[[cell.okBtn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
         @strongify(self);
         [self opTask:task];
+    }];
+    
+    [[[cell.phoneBtn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
+        @strongify(self);
+        [CallManager callPhone:task.fahuophone];
     }];
     
     return cell;

@@ -42,6 +42,12 @@
     self.view.backgroundColor = hexColor(556af6);
     self.tableView.backgroundColor = hexColor(efefef);
     
+    [self.tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.top.offset(NavigationBarHeight);
+        make.left.right.centerX.equalTo(self.view);
+        make.bottom.offset(-UITabBarHeight);
+    }];
+    
     [self.cusnavigationBar.leftButton removeFromSuperview];
     self.cusnavigationBar.bgView.backgroundColor = hexColor(556af6);
     self.cusnavigationBar.bottomLine.backgroundColor = hexColor(556af6);
