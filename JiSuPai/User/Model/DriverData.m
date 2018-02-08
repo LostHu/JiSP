@@ -9,5 +9,7 @@
 #import "DriverData.h"
 
 @implementation DriverData
-
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"driverId" : @"id"};
+}
 @end

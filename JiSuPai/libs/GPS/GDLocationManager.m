@@ -34,7 +34,7 @@ DEFINE_SINGLETON_FOR_CLASS(GDLocationManager)
 
 - (void)postLocation
 {
-    if (CLLocationCoordinate2DIsValid(self.location)) {
+    if (!CLLocationCoordinate2DIsValid(self.location)) {
         return;
     }
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
@@ -46,11 +46,10 @@ DEFINE_SINGLETON_FOR_CLASS(GDLocationManager)
              WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
                  @strongify(self);
                  if (appendData.flag == YES) {
-                     
+                     NSLog(@"----------postLocation-------------");
                  }
                  else
                  {
-//                     [HUD showMsg:appendData.msg type: HUDMsgType_Error];
                  }
              }
                  WithFailureBlock:^{

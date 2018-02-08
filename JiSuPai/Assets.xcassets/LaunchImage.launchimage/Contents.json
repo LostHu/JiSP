@@ -58,6 +58,7 @@
     {
       "orientation" : "portrait",
       "idiom" : "iphone",
+      "filename" : "bgloading640_5.png",
       "extent" : "full-screen",
       "subtype" : "retina4",
       "scale" : "2x"

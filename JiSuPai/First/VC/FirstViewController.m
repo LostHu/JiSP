@@ -64,7 +64,7 @@
     }];
     self.tableView.footer = footer;
     
-    [[RACObserve(self.viewModel, array) skip:1] subscribeNext:^(id x) {
+    [[RACObserve(self.viewModel, array) skip:0] subscribeNext:^(id x) {
         @strongify(self);
         //        self.tableView.emptyDataSetDelegate = self;
         //        self.tableView.emptyDataSetSource = self;

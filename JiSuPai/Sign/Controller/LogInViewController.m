@@ -298,8 +298,8 @@
 
 - (void)forgot
 {
-    ForgotViewController* vc = [ForgotViewController new];
-    [self.navigationController pushViewController:vc animated:YES];
+//    ForgotViewController* vc = [ForgotViewController new];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

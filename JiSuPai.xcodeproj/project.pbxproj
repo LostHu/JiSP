@@ -12,6 +12,8 @@
 		0B0FEC69201ADB1900BE1A07 /* LeaveViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FEC68201ADB1900BE1A07 /* LeaveViewModel.m */; };
 		0B0FEC6C201ADB8000BE1A07 /* LeaveData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FEC6B201ADB8000BE1A07 /* LeaveData.m */; };
 		0B0FEC6F201ADC0F00BE1A07 /* LeaveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0FEC6E201ADC0F00BE1A07 /* LeaveTableViewCell.m */; };
+		0B33C0B6202C74A300F883CF /* TiXianTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B33C0B5202C74A300F883CF /* TiXianTableViewModel.m */; };
+		0B33C0B9202C762F00F883CF /* TixianTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B33C0B8202C762F00F883CF /* TixianTableViewCell.m */; };
 		0B355BC1202AB4BB00720A7D /* CallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B355BC0202AB4BB00720A7D /* CallManager.m */; };
 		0B43A8C4200997590079E952 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B43A8C3200997590079E952 /* AppDelegate.m */; };
 		0B43A8C7200997590079E952 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B43A8C6200997590079E952 /* ViewController.m */; };
@@ -190,6 +192,10 @@
 		0B0FEC6B201ADB8000BE1A07 /* LeaveData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeaveData.m; sourceTree = "<group>"; };
 		0B0FEC6D201ADC0F00BE1A07 /* LeaveTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeaveTableViewCell.h; sourceTree = "<group>"; };
 		0B0FEC6E201ADC0F00BE1A07 /* LeaveTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeaveTableViewCell.m; sourceTree = "<group>"; };
+		0B33C0B4202C74A300F883CF /* TiXianTableViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TiXianTableViewModel.h; sourceTree = "<group>"; };
+		0B33C0B5202C74A300F883CF /* TiXianTableViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TiXianTableViewModel.m; sourceTree = "<group>"; };
+		0B33C0B7202C762F00F883CF /* TixianTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TixianTableViewCell.h; sourceTree = "<group>"; };
+		0B33C0B8202C762F00F883CF /* TixianTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TixianTableViewCell.m; sourceTree = "<group>"; };
 		0B355BBF202AB4BB00720A7D /* CallManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallManager.h; sourceTree = "<group>"; };
 		0B355BC0202AB4BB00720A7D /* CallManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CallManager.m; sourceTree = "<group>"; };
 		0B43A8BF200997590079E952 /* JiSuPai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JiSuPai.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1094,6 +1100,8 @@
 				0B0FEC68201ADB1900BE1A07 /* LeaveViewModel.m */,
 				0B641978201E041B00521F92 /* MyCarViewModel.h */,
 				0B641979201E041B00521F92 /* MyCarViewModel.m */,
+				0B33C0B4202C74A300F883CF /* TiXianTableViewModel.h */,
+				0B33C0B5202C74A300F883CF /* TiXianTableViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1124,6 +1132,8 @@
 				0B0FEC6E201ADC0F00BE1A07 /* LeaveTableViewCell.m */,
 				0BC9FDC3201EC9DD0055857F /* MyCarBaseTableViewCell.h */,
 				0BC9FDC4201EC9DD0055857F /* MyCarBaseTableViewCell.m */,
+				0B33C0B7202C762F00F883CF /* TixianTableViewCell.h */,
+				0B33C0B8202C762F00F883CF /* TixianTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1552,12 +1562,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B33C0B9202C762F00F883CF /* TixianTableViewCell.m in Sources */,
 				0B43AA05200999310079E952 /* PhotoThumbSvr.m in Sources */,
 				0B43A9E1200999310079E952 /* NSDate+Extend.m in Sources */,
 				0B43AA1D200999310079E952 /* NSString+hash.m in Sources */,
 				0B0FEC66201ADADC00BE1A07 /* AddLeaveViewController.m in Sources */,
 				0B43A9EF200999310079E952 /* UINavigationController+ZFPlayerRotation.m in Sources */,
 				0B5C1DCE200A07070092F25A /* HistoryViewController.m in Sources */,
+				0B33C0B6202C74A300F883CF /* TiXianTableViewModel.m in Sources */,
 				0B43A9F3200999310079E952 /* ZFBrightnessView.m in Sources */,
 				0B43AA18200999310079E952 /* DXPopover.m in Sources */,
 				0B43A8C7200997590079E952 /* ViewController.m in Sources */,

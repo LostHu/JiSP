@@ -16,6 +16,9 @@
 @property (nonatomic, strong) NSArray* arrayTitle;
 @property (nonatomic, strong) NSArray* arrayRegion;
 @property (nonatomic, strong) NSMutableArray* arrayCarType;
+- (BOOL)checkPhoto:(NSInteger)tag;
+- (NSString*)getKeyforTag:(NSInteger)tag;
+- (NSString*)getPhotoUrl:(NSString*)key;
 - (void)postDirverData:(ModelCompleteBlock)block;
 - (void)getDriverInfo:(ModelCompleteBlock)block;
 - (void)getCarTypeList:(ModelCompleteBlock)block;

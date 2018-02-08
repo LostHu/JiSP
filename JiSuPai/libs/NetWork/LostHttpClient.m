@@ -55,6 +55,20 @@ DEFINE_SINGLETON_FOR_CLASS(LostHttpClient)
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 }
 
++ (void)postLocationForAction:(NSString*)url
+{
+    if (![[UserManager sharedInstance] hasAccount]) {
+        return;
+    }
+    if (![NSString isBlankString:url]) {
+        if ([url isEqualToString:API_sendLocation]) {
+            return;
+        }
+    }
+    
+    [[GDLocationManager sharedInstance] postLocation];
+}
+
 + (void)addTokenToParameter:(NSMutableDictionary*)parameter withUrl:(NSString*)url
 {
     [parameter setObject:@"2" forKey:@"device"];
@@ -121,6 +135,12 @@ DEFINE_SINGLETON_FOR_CLASS(LostHttpClient)
         @strongify(self)
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             HttpResponseData* appendData = [[HttpResponseData alloc] initWithDictionary:responseObject];
+            
+            // 操作成功后发送坐标系
+            if (appendData.flag = YES) {
+                [self postLocationForAction:requestURLString];
+            }
+            
             if (block) {
                 block(responseObject,appendData);
             }
@@ -308,6 +328,12 @@ DEFINE_SINGLETON_FOR_CLASS(LostHttpClient)
         
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
             HttpResponseData* appendData = [[HttpResponseData alloc] initWithDictionary:responseObject];
+            
+            // 操作成功后发送坐标系
+            if (appendData.flag == YES) {
+                [self postLocationForAction:requestURLString];
+            }
+            
             if (block) {
                 block(responseObject,appendData);
             }

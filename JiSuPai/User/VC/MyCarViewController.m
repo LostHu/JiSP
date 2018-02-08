@@ -146,9 +146,28 @@
 
 - (void)change
 {
-//    self.actionSheet.arrSelectedAssets = self.arrayPhotoView.count > 0 ? [self getPhotoAssets] : nil;
-    self.actionSheet.configuration.maxSelectCount = PHOTOVIEW_MAX_COUNT;
-    [self.actionSheet showPhotoLibrary];
+    // 缓存中是否有照片了，有的话弹确认框
+    if ([self.viewModel checkPhoto:self.selectBtn.tag]) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确认重新上传照片吗？" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        @weakify(self);
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            @strongify(self);
+            self.actionSheet.configuration.maxSelectCount = PHOTOVIEW_MAX_COUNT;
+            [self.actionSheet showPhotoLibrary];
+        }];
+        [alertController addAction:cancelAction];
+        [alertController addAction:okAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    else
+    {
+        self.actionSheet.configuration.maxSelectCount = PHOTOVIEW_MAX_COUNT;
+        [self.actionSheet showPhotoLibrary];
+    }
 }
 
 - (void)selectRegion
@@ -402,6 +421,10 @@
             }
             cell.sfz1Btn.tag = indexPath.row*10+1;
             cell.sfz2Btn.tag = indexPath.row*10+2;
+            NSString* url1 = [self.viewModel getPhotoUrl:[self.viewModel getKeyforTag:cell.sfz1Btn.tag]];
+            NSString* url2 = [self.viewModel getPhotoUrl:[self.viewModel getKeyforTag:cell.sfz2Btn.tag]];
+            [cell.sfz1Btn setBackgroundImageWithURL:URLStr(url1) forState:UIControlStateNormal placeholder:ImageNamed(@"+")];
+            [cell.sfz2Btn setBackgroundImageWithURL:URLStr(url2) forState:UIControlStateNormal placeholder:ImageNamed(@"+")];
             
             @weakify(self);
             [[[cell.sfz1Btn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
@@ -435,6 +458,13 @@
             cell.sfz1Btn.tag = indexPath.row*10+1;
             cell.sfz2Btn.tag = indexPath.row*10+2;
             cell.sfz3Btn.tag = indexPath.row*10+3;
+            
+            NSString* url1 = [self.viewModel getPhotoUrl:[self.viewModel getKeyforTag:cell.sfz1Btn.tag]];
+            NSString* url2 = [self.viewModel getPhotoUrl:[self.viewModel getKeyforTag:cell.sfz2Btn.tag]];
+            NSString* url3 = [self.viewModel getPhotoUrl:[self.viewModel getKeyforTag:cell.sfz3Btn.tag]];
+            [cell.sfz1Btn setBackgroundImageWithURL:URLStr(url1) forState:UIControlStateNormal placeholder:ImageNamed(@"+")];
+            [cell.sfz2Btn setBackgroundImageWithURL:URLStr(url2) forState:UIControlStateNormal placeholder:ImageNamed(@"+")];
+            [cell.sfz3Btn setBackgroundImageWithURL:URLStr(url3) forState:UIControlStateNormal placeholder:ImageNamed(@"+")];
             
             @weakify(self);
             [[[cell.sfz1Btn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
