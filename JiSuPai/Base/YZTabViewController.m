@@ -122,8 +122,8 @@
                                              forState: UIControlStateSelected];
     
     self.delegate = self;
-    self.selectedIndex = 0;
     self.viewControllers = navigationCsArray;
+    self.selectedIndex = 1;
 }
 
 - (void)viewDidAppear:(BOOL)animated

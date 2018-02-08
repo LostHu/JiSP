@@ -36,7 +36,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/User/VC/FreeTimeViewController.m"
-            timestampString = "539746695.7944241"
+            timestampString = "539749157.4593689"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "166"
@@ -52,11 +52,11 @@
                   moduleName = "JiSuPai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Lost/Work/ing/JiSuPai/JiSuPai/User/VC/FreeTimeViewController.m"
-                  timestampString = "539708955.099443"
+                  timestampString = "539749157.701268"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "157"
-                  endingLineNumber = "157"
+                  startingLineNumber = "166"
+                  endingLineNumber = "166"
                   offsetFromSymbolStart = "91">
                </Location>
                <Location
@@ -67,11 +67,11 @@
                   moduleName = "JiSuPai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Lost/Work/ing/JiSuPai/JiSuPai/User/VC/FreeTimeViewController.m"
-                  timestampString = "539708955.103789"
+                  timestampString = "539749157.704546"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "158"
-                  endingLineNumber = "158"
+                  startingLineNumber = "167"
+                  endingLineNumber = "167"
                   offsetFromSymbolStart = "57">
                </Location>
             </Locations>
@@ -116,7 +116,7 @@
                   moduleName = "JiSuPai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Lost/Work/ing/JiSuPai/JiSuPai/libs/NetWork/LostHttpClient.m"
-                  timestampString = "539708955.129862"
+                  timestampString = "539749157.7192661"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "259"
@@ -131,7 +131,7 @@
                   moduleName = "JiSuPai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Lost/Work/ing/JiSuPai/JiSuPai/libs/NetWork/LostHttpClient.m"
-                  timestampString = "539708955.1329859"
+                  timestampString = "539749157.723546"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "259"
@@ -292,11 +292,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/Working/VC/WorkingViewController.m"
-            timestampString = "539746695.795931"
+            timestampString = "539749157.459745"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
@@ -436,7 +436,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/User/ViewModel/MeViewModel.m"
-            timestampString = "539746695.796605"
+            timestampString = "539749157.460816"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
@@ -452,7 +452,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/User/ViewModel/MeViewModel.m"
-            timestampString = "539746695.7966909"
+            timestampString = "539749157.460889"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -516,11 +516,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/Working/VC/WorkingViewController.m"
-            timestampString = "539746695.7968349"
+            timestampString = "539749157.461028"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -532,12 +532,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JiSuPai/Working/VC/WorkingViewController.m"
-            timestampString = "539746695.7972701"
+            timestampString = "539749157.461816"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JiSuPai/Working/ViewModel/WorkingViewModel.m"
+            timestampString = "539749157.462489"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "-getOrderPhoto:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -59,8 +59,10 @@
     
     __weak typeof(self) weakSelf = self;
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self.viewModelWoking getWorkingData:^(id data, BOOL isTodo) {
-            
+        [weakSelf.viewModelWoking getWorkingData:^(id data, BOOL isTodo) {
+            if (isTodo) {
+                [weakSelf.viewModelWoking getOrderPhoto:nil];
+            }
         }];
     }];
     
@@ -76,6 +78,13 @@
         else
         {
             self.cusnavigationBar.titleLabel.text = @"无配送任务";
+        }
+    }];
+    
+    [RACObserve(self.viewModelWoking, arrayPhotos) subscribeNext:^(id x) {
+        @strongify(self);
+        if (x && [x isKindOfClass:[NSArray class]]) {
+            [self.tableView reloadData];
         }
     }];
     
@@ -101,14 +110,6 @@
     self.tableView.tableFooterView.hidden = YES;
     
     [self.tableView.header beginRefreshing];
-    [RACObserve(self.viewModelWoking, arrayPhotos) subscribeNext:^(id x) {
-        @strongify(self);
-        if (x && [x isKindOfClass:[NSArray class]]) {
-            [self.tableView reloadData];
-        }
-    }];
-    
-    [self.viewModel getOrderPhoto:nil];
 }
 
 - (void)navToExceptionPage
