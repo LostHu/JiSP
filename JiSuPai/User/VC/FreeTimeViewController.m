@@ -31,6 +31,7 @@
     [super loadView];
     
     UIButton* addBtn = [UIButton new];
+    addBtn.tag = 1001;
     [addBtn blueSolidStyle];
     [addBtn solidStyleforC:hexColor(5662f6) D:[UIColor lightGrayColor] font:Font_System(14) corner:0];
     addBtn.layer.cornerRadius = 0;
@@ -54,6 +55,13 @@
     self.cusnavigationBar.titleLabel.text = @"空闲时间";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+}
+
+- (void)viewSafeAreaInsetsDidChange {
+    [[self.view viewWithTag:1001] mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset(-self.view.safeAreaInsets.bottom);
+    }];
+    [super viewSafeAreaInsetsDidChange];
 }
 
 - (void)viewDidLoad {

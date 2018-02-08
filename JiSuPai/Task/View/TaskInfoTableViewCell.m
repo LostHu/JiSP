@@ -400,7 +400,7 @@
     [self labelForTag:BasicTag+4].text = data.cartypeInCn;
     [self labelForTag:BasicTag+5].text = data.jiesuanfsInCn;
     [self labelForTag:BasicTag+6].text = FormatStr(@"%ld",data.priceperone);
-    [self labelForTag:BasicTag+7].text = FormatStr(@"大约%ld",data.lastprice);
+    [self labelForTag:BasicTag+7].text = FormatStr(@"大约%.2f",data.lastprice);
     [self labelForTag:BasicTag+8].text = data.driveryaoqiu;
 }
 @end

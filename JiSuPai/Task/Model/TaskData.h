@@ -73,9 +73,9 @@
 @property (nonatomic, assign) NSInteger jiesuanfs;
 @property (nonatomic, strong) NSString* jiesuanfsInCn;
 
-@property (nonatomic, assign) NSInteger price;
-@property (nonatomic, assign) NSInteger priceperone;
-@property (nonatomic, assign) NSInteger lastprice;
+@property (nonatomic, assign) CGFloat price;
+@property (nonatomic, assign) CGFloat priceperone;
+@property (nonatomic, assign) CGFloat lastprice;
 @property (nonatomic, assign) NSInteger weitixian;
 @property (nonatomic, assign) NSInteger yitixian;
 @property (nonatomic, strong) NSString* drivernum;

@@ -177,7 +177,7 @@
 
 - (void)setData:(TaskData *)data
 {
-    [self labelForTag:HistorySubTag+10].text = FormatStr(@"%ld",data.lastprice);
+    [self labelForTag:HistorySubTag+10].text = FormatStr(@"%.2f",data.lastprice);
     [self labelForTag:HistorySubTag+9].text = data.orderdate;
 }
 

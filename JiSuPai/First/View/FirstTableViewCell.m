@@ -204,7 +204,7 @@
     self.needCarLabel.text = data.cartypeInCn;
     self.titleLabel.text = data.customername;
     self.codeLabel.text = FormatStr(@"任务编号：%@",data.firstorderid);
-    self.priceLabel.text = FormatStr(@"约%ld",data.lastprice);
+    self.priceLabel.text = FormatStr(@"约%.2f",data.lastprice);
     self.driverEnoughLabel.hidden = (data.driverenough != 1);
 }
 
