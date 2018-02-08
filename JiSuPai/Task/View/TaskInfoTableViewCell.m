@@ -174,8 +174,8 @@
         UIButton* card = [self.bgView viewWithTag:tag];
         if (!card) {
             card = [UIButton new];
-//            [card setBackgroundImage:ImageNamed(@"fatie_btn_add") forState:UIControlStateNormal];
-            card.backgroundColor = RandomColor;
+            [card setBackgroundImage:ImageNamed(@"fatie_btn_add") forState:UIControlStateNormal];
+//            card.backgroundColor = RandomColor;
             card.tag = tag;
             [card.imageView setContentMode:UIViewContentModeScaleAspectFill];
             [self.bgView addSubview:card];

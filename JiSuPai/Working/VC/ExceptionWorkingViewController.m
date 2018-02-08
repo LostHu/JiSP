@@ -169,9 +169,11 @@
 //        [HUD showMsg:@"异常类型不能为空"];
 //        return;
 //    }
-    
+    @weakify(self);
     [self.viewModel addWorkingExceptionType:value desc:value2 block:^(id data, BOOL isTodo) {
         if (isTodo) {
+            @strongify(self);
+            [HUD showMsg:@"上报成功"];
             [self performSelector:@selector(sendSuccess) withObject:nil afterDelay:1.5];
         }
     }];
