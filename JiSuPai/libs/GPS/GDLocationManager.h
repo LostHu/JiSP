@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>
+#import "LostCountDownTimer.h"
 
 #define GDMAP_KEY @"b00bb1876c649736dd9183b721264132"
 
@@ -16,6 +17,8 @@
 DEFINE_SINGLETON_FOR_HEADER(GDLocationManager);
 @property (nonatomic, strong) AMapLocationManager* locationManager;
 @property (nonatomic, assign) CLLocationCoordinate2D location;
+@property (nonatomic, strong) NSDate* lastSendDate;
+@property (nonatomic, strong) LostCountDownTimer* timer;
 - (void)startLoaction;
 - (void)postLocation;
 @end

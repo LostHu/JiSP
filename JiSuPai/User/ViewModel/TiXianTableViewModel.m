@@ -9,6 +9,9 @@
 #import "TiXianTableViewModel.h"
 
 @implementation TixianData
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"tixianId" : @"id"};
+}
 @end
 
 @implementation TiXianTableViewModel

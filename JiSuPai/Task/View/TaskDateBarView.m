@@ -91,6 +91,7 @@
         _dayLabel.textColor = hexColor(a1a1a1);
         _dayLabel.font = Font_System(13);
         _dayLabel.textAlignment = NSTextAlignmentRight;
+        _dayLabel.userInteractionEnabled = YES;
     }
     return _dayLabel;
 }

@@ -11,4 +11,10 @@
 
 @interface TixianTableViewCell : UITableViewCell
 @property (nonatomic, strong) TixianData* data;
+@property (nonatomic, strong) UILabel* dateLabel;
+@property (nonatomic, strong) UILabel* sqjeLabel;
+@property (nonatomic, strong) UILabel* tixianLabel;
+@property (nonatomic, strong) UILabel* descLabel;
+@property (nonatomic, strong) UIButton* stateBtn;
+@property (nonatomic, strong) UIView* bgView;
 @end

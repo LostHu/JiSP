@@ -74,6 +74,9 @@
     // Do any additional setup after loading the view.
     [self.tableView registerClass:[TaskTableViewCell class] forCellReuseIdentifier:[TaskTableViewCell identify]];
     
+    UITapGestureRecognizer *tapSuperGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectDay)];
+    tapSuperGesture.delegate = self;
+    [self.barView.dayLabel addGestureRecognizer:tapSuperGesture];
     
     self.tableView.placeholderView.titleLabel.text = @"暂无出车计划";
     [self.barView.selBtn addTarget:self action:@selector(selectDay) forControlEvents:UIControlEventTouchUpInside];
@@ -202,7 +205,10 @@
     view.frame = rect_origin;
     //    view.alpha = 0.5f;
     
+    @weakify(self);
     [UIView animateWithDuration:0.5f animations:^{
+        @strongify(self);
+        self.tabBarController.tabBar.hidden = YES;
         CGRect rect_current = view.frame;
         rect_current.origin.y = yPosition;
         view.frame = rect_current;
@@ -215,12 +221,15 @@
 //隐藏动画
 - (void)hideViewWithAnimation:(UIView *)view
 {
+    @weakify(self);
     [UIView animateWithDuration:0.5f animations:^{
         CGRect rect_current = view.frame;
         rect_current.origin.y = SCREEN_HEIGHT;
         view.frame = rect_current;
     } completion:^(BOOL finished){
+        @strongify(self);
         [view setHidden:YES];
+        self.tabBarController.tabBar.hidden = NO;
     }];
 }
 

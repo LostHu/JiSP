@@ -137,7 +137,7 @@ DEFINE_SINGLETON_FOR_CLASS(LostHttpClient)
             HttpResponseData* appendData = [[HttpResponseData alloc] initWithDictionary:responseObject];
             
             // 操作成功后发送坐标系
-            if (appendData.flag = YES) {
+            if (appendData.flag == YES) {
                 [self postLocationForAction:requestURLString];
             }
             

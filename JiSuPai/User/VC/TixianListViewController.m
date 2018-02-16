@@ -34,7 +34,7 @@
     }];
     self.view.backgroundColor = hexColor(f5f8fa);
     self.tableView.backgroundColor = self.view.backgroundColor;
-    self.cusnavigationBar.titleLabel.text = @"提现列表";
+    self.cusnavigationBar.titleLabel.text = @"提现记录";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 }
@@ -112,6 +112,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    return [tableView fd_heightForCellWithIdentifier:[TixianTableViewCell identify] cacheByIndexPath:indexPath configuration:^(id cell) {
+        TixianData* data = [self.viewModel.array objectAtIndex:indexPath.section];
+        ((TixianTableViewCell*)cell).dateLabel.text = FormatStr(@"%@",data.createtime);
+        ((TixianTableViewCell*)cell).sqjeLabel.text = FormatStr(@"申请金额：%.2f",data.shenqingjine);
+        ((TixianTableViewCell*)cell).tixianLabel.text = FormatStr(@"提现金额：%.2f",data.tixianjine);
+        ((TixianTableViewCell*)cell).descLabel.text = FormatStr(@"备注：%@",data.descrip);
+        [((TixianTableViewCell*)cell).stateBtn setTitle:data.statusInCn forState:UIControlStateNormal];
+    }];
     return 60;
 }
 
@@ -123,8 +131,11 @@
     
     cell.backgroundColor = tableView.backgroundColor;
     TixianData* data = [self.viewModel.array objectAtIndex:indexPath.section];
-//    cell.dateLabel.text = FormatStr(@"%@-%@",data.startdate,data.enddate);
-//    cell.timeLabel.text = FormatStr(@"%@-%@",data.starttime,data.endtime);
+    cell.dateLabel.text = FormatStr(@"%@",data.createtime);
+    cell.sqjeLabel.text = FormatStr(@"申请金额：%.2f",data.shenqingjine);
+    cell.tixianLabel.text = FormatStr(@"提现金额：%.2f",data.tixianjine);
+    cell.descLabel.text = FormatStr(@"备注：%@",data.descrip);
+    [cell.stateBtn setTitle:data.statusInCn forState:UIControlStateNormal];
     
 //    @weakify(self);
 //    [[[cell.delBtn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {

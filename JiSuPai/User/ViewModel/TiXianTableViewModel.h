@@ -9,11 +9,13 @@
 #import "BaseViewModel.h"
 
 @interface TixianData : NSObject
-@property (nonatomic, assign) double createtime;
+@property (nonatomic, strong) NSString* createtime;
 @property (nonatomic, assign) CGFloat shenqingjine;
 @property (nonatomic, assign) CGFloat tixianjine;
 @property (nonatomic, strong) NSString* statusInCn;
 @property (nonatomic, strong) NSString* descrip;
+@property (nonatomic, assign) NSInteger status;
+@property (nonatomic, strong) NSString* tixianId;
 @end
 
 @interface TiXianTableViewModel : BaseTableViewModel
