@@ -84,6 +84,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (self.viewModel.array.count == 0 && ![self.tableView.header isRefreshing]) {
+        [self.viewModel getFirstList:nil];
+    }
+}
+
 #pragma mark -- UICollectionViewDataSource
 //定义展示的UICollectionViewCell的个数
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

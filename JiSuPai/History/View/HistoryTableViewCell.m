@@ -74,7 +74,7 @@
 {
     self.codeLabel.text = data.customername;
     [self labelForTag:HistoryTag+1].text = FormatStr(@"%@(%@)",data.fahuoren,data.fahuophone) ;
-    [self labelForTag:HistoryTag+9].text = FormatStr(@"%@到%@",data.startdate,data.enddate);
+    [self labelForTag:HistoryTag+9].text = data.datedescrip;//FormatStr(@"%@到%@",data.startdate,data.enddate);
 }
 
 - (UILabel*)newTitleLabel

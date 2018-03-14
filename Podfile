@@ -34,6 +34,6 @@ pod 'YYKit'
 pod 'ZLPhotoBrowser'
 
 #pod 'AlicloudFeedback'
-#pod 'MLeaksFinder'          # 内存泄漏工具
+pod 'MLeaksFinder'          # 内存泄漏工具
 end
 

@@ -427,14 +427,17 @@
             [cell.sfz2Btn setBackgroundImageWithURL:URLStr(url2) forState:UIControlStateNormal placeholder:ImageNamed(@"+")];
             
             @weakify(self);
+            @weakify(cell);
             [[[cell.sfz1Btn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
                 @strongify(self);
-                _selectBtn = cell.sfz1Btn;
+                @strongify(cell);
+                self.selectBtn = cell.sfz1Btn;
                 [self change];
             }];
             [[[cell.sfz2Btn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
                 @strongify(self);
-                _selectBtn = cell.sfz2Btn;
+                @strongify(cell);
+                self.selectBtn = cell.sfz2Btn;
                 [self change];
             }];
             
@@ -467,19 +470,23 @@
             [cell.sfz3Btn setBackgroundImageWithURL:URLStr(url3) forState:UIControlStateNormal placeholder:ImageNamed(@"+")];
             
             @weakify(self);
+            @weakify(cell);
             [[[cell.sfz1Btn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
                 @strongify(self);
-                _selectBtn = cell.sfz1Btn;
+                @strongify(cell);
+                self.selectBtn = cell.sfz1Btn;
                 [self change];
             }];
             [[[cell.sfz2Btn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
                 @strongify(self);
-                _selectBtn = cell.sfz2Btn;
+                @strongify(cell);
+                self.selectBtn = cell.sfz2Btn;
                 [self change];
             }];
             [[[cell.sfz3Btn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
                 @strongify(self);
-                _selectBtn = cell.sfz3Btn;
+                @strongify(cell);
+                self.selectBtn = cell.sfz3Btn;
                 [self change];
             }];
             

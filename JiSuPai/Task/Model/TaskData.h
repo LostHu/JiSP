@@ -33,6 +33,7 @@
 @property (nonatomic, strong) NSString* orderdate;
 @property (nonatomic, strong) NSString* startdate;
 @property (nonatomic, strong) NSString* enddate;
+@property (nonatomic, strong) NSString* datedescrip;
 @property (nonatomic, strong) NSString* daogangtime;
 @property (nonatomic, strong) NSString* costhour;
 @property (nonatomic, strong) NSString* customername;

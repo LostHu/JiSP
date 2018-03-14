@@ -70,7 +70,6 @@
     [RACObserve(self.viewModelWoking, data) subscribeNext:^(id x) {
         @strongify(self);
         if (x && [x isKindOfClass:[TaskData class]]) {
-            [self.tableView.header endRefreshing];
             self.tableView.tableFooterView.hidden = NO;
             [self.tableView reloadData];
             self.cusnavigationBar.titleLabel.text = FormatStr(@"单号%@",((TaskData*)x).orderno);
@@ -79,6 +78,7 @@
         {
             self.cusnavigationBar.titleLabel.text = @"无配送任务";
         }
+        [self.tableView.header endRefreshing];
     }];
     
     [RACObserve(self.viewModelWoking, arrayPhotos) subscribeNext:^(id x) {

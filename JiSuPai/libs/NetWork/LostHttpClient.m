@@ -110,12 +110,13 @@ DEFINE_SINGLETON_FOR_CLASS(LostHttpClient)
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", nil];
 //    [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
     
-//    if (![[UserManager sharedInstance] hasAuthforURL:requestURLString]) {
-//        if (block) {
-//            block(nil,nil);
-//        }
-//        return;
-//    }
+    // 未登录 && 非登录注册操作
+    if (![[UserManager sharedInstance] hasAccount] && ![[UserManager sharedInstance] hasAuthforURL:requestURLString]) {
+        if (block) {
+            block(nil,nil);
+        }
+        return;
+    }
     
 //    //申明返回的结果是json类型
 //    manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -166,12 +167,12 @@ DEFINE_SINGLETON_FOR_CLASS(LostHttpClient)
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
 //    [manager setValue:@"application/json" forKey:@"Content-Type"];
     
-//    if (![[UserManager sharedInstance] hasAuthforURL:requestURLString]) {
-//        if (block) {
-//            block(nil,nil);
-//        }
-//        return;
-//    }
+    if (![[UserManager sharedInstance] hasAccount] && ![[UserManager sharedInstance] hasAuthforURL:requestURLString]) {
+        if (block) {
+            block(nil,nil);
+        }
+        return;
+    }
     
     NSString *requestUrl = [AppBaseUrl stringByAppendingString:requestURLString];
 #ifdef DebugLog

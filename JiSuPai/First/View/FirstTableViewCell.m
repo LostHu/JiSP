@@ -195,7 +195,7 @@
 - (void)setData:(TaskData *)data
 {
     _data = data;
-    self.dateLabel.text = FormatStr(@"%@ 到 %@",data.startdate,data.enddate); ;
+    self.dateLabel.text = data.datedescrip;//FormatStr(@"%@ 到 %@",data.startdate,data.enddate); ;
     self.timeLabel.text = data.daogangtime;
     self.timeEndLabel.text = data.costhour;
     self.areaLabel.text = data.peisongquyu;

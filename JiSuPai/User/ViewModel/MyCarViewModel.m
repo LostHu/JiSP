@@ -84,7 +84,6 @@
 //            fileName = @"txz";
 //        }
 //    }
-    
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
 //    [parameters setObject:@(self.driverData.cartype) forKey:@"cartype"];
     [LostHttpClient POSTFileURL:API_PostPhoto parameter:parameters fileList:@[img] fileName:@[fileName] successBlock:^(id returnValue, HttpResponseData *appendData) {
@@ -133,8 +132,10 @@
 
 - (void)getDriverInfo:(ModelCompleteBlock)block
 {
+    @weakify(self);
     NSMutableDictionary* parameters = [NSMutableDictionary new];
     [LostHttpClient GETRequestURL:API_GetDriverInfo WithParameter:parameters WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
+        @strongify(self);
         if (returnValue) {
             self.driverData_Copy = [DriverData modelWithDictionary:returnValue];
             self.driverData = self.driverData_Copy;
@@ -151,8 +152,10 @@
 
 - (void)getCarTypeList:(ModelCompleteBlock)block
 {
+    @weakify(self);
     NSMutableDictionary* parameters = [NSMutableDictionary new];
     [LostHttpClient GETRequestURL:API_GetCarTypeList WithParameter:parameters WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
+        @strongify(self);
         if (returnValue && [returnValue isKindOfClass:[NSDictionary class]]) {
             NSDictionary* dic = returnValue;
             NSMutableArray* tempArray = [NSMutableArray new];

@@ -35,7 +35,7 @@ DEFINE_SINGLETON_FOR_CLASS(GDLocationManager)
         [self.timer startTimerWithBlock:^{
             @strongify(self);
             NSLog(@"----------Timer postLocation-------------");
-            [self postLocation];
+//            [self postLocation];
         }];
     }
     return self;

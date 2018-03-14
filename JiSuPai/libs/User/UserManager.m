@@ -123,32 +123,24 @@ DEFINE_SINGLETON_FOR_CLASS(UserManager)
 - (void)clearUserData
 {
     self.userData = nil;
+    self.loginname = nil;
+    self.password = nil;
 }
 
-//- (BOOL)hasAuthforURL:(NSString*)url
-//{
-//    BOOL bNeedAuth = NO;
-//    NSArray* array = @[API_PostGameHomeComment,         // 发布游戏首页评论
-//                       API_PostGameComment,             // 发布游戏评论
-//                       API_LikeGameRaiders,             // 点赞游戏攻略
-//                       API_SaveGameRaiders,             // 收藏游戏攻略
-//                       API_LikeGameRaidersComment,      // 点赞游戏攻略评论
-//                       API_DeleteRaidersComment,        // 删除攻略评论
-//                       API_UpdateFollowGameState,       // 更新游戏的收藏状态
-//                       API_GainGameGift,                // 礼包领取
-//                       API_GameCommentLike,             // 游戏内页点赞
-//                       API_SueGame,                     // 催更小编
-//                       API_ConsultLike,                 // 资讯点赞
-//                       API_ConsultCollect,              // 资讯收藏
-//                       API_LikeConsultComment,          // 资讯回复点赞
-//                       ];
-//    for (NSString* aUrl in array) {
-//        if ([aUrl isEqualToString:url]) {
-//            bNeedAuth = YES;
-//            break;
-//        }
-//    }
-//
+- (BOOL)hasAuthforURL:(NSString*)url
+{
+    BOOL bNeedAuth = NO;
+    NSArray* array = @[API_login,         // 发布游戏首页评论
+                       API_registerHuozhu,             // 发布游戏评论
+                       API_sendPhoneCode,             // 点赞游戏攻略
+                       ];
+    for (NSString* aUrl in array) {
+        if ([aUrl isEqualToString:url]) {
+            bNeedAuth = YES;
+            break;
+        }
+    }
+
 //    if (bNeedAuth && ![self hasAccount]) {
 //        [[NSNotificationCenter defaultCenter] postNotificationName: Notify_NeedLogin
 //                                                            object:self
@@ -156,9 +148,9 @@ DEFINE_SINGLETON_FOR_CLASS(UserManager)
 //                                                                     @"SuccessStatue":@(YES)}];
 //        return NO;
 //    }
-//
-//    return YES;
-//}
+
+    return bNeedAuth;
+}
 
 - (void)getUserDatafromNetWork
 {

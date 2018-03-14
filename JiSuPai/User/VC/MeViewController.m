@@ -76,6 +76,11 @@
             [self.tableView reloadData];
         }
     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
     [[UserManager sharedInstance] getUserDatafromNetWork];
 }
@@ -319,30 +324,39 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 1) {
         if (indexPath.row == 1) {
-            @weakify(self);
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确认申请吗？" message:nil preferredStyle:UIAlertControllerStyleAlert];
-            [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField){
-                textField.placeholder = @"请输入提现金额";
-                textField.keyboardType = UIKeyboardTypeNumberPad;
-            }];
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            
-            }];
-        
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                @strongify(self);
-                UITextField *textField = alertController.textFields.firstObject;
-                NSString* value = textField.text;
-                [self.viewModel requestCash:[value floatValue] block:^(id data, BOOL isTodo) {
-                    if (isTodo) {
-                        [HUD showMsg:@"申请成功" type:HUDMsgType_Success];
-                    }
+            MAIN(^{
+                @weakify(self);
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确认申请吗？" message:nil preferredStyle:UIAlertControllerStyleAlert];
+//                @weakify(alertController);
+                __weak UIAlertController* weakAlert = alertController;
+                [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField){
+                    textField.placeholder = @"请输入提现金额";
+                    textField.keyboardType = UIKeyboardTypeNumberPad;
                 }];
-            }];
-        
-            [alertController addAction:cancelAction];
-            [alertController addAction:okAction];
-            [self presentViewController:alertController animated:YES completion:nil];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }];
+                
+                
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                    @strongify(self);
+//                    @strongify(alertController);
+                    UITextField *textField = weakAlert.textFields.firstObject;
+                    NSString* value = textField.text;
+//                    @weakify(value);
+                    [self.viewModel requestCash:[value floatValue] block:^(id data, BOOL isTodo) {
+//                        @strongify(value);
+                        if (isTodo) {
+                            [HUD showMsg:@"申请成功" type:HUDMsgType_Success];
+                        }
+                    }];
+                }];
+                
+                [alertController addAction:cancelAction];
+                [alertController addAction:okAction];
+                [self presentViewController:alertController animated:YES completion:nil];
+            });
+            
         }
     }
     

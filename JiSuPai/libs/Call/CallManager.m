@@ -15,13 +15,19 @@
     if ([NSString isBlankString:phone]) {
         return;
     }
-    NSMutableString * phoneStr = [[NSMutableString alloc] initWithFormat:@"telprompt://%@",phone];
-    NSURL *phoneUrl = [NSURL URLWithString:phoneStr];
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    
+    MAIN((^{
+        NSMutableString * phoneStr = [[NSMutableString alloc] initWithFormat:@"telprompt://%@",phone];
+        NSURL *phoneUrl = [NSURL URLWithString:phoneStr];
         if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
             [[UIApplication sharedApplication] openURL:phoneUrl];
         }
-    });
+    }));
+//    dispatch_async(dispatch_get_main_queue(0, 0), ^{
+//        if ([[UIApplication sharedApplication] canOpenURL:phoneUrl]) {
+//            [[UIApplication sharedApplication] openURL:phoneUrl];
+//        }
+//    });
 }
 
 @end

@@ -172,7 +172,9 @@
         cell.titleLabel.text = [_arrayTitle objectAtIndex:indexPath.row];
         ((TaskInfoAddPhotoTableViewCell*)cell).array = self.viewModel.arrayPhotos;
         
+        @weakify(self);
         [[[cell.addBtn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id x) {
+            @strongify(self);
             [self change];
         }];
         

@@ -399,7 +399,7 @@
     [self labelForTag:BasicTag+3].text = data.fahuophone;
     [self labelForTag:BasicTag+4].text = data.cartypeInCn;
     [self labelForTag:BasicTag+5].text = data.jiesuanfsInCn;
-    [self labelForTag:BasicTag+6].text = FormatStr(@"%ld",data.priceperone);
+    [self labelForTag:BasicTag+6].text = FormatStr(@"%.2f",data.priceperone);
     [self labelForTag:BasicTag+7].text = FormatStr(@"大约%.2f",data.lastprice);
     [self labelForTag:BasicTag+8].text = data.driveryaoqiu;
 }
@@ -651,7 +651,7 @@
     [self labelForTag:InfoTag+7].text = data.daogangtime;
     [self labelForTag:InfoTag+8].text = data.costhour;
     
-    [self labelForTag:InfoTag+9].text = FormatStr(@"%@到%@",data.startdate,data.enddate);
+    [self labelForTag:InfoTag+9].text = data.datedescrip;//FormatStr(@"%@到%@",data.startdate,data.enddate);
     [self labelForTag:InfoTag+10].text = data.orderdate;
 }
 

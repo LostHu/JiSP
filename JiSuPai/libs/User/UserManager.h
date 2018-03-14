@@ -33,7 +33,7 @@ DEFINE_SINGLETON_FOR_HEADER(UserManager)
 //- (BOOL)isSameUser:(NSString*)userId;
 
 // token存在接口判断
-//- (BOOL)hasAuthforURL:(NSString*)url;
+- (BOOL)hasAuthforURL:(NSString*)url;
 //
 //- (void)firstOpenToGetAccount;
 @end

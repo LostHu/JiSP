@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>吉速派司机</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -25,7 +27,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>GAMEPLUS想要访问您的相机 方便使用拍照功能</string>
+	<string>请求访问您的相机</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>我们需要使用您的定位</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -37,7 +39,7 @@
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>GAMEPLUS想要添加图片到相册</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>GAMEPLUS想要访问您的相册 方便使用图片</string>
+	<string>请求访问您的相册</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

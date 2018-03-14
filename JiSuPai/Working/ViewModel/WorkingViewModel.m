@@ -87,14 +87,21 @@
 {
     NSMutableDictionary* parameters = [NSMutableDictionary new];
     [LostHttpClient GETRequestURL:API_WorkingTask WithParameter:parameters WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {
-        if (returnValue[@"rows"]) {
-            self.data = [TaskData modelWithDictionary:returnValue[@"rows"]];
+        TaskData* task = nil;
+        if (returnValue[@"rows"] && [returnValue[@"rows"] count] > 0) {
+            task = [TaskData modelWithDictionary:returnValue[@"rows"]];
+            if (block) {
+                block(nil,YES);
+            }
         }else{
+            
             [HUD showMsg:appendData.msg type: HUDMsgType_Error];
+            if (block) {
+                block(nil,NO);
+            }
         }
-        if (block) {
-            block(nil,YES);
-        }
+        self.data = task;
+        
     } WithFailureBlock:^{
         
     }];

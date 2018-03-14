@@ -40,8 +40,9 @@
         self.titleLabel.text = @"title";
         
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(bgView.mas_left).offset(60);
+//            make.right.equalTo(bgView.mas_left).offset(60);
             make.top.offset(9);
+            make.left.offset(15);
         }];
         
         [self.phoneBtn mas_makeConstraints:^(MASConstraintMaker *make) {
