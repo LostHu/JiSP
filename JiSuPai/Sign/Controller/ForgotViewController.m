@@ -318,13 +318,15 @@
     
     NSString* invite = [NSString trimWhitespaceAndNewline:self.inviteTextField.text];
     
+    if (![pwd isEqualToString:invite]) {
+        [HUD showMsg:@"两次密码输入不一致"];
+        return;
+    }
+    
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
     [parameters setObject:value forKey:@"phone"];
     [parameters setObject:code forKey:@"phonecode"];
     [parameters setObject:pwd forKey:@"password"];
-    if (![NSString isBlankString:invite]) {
-        [parameters setObject:invite forKey:@"yaoqingma"];
-    }
     
     @weakify(self);
     [LostHttpClient GETRequestURL:API_resetPassword_Reset WithParameter:parameters
