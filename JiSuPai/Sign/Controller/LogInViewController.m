@@ -298,8 +298,9 @@
 
 - (void)forgot
 {
-//    ForgotViewController* vc = [ForgotViewController new];
-//    [self.navigationController pushViewController:vc animated:YES];
+    ForgotViewController* vc = [ForgotViewController new];
+    vc.cusnavigationBar.titleLabel.text = @"忘记密码";
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

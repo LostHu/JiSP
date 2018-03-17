@@ -75,6 +75,8 @@ DEFINE_SINGLETON_FOR_CLASS(LostHttpClient)
     if (![NSString isBlankString:url]) {
         if ([url isEqualToString:API_registerHuozhu] ||
             [url isEqualToString:API_login] ||
+            [url isEqualToString:API_resetPassword_Reset] ||
+            [url isEqualToString:API_sendPhoneCode_Reset] ||
             [url isEqualToString:API_sendPhoneCode] ) {
             return;
         }

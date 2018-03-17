@@ -89,6 +89,11 @@
     [self.view addGestureRecognizer:tapGesture];
 }
 
+- (void)dealloc
+{
+//    [super dealloc];
+}
+
 - (void)touchSpace
 {
     //    self.maskView.hidden = YES;

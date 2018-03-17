@@ -252,7 +252,7 @@
     //        [textView becomeFirstResponder];
     //    }
     
-    NSString* value = [NSString stringWithFormat:@"%ld/%d",textView.text.length,MAX_INPUT_NUM];
+//    NSString* value = [NSString stringWithFormat:@"%ld/%d",textView.text.length,MAX_INPUT_NUM];
 //    self.wordLabel.text = value;
 }
 

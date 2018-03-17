@@ -220,7 +220,7 @@
             }
         }];
     }
-    return cell;
+    return [UITableViewCell new];
 }
 
 // 子类重写此方法

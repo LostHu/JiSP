@@ -154,7 +154,7 @@
     CGFloat gap = ((SCREEN_WIDTH-6*2-gap_left*2)-BtnSize.width*line_count)/line_count;
     CGFloat gap_line = 10;
     
-    UIButton* lastView = nil;
+//    UIButton* lastView = nil;
     for (int i = 0; i<=array.count; i++) {
         NSInteger line_index = (i)/line_count*1.0;
         NSInteger col_index = i%line_count;
@@ -192,7 +192,7 @@
             [card setImageWithURL:URLStr(url) forState:UIControlStateNormal options:YYWebImageOptionProgressive];
         }
         
-        lastView = card;
+//        lastView = card;
     }
 //    if (lastView) {
 //        [lastView mas_updateConstraints:^(MASConstraintMaker *make) {

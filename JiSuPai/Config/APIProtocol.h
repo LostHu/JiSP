@@ -84,6 +84,9 @@
 #define API_PostPhoto       DriverPrefix(@"/submitZhengjianPic.do")//上传证件照片
 
 
+#define API_sendPhoneCode_Reset   FormatStr(@"%@&type=reset",API_sendPhoneCode)  //发送手机验证码
+#define API_resetPassword_Reset   @"appcommon/resetPasswordByPhoneCode.do"  //修改密碼
+
 #define API_PostOrderPhoto   DriverPrefix(@"/submitOrderPic.do")//上传证件照片
 #define API_GetOrderPhoto    DriverPrefix(@"/getOrderPics.do")  //获取证件照片
 #define API_DeleteOrderPhoto DriverPrefix(@"/deleteOrderPic.do")//删除证件照片

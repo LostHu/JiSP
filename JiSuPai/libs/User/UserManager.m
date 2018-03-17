@@ -132,6 +132,8 @@ DEFINE_SINGLETON_FOR_CLASS(UserManager)
     BOOL bNeedAuth = NO;
     NSArray* array = @[API_login,         // 发布游戏首页评论
                        API_registerHuozhu,             // 发布游戏评论
+                       API_resetPassword_Reset,
+                       API_sendPhoneCode_Reset,
                        API_sendPhoneCode,             // 点赞游戏攻略
                        ];
     for (NSString* aUrl in array) {

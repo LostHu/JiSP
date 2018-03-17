@@ -106,12 +106,18 @@
 - (void)postDirverData:(ModelCompleteBlock)block
 {
     NSMutableDictionary* parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:@(self.driverData.cartype) forKey:@"cartype"];
-    [parameters setObject:self.driverData.sfzno forKey:@"sfzno"];
-    [parameters setObject:self.driverData.carno forKey:@"carno"];
-    [parameters setObject:self.driverData.jzno forKey:@"jzno"];
-    [parameters setObject:self.driverData.username forKey:@"username"];
-    [parameters setObject:self.driverData.region forKey:@"region"];
+    if (self.driverData.cartype > 0)
+        [parameters setObject:@(self.driverData.cartype) forKey:@"cartype"];
+    if (![NSString isBlankString:self.driverData.sfzno])
+        [parameters setObject:self.driverData.sfzno forKey:@"sfzno"];
+    if (![NSString isBlankString:self.driverData.carno])
+        [parameters setObject:self.driverData.carno forKey:@"carno"];
+    if (![NSString isBlankString:self.driverData.jzno])
+        [parameters setObject:self.driverData.jzno forKey:@"jzno"];
+    if (![NSString isBlankString:self.driverData.username])
+        [parameters setObject:self.driverData.username forKey:@"username"];
+    if (![NSString isBlankString:self.driverData.region])
+        [parameters setObject:self.driverData.region forKey:@"region"];
     
     [LostHttpClient GETRequestURL:API_Edit_Account WithParameter:parameters
              WithReturnValeuBlock:^(id returnValue, HttpResponseData *appendData) {

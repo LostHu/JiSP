@@ -224,7 +224,9 @@
         NSString* title = FormatStr(@"修改%@",cell.titleLabel.text);
         NSString* value = cell.infoLabel.text;
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:nil preferredStyle:UIAlertControllerStyleAlert];
+        @weakify(cell);
         [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField){
+            @strongify(cell);
             textField.text = value;
             textField.placeholder = FormatStr(@"请输入%@",cell.titleLabel.text);
 //            textField.keyboardType = UIKeyboardTypeNumberPad;
@@ -232,8 +234,11 @@
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             
         }];
-        
+        @weakify(alertController);
+        @weakify(self);
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            @strongify(alertController);
+            @strongify(self);
             UITextField *textField = alertController.textFields.firstObject;
             NSString* newValue = textField.text;
             if (![newValue isEqualToString:value]) {
@@ -255,7 +260,10 @@
         
         [alertController addAction:cancelAction];
         [alertController addAction:okAction];
-        [self presentViewController:alertController animated:YES completion:nil];
+        MAIN(^{
+           [self presentViewController:alertController animated:YES completion:nil];
+        });
+        
     }
 }
 
@@ -495,7 +503,7 @@
         
     }
     
-    return nil;
+    return [UITableViewCell new];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

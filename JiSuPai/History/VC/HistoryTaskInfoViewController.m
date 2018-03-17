@@ -187,7 +187,7 @@
         
         return cell;
     }
-    return nil;
+    return [UITableViewCell new];
     
 }
 
